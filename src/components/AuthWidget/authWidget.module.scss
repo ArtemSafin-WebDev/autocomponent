@@ -1,0 +1,67 @@
+.authWidget {
+  flex-shrink: 0;
+  margin-right: 0.8rem;
+  margin-left: auto;
+  position: relative;
+}
+
+.btn {
+  all: unset;
+  width: 5rem;
+  height: 5rem;
+  display: block;
+  background: #f1f4f8;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  svg {
+    width: 2.4rem;
+    height: 2.4rem;
+    fill: #8491a6;
+  }
+}
+
+.dropdown {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100%;
+  padding-top: 0.8rem;
+  width: max-content;
+}
+
+.dropdownInner {
+  background: #ffffff;
+  border: 1px solid #d6dce6;
+  box-shadow: 0px 0.8rem 3rem rgba(48, 59, 77, 0.1);
+  border-radius: 1.2rem;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 100%;
+  text-align: left;
+  text-decoration: none;
+  display: block;
+  padding: 0.7rem 1.2rem;
+  border-radius: 0.4rem;
+  transition: background-color 0.2s;
+  &:link,
+  &:visited {
+    color: inherit;
+  }
+  @media (hover: hover) {
+    &:hover {
+      background: #f1f4f8;
+    }
+  }
+}

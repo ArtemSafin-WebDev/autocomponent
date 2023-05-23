@@ -1,0 +1,45 @@
+.offices {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.6rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  list-style: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.phone {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 100%;
+  text-decoration: none;
+  transition: color 0.2s;
+  align-self: flex-start;
+  &:link,
+  &:visited {
+    color: inherit;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+}
+
+.address {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 150%;
+}

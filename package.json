@@ -9,12 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.1.0",
     "@types/node": "20.1.4",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
+    "@xobotyi/scrollbar-width": "^1.9.5",
+    "framer-motion": "^10.12.12",
     "next": "13.4.2",
+    "postcss-preset-env": "^8.3.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "5.0.4"
+    "react-hook-form": "^7.43.9",
+    "react-svg": "^16.1.12",
+    "sass": "^1.62.1",
+    "swiper": "^9.3.2",
+    "typescript": "5.0.4",
+    "zod": "^3.21.4"
   }
 }

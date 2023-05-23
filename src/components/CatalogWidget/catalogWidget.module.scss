@@ -1,0 +1,152 @@
+.catalogWidget {
+  position: relative;
+  flex-shrink: 0;
+  margin-right: 1.6rem;
+}
+
+.btn {
+  background: #268ae5;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 5rem;
+  padding: 0 3.2rem;
+  gap: 0.8rem;
+  color: white;
+}
+
+.cross {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  align-items: center;
+
+  & > span {
+    width: 1.6rem;
+    height: 0.2rem;
+    background-color: currentColor;
+    transition: opacity 0.2s, transform 0.2s, width 0.2s;
+    border-radius: 0.2rem;
+    &:nth-child(1) {
+      width: 1.4rem;
+    }
+
+    &:nth-child(3) {
+      width: 1.4rem;
+    }
+  }
+}
+
+.btnText {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+}
+
+.dropdown {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  padding-top: 0.8rem;
+  width: max-content;
+  max-width: 50vw;
+}
+
+.dropdownInner {
+  background: #ffffff;
+  border: 1px solid #d6dce6;
+  box-shadow: 0px 0.8rem 3rem rgba(48, 59, 77, 0.1);
+  border-radius: 1.2rem;
+  padding: 2.8rem 1.8rem;
+}
+
+.dropdownRow {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.dropdownCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 32rem;
+  flex-shrink: 0;
+  &:not(:last-child) {
+    border-right: 1px solid #f1f4f8;
+  }
+
+  &:nth-child(odd) {
+    padding-right: 2rem;
+  }
+
+  &:nth-child(even) {
+    padding-left: 2rem;
+  }
+}
+
+.dropdownCategoryLink {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 100%;
+  color: inherit;
+  text-decoration: none;
+  padding: 0 1.2rem;
+  &:link,
+  &:visited {
+    color: inherit;
+  }
+}
+
+.submenuList {
+  display: flex;
+  flex-direction: column;
+}
+
+.submenuListItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.submenuLink {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  display: block;
+  line-height: 120%;
+  color: inherit;
+  text-decoration: none;
+  padding: 0.8rem 1.2rem;
+  transition: background-color 0.2s;
+  border-radius: 0.4rem;
+  &:link,
+  &:visited {
+    color: inherit;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: #f1f4f8;
+    }
+  }
+}
+
+.catalogWidgetActive .cross {
+  & > span {
+    &:nth-child(1) {
+      width: 1.6rem;
+      transform: translateY(0.5rem) rotate(45deg);
+    }
+    &:nth-child(2) {
+      opacity: 0;
+    }
+
+    &:nth-child(3) {
+      width: 1.6rem;
+      transform: translateY(-0.5rem) rotate(-45deg);
+    }
+  }
+}

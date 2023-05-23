@@ -1,0 +1,26 @@
+.footerSocial {
+  display: flex;
+  flex-direction: column;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3.2rem;
+  list-style: none;
+}
+
+.listItem {
+  flex-shrink: 0;
+}
+
+.link {
+  width: 2.4rem;
+  height: 2.4rem;
+  position: relative;
+  display: block;
+}
+
+.icon {
+  object-fit: contain;
+}

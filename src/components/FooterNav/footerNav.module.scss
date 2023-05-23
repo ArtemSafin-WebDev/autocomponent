@@ -1,0 +1,54 @@
+.footerNav {
+  display: contents;
+}
+
+.list {
+  display: contents;
+  list-style: none;
+}
+
+.listItem {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.categoryLink {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.4rem;
+  display: block;
+  line-height: 100%;
+  text-decoration: none;
+  &:link,
+  &:visited {
+    color: inherit;
+  }
+}
+
+.submenuList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  list-style: none;
+}
+
+.submenuLink {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 150%;
+  color: #95a2b8;
+  transition: color 0.2s;
+  text-decoration: none;
+  &:link,
+  &:visited {
+    color: #95a2b8;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: white;
+    }
+  }
+}

@@ -1,95 +1,44 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import { fetchHomeData } from "@/clientApi/fetchHomeData";
+import HomeCatalog from "@/components/HomeCatalog/HomeCatalog";
+import HomeInfo from "@/components/HomeInfo/HomeInfo";
+import HomeLinks from "@/components/HomeLinks/HomeLinks";
+import styles from "./page.module.scss";
+import HomeSlider from "@/components/HomeSlider/HomeSlider";
+import HomeCard from "@/components/HomeCard/HomeCard";
+import NewsFeed from "@/components/NewsFeed/NewsFeed";
 
-export default function Home() {
+export const metadata = {
+  title: "Автокомпонент - Главная страница",
+  description: "",
+};
+
+export default async function Home() {
+  const data = await fetchHomeData();
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <div className="container">
+        <div className={styles.layout}>
+          <div className={styles.slider}>
+            <HomeSlider slides={data.homeSlides} />
+          </div>
+
+          <div className={styles.newsFeed}>
+            <NewsFeed data={data.newsFeed} />
+          </div>
+
+          {data.homeCards && data.homeCards.length ? (
+            <div className={styles.cards}>
+              {data.homeCards.map((card) => (
+                <HomeCard card={card} />
+              ))}
+            </div>
+          ) : null}
         </div>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+      <HomeCatalog items={data.homeCatalogItems} />
+      <HomeLinks links={data.homeLinks} />
+      <HomeInfo />
+    </>
+  );
 }

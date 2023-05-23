@@ -1,0 +1,38 @@
+.pageHeader {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  background: #ffffff;
+  box-shadow: 0px 0.8rem 1.2rem rgba(48, 59, 77, 0.1);
+  margin-bottom: 3.2rem;
+}
+
+.top {
+  background: #f1f4f8;
+}
+.topRow {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 0;
+}
+.bottom {
+}
+.bottomRow {
+  display: flex;
+  align-items: center;
+  padding: 2.4rem 0;
+}
+
+.logoLink {
+  width: 20rem;
+  flex-shrink: 0;
+  margin-right: 3rem;
+}
+
+.logo {
+  display: block;
+  width: 100%;
+  height: auto;
+}

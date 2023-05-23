@@ -1,0 +1,22 @@
+.link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 150%;
+  color: #16253e;
+  text-decoration: none;
+  transition: color 0.2s;
+
+  svg {
+    flex-shrink: 0;
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+  &:link,
+  &:visited {
+    color: #16253e;
+  }
+}

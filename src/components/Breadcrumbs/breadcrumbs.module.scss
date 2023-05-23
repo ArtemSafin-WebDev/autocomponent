@@ -1,0 +1,48 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 100%;
+  color: #8491a6;
+  text-decoration: none;
+  transition: color 0.2s;
+  &::after {
+    content: ">";
+    color: #8491a6;
+  }
+  &:link,
+  &:visited {
+    color: #8491a6;
+  }
+
+  &:last-child {
+    &::after {
+      display: none;
+    }
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+}
+
+.linkActive {
+  color: var(--text-color);
+  cursor: default;
+  &:link,
+  &:visited {
+    color: var(--text-color);
+  }
+}

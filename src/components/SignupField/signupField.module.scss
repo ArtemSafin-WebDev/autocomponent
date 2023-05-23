@@ -1,0 +1,58 @@
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  border: 1px solid #d6dce6;
+  border-radius: 0.5rem;
+  background: #ffffff;
+  width: 100%;
+  height: 4rem;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 150%;
+  padding: 0 1.2rem;
+  color: #16253e;
+  transition: border-color 0.2s;
+  &::placeholder {
+    color: #8491a6;
+  }
+
+  &:focus-visible {
+    border-color: var(--primary-color);
+  }
+}
+
+.inputInvalid {
+  border-color: #f9532f;
+}
+
+.label {
+  display: block;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 100%;
+  margin-bottom: 1.6rem;
+}
+
+.validationError {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: #f9532f;
+  line-height: 100%;
+  margin-top: 0.6rem;
+  display: block;
+}
+
+.remark {
+  display: block;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 140%;
+  margin-top: 0.8rem;
+}

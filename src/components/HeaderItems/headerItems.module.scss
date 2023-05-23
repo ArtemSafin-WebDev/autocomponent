@@ -1,0 +1,13 @@
+.headerItems {
+  display: flex;
+  align-items: center;
+  width: 30%;
+  flex-grow: 1;
+  gap: 3.2rem;
+  margin-right: 6rem;
+  margin-left: 6rem;
+}
+
+.itemStandalone {
+  margin-left: auto;
+}

@@ -1,0 +1,96 @@
+.signup {
+  padding-top: 4.5rem;
+  padding-bottom: 12rem;
+  max-width: 112rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 3.2rem;
+  line-height: 3.9rem;
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.card {
+  border-radius: 1.2rem;
+  background-color: #f6f8fa;
+  padding: 4rem;
+}
+
+.blocks {
+  display: flex;
+  flex-direction: column;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #d6dce6;
+  padding-bottom: 4rem;
+  padding-top: 4rem;
+  &:first-child {
+    padding-top: 0;
+  }
+  &:last-child {
+    border: none;
+    padding-bottom: 0;
+  }
+}
+
+.blockHeading {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 2.4rem;
+  margin-bottom: 3.2rem;
+}
+
+.fields {
+  display: grid;
+  align-items: flex-start;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-gap: 4rem;
+}
+
+.controls {
+  display: grid;
+  align-items: flex-start;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-gap: 4rem;
+  margin-top: 3.2rem;
+}
+
+.controlsInner {
+  display: flex;
+  flex-direction: column;
+}
+
+.submit {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+  padding: 1.6rem 3.2rem;
+  width: 100%;
+  text-align: center;
+  border-radius: 0.5rem;
+  color: white;
+  background-color: var(--primary-color);
+  display: block;
+  transition: background-color 0.2s;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--primary-color-hover);
+    }
+  }
+
+  &:active {
+    background-color: var(--primary-color-active);
+  }
+}

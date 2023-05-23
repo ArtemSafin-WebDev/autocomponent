@@ -1,0 +1,88 @@
+:root {
+  --max-container-width: 147rem;
+  --content-padding: 6rem;
+  --primary-color: #268ae5;
+  --primary-color-hover: #1f7cd1;
+  --primary-color-active: #186dbb;
+  --text-color: #16253e;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 10px;
+}
+
+body {
+  font-family: var(--font-inter);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 120%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: var(--text-color);
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  user-select: none;
+  -webkit-appearance: none;
+  appearance: none;
+  font: inherit;
+  color: inherit;
+  outline: none;
+}
+
+input,
+textarea {
+  border: none;
+  border-radius: 0;
+  font: inherit;
+  outline: none;
+  box-shadow: none;
+  border-radius: 0;
+  width: 100%;
+  background-color: transparent;
+  display: block;
+}
+
+main {
+  display: block;
+  flex-grow: 1;
+}
+
+.container {
+  width: 100%;
+  max-width: calc(var(--max-container-width) + 2 * var(--content-padding));
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
+  @supports (width: max(20vw, 100px)) {
+    padding-left: max(
+      env(safe-area-inset-left, 1.4rem),
+      var(--content-padding)
+    );
+    padding-right: max(
+      env(safe-area-inset-right, 1.4rem),
+      var(--content-padding)
+    );
+  }
+}

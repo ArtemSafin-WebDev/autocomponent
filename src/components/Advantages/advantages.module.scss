@@ -1,0 +1,65 @@
+.advantages {
+  padding: 4.6rem 0;
+  border-bottom: 1px solid #35445e;
+}
+
+.list {
+  gap: 3.2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 3.2rem;
+}
+
+.listItem {
+  display: flex;
+  flex-direction: column;
+  width: 25rem;
+}
+
+.card {
+  display: flex;
+  gap: 1.6rem;
+  flex-grow: 1;
+  align-items: flex-start;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 50%;
+  flex-grow: 1;
+}
+
+.cardTitle {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 100%;
+}
+
+.cardDesc {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 150%;
+  color: #95a2b8;
+  max-width: 20rem;
+}
+
+.iconWrapper {
+  width: 3.2rem;
+  height: 3.2rem;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

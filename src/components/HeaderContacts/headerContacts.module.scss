@@ -1,0 +1,33 @@
+.headerContacts {
+  display: flex;
+  align-items: center;
+  gap: 1.3rem;
+}
+
+.phone {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 150%;
+  text-decoration: none;
+  color: #16253e;
+  transition: color 0.2s;
+  &:link,
+  &:visited {
+    color: #16253e;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+}
+
+.schedule {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 150%;
+  color: #8491a6;
+}

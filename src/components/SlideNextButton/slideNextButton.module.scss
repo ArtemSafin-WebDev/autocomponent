@@ -1,0 +1,26 @@
+.btn {
+  all: unset;
+  width: 4rem;
+  height: 4rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #ffffff;
+  flex-shrink: 0;
+  transition: background-color 0.2s;
+  cursor: pointer;
+  svg {
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: #16253e;
+    transition: fill 0.2s;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      svg {
+        fill: var(--primary-color);
+      }
+    }
+  }
+}
