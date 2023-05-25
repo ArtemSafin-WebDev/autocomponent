@@ -1,7 +1,10 @@
 import { LayoutData } from "@/types/api";
+import { headers } from "next/headers";
 
 export async function fetchLayoutData(): Promise<LayoutData> {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/layout`, {
+  const headersList = headers();
+  const fullUrl = headersList.get("referer") || "";
+  const res = await fetch(`${fullUrl}/api/layout`, {
     next: {
       revalidate: 20,
     },
