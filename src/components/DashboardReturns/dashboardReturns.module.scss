@@ -1,0 +1,122 @@
+.dashboardReturns {
+}
+
+.filters {
+  display: grid;
+  align-items: flex-end;
+  grid-template-columns: 1fr 1fr 2fr auto auto 2.5fr;
+  grid-gap: 2.4rem;
+  margin-bottom: 3.2rem;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.label {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 100%;
+  display: block;
+  user-select: none;
+  cursor: pointer;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #d6dce6;
+  border-radius: 0.5rem;
+  height: 4rem;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  padding: 0 1.2rem;
+  line-height: 150%;
+  transition: border-color 0.2s;
+
+  &:focus-visible {
+    border-color: var(--primary-color);
+  }
+}
+
+.showBtn {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.4rem;
+  height: 4rem;
+  padding: 0 4.7rem;
+  white-space: nowrap;
+  line-height: 100%;
+  color: white;
+  border: 1px solid var(--primary-color);
+  background-color: var(--primary-color);
+  transition: border-color 0.2s, background-color 0.2s;
+  flex-shrink: 0;
+  border-radius: 0.5rem;
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--primary-color-hover);
+      border-color: var(--primary-color-hover);
+    }
+  }
+}
+
+.outlineBtn {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.4rem;
+  height: 4rem;
+  padding: 0 4.7rem;
+  white-space: nowrap;
+  line-height: 100%;
+  color: white;
+  border: 1px solid var(--primary-color);
+  transition: border-color 0.2s, background-color 0.2s;
+  flex-shrink: 0;
+  border-radius: 0.5rem;
+  color: var(--primary-color);
+  @media (hover: hover) {
+    &:hover {
+      background: rgba(38, 138, 229, 0.1);
+      border-color: var(--primary-color-hover);
+    }
+  }
+}
+
+.modeSelectors {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 2.4rem;
+}
+
+.modeSelector {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.4rem;
+  text-align: left;
+  line-height: 1.7rem;
+  color: rgba(22, 37, 62, 0.4);
+  transition: color 0.2s;
+}
+
+.modeSelectorActive {
+  color: #16253e;
+  text-decoration-line: underline;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,146 @@
+.dashboardPrices {
+}
+
+.filters {
+  border-radius: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-gap: 3rem;
+  padding: 3.2rem 0;
+  background-color: #f6f8fa;
+  margin-bottom: 1rem;
+}
+
+.filtersBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 1rem;
+
+  &:first-child {
+    padding-left: 3.2rem;
+    grid-column: 1 / 5;
+  }
+
+  &:last-child {
+    grid-column: 5 / -1;
+  }
+}
+
+.filtersTitle {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 100%;
+}
+
+.checkboxes {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2.4rem;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.mark {
+  width: 1.8rem;
+  height: 1.8rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #d6dce6;
+  transition: border 0.2s;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s;
+    border: 0.5rem solid #268ae5;
+  }
+}
+.markChecked {
+  &::after {
+    opacity: 1;
+  }
+}
+
+.checkboxText {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 140%;
+}
+
+.pricesTable {
+  border-radius: 1.2rem;
+
+  background-color: #f6f8fa;
+  padding: 3.2rem 0;
+}
+
+.tableHeader {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-gap: 3rem;
+
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 3.2rem;
+    right: 3.2rem;
+
+    bottom: 0;
+    border-bottom: 1px dashed #b2bccb;
+  }
+}
+
+.tableHeaderTitle {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 100%;
+  padding-bottom: 2rem;
+  &:first-child {
+    grid-column: 1 / 5;
+    padding-left: 3.2rem;
+  }
+
+  &:last-child {
+    grid-column: 5 / -1;
+  }
+}
+
+.saveBtn {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+  padding: 1.6rem 4.2rem;
+  border-radius: 0.5rem;
+  background-color: var(--primary-color);
+  transition: background-color 0.2s;
+  margin-top: 2.4rem;
+  color: white;
+  margin-left: 3.2rem;
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--primary-color-hover);
+    }
+  }
+}
+
+.tableItems {
+  display: flex;
+  flex-direction: column;
+}

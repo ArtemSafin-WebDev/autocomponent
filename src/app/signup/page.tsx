@@ -7,6 +7,8 @@ export const metadata = {
   description: "",
 };
 
+export const revalidate = 60;
+
 export default function SignupPage() {
   return (
     <>

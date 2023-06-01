@@ -1,0 +1,193 @@
+.card {
+  border-radius: 1.2rem;
+  background-color: #f6f8fa;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  padding-top: 0;
+}
+
+.cardOpen {
+}
+
+.btn {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1.2fr 1fr 2fr auto;
+  grid-template-areas: "title amount status arrow";
+  grid-gap: 2rem;
+  padding: 2.4rem 2.4rem;
+  justify-items: flex-start;
+
+  svg {
+    grid-area: arrow;
+    width: 1.2rem;
+    height: 1rem;
+    fill: currentColor;
+    grid-area: arrow;
+    transition: transform 0.2s;
+  }
+}
+
+.cardOpen .btn svg {
+  transform: rotate(180deg);
+}
+
+.title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 150%;
+  grid-area: title;
+}
+
+.amount {
+  grid-area: amount;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.status {
+  grid-area: status;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.key {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 150%;
+  color: #8491a6;
+}
+
+.value {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 150%;
+  color: #16253e;
+}
+
+.green {
+  color: #4cd04a;
+}
+
+.orange {
+  color: #e8713f;
+}
+
+.cardContent {
+  height: 0;
+  overflow: hidden;
+}
+
+.cardOpen .cardContent {
+  height: auto;
+}
+
+.cardContentInner {
+  padding: 2.4rem;
+  position: relative;
+  &::after {
+    content: "";
+    left: 2.4rem;
+    right: 2.4rem;
+    top: 0;
+    height: 1px;
+    background-color: #d6dce6;
+    position: absolute;
+  }
+}
+
+.cardInfoItems {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2.4rem;
+  margin-bottom: 4rem;
+}
+
+.cardInfoItem {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 0.8rem;
+  padding: 1rem 1.2rem;
+  background: #ffffff;
+  border-radius: 1.7rem;
+}
+
+.cardInfoItemKey {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+}
+
+.cardInfoItemValue {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+}
+
+.delay {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 100%;
+  color: #e8713f;
+  white-space: nowrap;
+}
+
+.tableStatus {
+  text-decoration: underline;
+  text-decoration-style: dashed;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  thead {
+    tr {
+      border-bottom: 1px dashed #b2bccb;
+    }
+    th {
+      padding-bottom: 2rem;
+      text-align: left;
+      vertical-align: top;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 1.4rem;
+      line-height: 100%;
+      padding-right: 3rem;
+      white-space: nowrap;
+    }
+  }
+
+  tbody {
+    td {
+      padding: 2rem 0;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 150%;
+      vertical-align: top;
+      text-align: left;
+      padding-right: 3rem;
+    }
+
+    tr {
+      border-bottom: 1px dashed #b2bccb;
+      &:last-child {
+        border-bottom: none;
+        td {
+          padding-bottom: 0;
+        }
+      }
+    }
+  }
+}

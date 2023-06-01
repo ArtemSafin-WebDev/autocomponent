@@ -1,0 +1,245 @@
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 3rem;
+}
+
+.userInfo {
+  margin-bottom: 8rem;
+}
+
+.manager {
+  border-radius: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #f6f8fa;
+  padding: 3.2rem;
+}
+
+.managerRow {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+}
+
+.managerContent {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  flex-grow: 1;
+}
+
+.managerPhotoContainer {
+  width: 11.2rem;
+  height: 11.2rem;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.managerPhoto {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.managerHeading {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 100%;
+  margin-bottom: 2rem;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.managerName {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 150%;
+  margin-bottom: 0.8rem;
+}
+
+.managerPhone {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 150%;
+  transition: color 0.2s;
+  text-decoration: none;
+  margin-bottom: 0.8rem;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  &:link,
+  &:visited {
+    color: inherit;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+}
+
+.managerEmail {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 150%;
+  transition: color 0.2s;
+  text-decoration: none;
+  margin-bottom: 0.8rem;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  &:link,
+  &:visited {
+    color: inherit;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+}
+
+.contracts {
+  border-radius: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #f6f8fa;
+  padding: 3.2rem;
+}
+
+.contractsItems {
+  column-count: 3;
+  column-gap: 2rem;
+  margin-bottom: 1.4rem;
+  list-style: none;
+}
+
+.contractsItem {
+  margin-bottom: 0.8rem;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 150%;
+}
+
+.contractsTitle {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 100%;
+  margin-bottom: 2rem;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.contractsDownload {
+  display: inline-flex;
+  align-items: center;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+  text-decoration: none;
+  gap: 0.4rem;
+  color: var(--primary-color);
+  margin-top: auto;
+  transition: color 0.2s;
+  align-self: flex-start;
+  &:link,
+  &:visited {
+    color: var(--primary-color);
+  }
+
+  svg {
+    flex-shrink: 0;
+    width: 2.4rem;
+    height: 2.4rem;
+    fill: currentColor;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--primary-color-hover);
+    }
+  }
+}
+
+.credentials {
+  border-radius: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #f6f8fa;
+  padding: 3.2rem;
+}
+
+.credentialsTitle {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 100%;
+  margin-bottom: 2rem;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.credentialsItems {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.credentialsItem {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.key {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 100%;
+}
+
+.value {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 150%;
+}
+
+.changePassword {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+  text-decoration: none;
+  color: var(--primary-color);
+  margin-top: auto;
+  transition: color 0.2s;
+  &:link,
+  &:visited {
+    color: var(--primary-color);
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--primary-color-hover);
+    }
+  }
+}

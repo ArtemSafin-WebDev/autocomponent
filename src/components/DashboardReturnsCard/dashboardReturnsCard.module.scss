@@ -1,0 +1,210 @@
+.card {
+  border-radius: 1.2rem;
+  background-color: #f6f8fa;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  padding-top: 0;
+}
+
+.cardOpen {
+}
+
+.btn {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1.2fr 4fr auto;
+  grid-template-areas: "title amount arrow";
+  grid-gap: 2rem;
+  padding: 2.4rem 2.4rem;
+  justify-items: flex-start;
+
+  svg {
+    grid-area: arrow;
+    width: 1.2rem;
+    height: 1rem;
+    fill: currentColor;
+    grid-area: arrow;
+    transition: transform 0.2s;
+    justify-self: flex-end;
+  }
+}
+
+.cardOpen .btn svg {
+  transform: rotate(180deg);
+}
+
+.title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 150%;
+  grid-area: title;
+}
+
+.amount {
+  grid-area: amount;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.key {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 150%;
+  color: #8491a6;
+}
+
+.value {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 150%;
+  color: #16253e;
+}
+
+.cardContent {
+  height: 0;
+  overflow: hidden;
+}
+
+.cardOpen .cardContent {
+  height: auto;
+}
+
+.cardContentInner {
+  padding: 2.4rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  &::after {
+    content: "";
+    left: 2.4rem;
+    right: 2.4rem;
+    top: 0;
+    height: 1px;
+    background-color: #d6dce6;
+    position: absolute;
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  thead {
+    tr {
+      border-bottom: 1px dashed #b2bccb;
+    }
+    th {
+      padding-bottom: 2rem;
+      text-align: left;
+      vertical-align: top;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 1.4rem;
+      line-height: 100%;
+      padding-right: 3rem;
+      white-space: nowrap;
+    }
+  }
+
+  tbody {
+    td {
+      padding: 2rem 0;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 150%;
+      vertical-align: top;
+      text-align: left;
+      padding-right: 3rem;
+    }
+
+    tr {
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-bottom: 1px dashed #b2bccb;
+      }
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: -0.3rem;
+}
+
+.checkboxText {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 150%;
+}
+
+.checkboxMark {
+  width: 1.8rem;
+  height: 1.8rem;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid #d6dce6;
+  border-radius: 0.2rem;
+  transition: border-color 0.2s, background-color 0.2s;
+  background-color: #fff;
+
+  &::after {
+    content: "";
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10.61 7.78' fill='white'%3E%3Cpolygon points='4.24 7.78 0 3.54 1.41 2.12 4.24 4.95 9.19 0 10.61 1.41 4.24 7.78' /%3E%3C/svg%3E");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 1rem;
+    height: 1rem;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+}
+
+.markChecked {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  &::after {
+    opacity: 1;
+  }
+}
+
+.submitReturn {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 100%;
+  color: white;
+  padding: 1.3rem 3.2rem;
+  background-color: var(--primary-color);
+  margin-top: 2.4rem;
+  margin-left: auto;
+  transition: background-color 0.2s;
+  border-radius: 0.5rem;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--primary-color-hover);
+    }
+  }
+}

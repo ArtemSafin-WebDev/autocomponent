@@ -12,6 +12,8 @@ export const metadata = {
   description: "",
 };
 
+export const revalidate = 60;
+
 export default async function Home() {
   const data = await fetchHomeData();
 

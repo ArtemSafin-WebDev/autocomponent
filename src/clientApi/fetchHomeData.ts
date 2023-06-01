@@ -1,17 +1,24 @@
 import { HomeData } from "@/types/api";
-import { headers } from "next/headers";
+import { getHomeCards } from "@/data/homeCards";
+import { getHomeCatalogItems } from "@/data/homeCatalogItems";
+import { getHomeLinks } from "@/data/homeLinks";
+import { getHomeSlides } from "@/data/homeSlides";
+import { getNewsFeed } from "@/data/newsFeed";
 
 export async function fetchHomeData(): Promise<HomeData> {
-  const headersList = headers();
-  const fullUrl = headersList.get("referer") || "";
-  console.log("Domain", fullUrl);
-  const res = await fetch(`${fullUrl}/api/home`, {
-    next: {
-      revalidate: 20,
-    },
-  });
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return res.json();
+  const [homeLinks, homeCatalogItems, homeSlides, homeCards, newsFeed] =
+    await Promise.all([
+      getHomeLinks(),
+      getHomeCatalogItems(),
+      getHomeSlides(),
+      getHomeCards(),
+      getNewsFeed(),
+    ]);
+  return {
+    homeLinks,
+    homeCatalogItems,
+    homeSlides,
+    homeCards,
+    newsFeed,
+  };
 }

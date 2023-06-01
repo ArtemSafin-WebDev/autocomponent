@@ -101,7 +101,46 @@ interface NewsFeedData {
   categories: NewsFeedCategoryGroup[];
 }
 
-export { NewsFeedCategory };
+interface DashboardData {
+  manager?: {
+    photo: string;
+    name: string;
+    phone?: string;
+    email?: string;
+  };
+  contracts?: {
+    items: String[];
+    file: string;
+  };
+  credentials: {
+    login: string;
+    password: string;
+  };
+}
+
+enum DashboardHistoryCardItemStatus {
+  Waiting = "Ожидает утверждения",
+  Created = "Создан",
+  Processed = "Обработан",
+  Arrived = "В пункте выдачи",
+  Received = "Выдан",
+  Denied = "Отказ",
+}
+
+interface DashboardHistoryCardItem {
+  id: number;
+  title: string;
+  brand: string;
+  productCode: string;
+  code: string;
+  quantity: string;
+  amount: string;
+  status: DashboardHistoryCardItemStatus;
+  date: string;
+  delay?: string;
+}
+
+export { NewsFeedCategory, DashboardHistoryCardItemStatus };
 
 export type {
   Advantage,
@@ -118,4 +157,6 @@ export type {
   HomeCard,
   NewsFeedCard,
   NewsFeedData,
+  DashboardData,
+  DashboardHistoryCardItem,
 };
