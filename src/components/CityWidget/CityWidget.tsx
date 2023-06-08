@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./cityWidget.module.scss";
 import logo from "@/assets/images/location.svg";
 import EmbedSVG from "../utils/EmbedSVG/EmbedSVG";
-import arrowDown from "@/assets/images/arrow-down.svg";
+import arrowDown from "@/assets/images/arrow-down-fixed.svg";
 import cross from "@/assets/images/cross.svg";
 import { AnimatePresence, motion } from "framer-motion";
 import { useScrollbarWidth } from "@/hooks/useScrollbarWidth";

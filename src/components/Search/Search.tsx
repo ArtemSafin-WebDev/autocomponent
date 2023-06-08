@@ -3,7 +3,7 @@
 import { useCallback, useRef, useState } from "react";
 import EmbedSVG from "../utils/EmbedSVG/EmbedSVG";
 import styles from "./search.module.scss";
-import arrowDown from "@/assets/images/arrow-down.svg";
+import arrowDown from "@/assets/images/arrow-down-fixed.svg";
 import searchIcon from "@/assets/images/search.svg";
 import useOnClickOutside from "@/hooks/useOutsideClick";
 import { AnimatePresence, motion } from "framer-motion";
@@ -41,7 +41,7 @@ export default function Search() {
   const [activeMode, setActiveMode] = useState<SearchMode>(modes.current[0]);
   return (
     <div className={styles.searchWidget} ref={ref}>
-      <div className={styles.selector}>
+      <div className={`${styles.selector} ${toggle ? styles.selectOpen : ""}`}>
         <button
           className={styles.selectorBtn}
           onClick={() => setToggle((toggle) => !toggle)}

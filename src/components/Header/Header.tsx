@@ -1,3 +1,5 @@
+"use client";
+
 import CityWidget from "../CityWidget/CityWidget";
 import styles from "./header.module.scss";
 import Image from "next/image";
@@ -10,14 +12,42 @@ import CartWidget from "../CartWidget/CartWidget";
 import Search from "../Search/Search";
 import HeaderContacts from "../HeaderContacts/HeaderContacts";
 import HeaderItems from "../HeaderItems/HeaderItems";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLayoutEffect, useRef } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface HeaderProps {
   headerCatalogCategories?: HeaderCatalogMenuCategory[];
 }
 
 export default function Header({ headerCatalogCategories }: HeaderProps) {
+  const header = useRef(null);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context((self) => {
+      if (self.selector) {
+        const elements = self.selector(".fixed-part") as HTMLElement[];
+        console.log("Logo", elements);
+
+        elements.forEach((element) => {
+          ScrollTrigger.create({
+            trigger: element,
+            start: "top top",
+            end: 99999999,
+            pin: true,
+            pinSpacing: false,
+          });
+        });
+      }
+      console.log("Self", self);
+    }, header);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <header className={styles.pageHeader}>
+    <header className={styles.pageHeader} ref={header}>
       <div className={styles.top}>
         <div className="container">
           <div className={styles.topRow}>
@@ -27,7 +57,8 @@ export default function Header({ headerCatalogCategories }: HeaderProps) {
           </div>
         </div>
       </div>
-      <div className={styles.bottom}>
+
+      <div className={`${styles.bottom} fixed-part`}>
         <div className="container">
           <div className={styles.bottomRow}>
             <Link href="/" className={styles.logoLink}>

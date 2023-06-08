@@ -18,7 +18,10 @@ export default function Advantages({ advantages }: AdvantagesProps) {
               </div>
               <div className={styles.cardContent}>
                 <h3 className={styles.cardTitle}>{advantage.title}</h3>
-                <p className={styles.cardDesc}>{advantage.desc}</p>
+                <p
+                  className={styles.cardDesc}
+                  dangerouslySetInnerHTML={{ __html: advantage.desc }}
+                ></p>
               </div>
             </div>
           </li>

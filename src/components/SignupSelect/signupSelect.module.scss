@@ -29,7 +29,7 @@
 
   svg {
     flex-shrink: 0;
-    width: 0.8rem;
+    width: 0.7rem;
     height: 0.7rem;
     fill: #16253e;
     transition: fill 0.2s, transform 0.2s;
@@ -41,6 +41,10 @@
 
 .btnActive {
   border-color: var(--primary-color);
+
+  svg {
+    transform: rotate(180deg);
+  }
 }
 
 .btnText {
@@ -75,7 +79,7 @@
   position: absolute;
   left: 0;
   top: 100%;
-  padding-top: 0.8rem;
+  padding-top: 0.4rem;
   width: 100%;
   z-index: 30;
 }

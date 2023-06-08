@@ -13,7 +13,7 @@ export default function HomeCard({
   card: { title, src, href, linkText },
 }: HomeCardProps) {
   return (
-    <div className={styles.card}>
+    <Link className={styles.card} href={href}>
       <h3 className={styles.title}>{title}</h3>
       <Image
         src={src}
@@ -22,10 +22,10 @@ export default function HomeCard({
         height={200}
         className={styles.image}
       />
-      <Link href={href} className={styles.link}>
+      <div className={styles.link}>
         {linkText}
         <EmbedSVG src={moreArrow.src} />
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 }

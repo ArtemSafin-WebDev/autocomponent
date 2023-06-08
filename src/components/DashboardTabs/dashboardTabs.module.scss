@@ -12,11 +12,34 @@
   border-radius: 0.8rem;
   align-self: flex-start;
   margin-bottom: 4rem;
+  gap: 0.4rem;
 }
 
 .navBtn {
   display: inline-grid;
   grid-template-columns: minmax(0, 1fr);
+
+  &::before {
+    content: "";
+
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s;
+    z-index: 1;
+    display: block;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      &::before {
+        background: #e5e9ee;
+      }
+    }
+  }
 }
 
 .navBtnContent {
@@ -50,9 +73,5 @@
   border-radius: 0.5rem;
   align-self: stretch;
   justify-self: stretch;
-}
-
-.tabsContainer {
-}
-.tabItem {
+  z-index: 10;
 }

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import EmbedSVG from "../utils/EmbedSVG/EmbedSVG";
 import styles from "./headerDropdown.module.scss";
-import arrowDown from "@/assets/images/arrow-down.svg";
+import arrowDown from "@/assets/images/arrow-down-fixed.svg";
 import { useCallback, useRef, useState } from "react";
 import useOnClickOutside from "@/hooks/useOutsideClick";
 import { AnimatePresence, motion } from "framer-motion";
@@ -25,7 +25,10 @@ export default function HeaderDropdown({ items, title }: HeaderDropdownProps) {
 
   if (!(items && items.length)) return null;
   return (
-    <div className={styles.headerDropdown} ref={ref}>
+    <div
+      className={`${styles.headerDropdown} ${toggle ? styles.open : ""}`}
+      ref={ref}
+    >
       <button
         className={styles.btn}
         onClick={() => setToggle((toggle) => !toggle)}

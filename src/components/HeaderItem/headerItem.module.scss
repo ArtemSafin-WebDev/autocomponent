@@ -14,9 +14,16 @@
     flex-shrink: 0;
     width: 1.6rem;
     height: 1.6rem;
+    transition: transform 0.2s;
   }
   &:link,
   &:visited {
     color: #16253e;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--primary-color);
+    }
   }
 }

@@ -10,6 +10,20 @@
   overflow: hidden;
   position: relative;
   z-index: 1;
+  color: var(--text-color);
+  text-decoration: none;
+  &:link,
+  &:visited {
+    color: var(--text-color);
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      .image {
+        transform: scale(1.02);
+      }
+    }
+  }
 }
 
 .title {
@@ -30,6 +44,7 @@
   height: 34rem;
   margin-right: -4rem;
   margin-bottom: -8rem;
+  transition: transform 0.4s;
 }
 
 .link {
@@ -43,15 +58,23 @@
   line-height: 100%;
   color: var(--primary-color);
   text-decoration: none;
+  transition: color 0.2s;
 
   svg {
     fill: currentColor;
     flex-shrink: 0;
     width: 1rem;
     height: 1rem;
+    transition: transform 0.2s;
+    margin-top: 0.1rem;
   }
-  &:link,
-  &:visited {
-    color: var(--primary-color);
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--primary-color-hover);
+      svg {
+        transform: translateX(0.2rem);
+      }
+    }
   }
 }

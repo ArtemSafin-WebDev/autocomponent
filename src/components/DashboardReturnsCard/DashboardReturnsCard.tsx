@@ -8,6 +8,7 @@ import EmbedSVG from "../utils/EmbedSVG/EmbedSVG";
 import DashboardReturnsCardRow, {
   DashboardReturnsCardItem,
 } from "../DashboardReturnsCardRow/DashboardReturnsCardRow";
+import ReturnModal from "../ReturnModal/ReturnModal";
 
 interface DashboardReturnsCardProps {
   title: string;
@@ -22,6 +23,8 @@ export default function DashboardReturnsCard({
 }: DashboardReturnsCardProps) {
   const [toggle, setToggle] = useState(false);
   const [allSelected, setAllSelected] = useState(false);
+
+  const [modalToggle, setModalToggle] = useState(false);
 
   const handleDeselected = useCallback(() => {
     setAllSelected(false);
@@ -91,11 +94,24 @@ export default function DashboardReturnsCard({
                   ))}
                 </tbody>
               </table>
-              <button className={styles.submitReturn}>Оформить возврат</button>
+              <button
+                className={styles.submitReturn}
+                onClick={() => {
+                  setModalToggle(true);
+                }}
+              >
+                Оформить возврат
+              </button>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+      <ReturnModal
+        open={modalToggle}
+        closeHandler={() => {
+          setModalToggle(false);
+        }}
+      />
     </div>
   );
 }

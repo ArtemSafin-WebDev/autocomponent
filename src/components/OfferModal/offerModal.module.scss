@@ -50,7 +50,7 @@
   @media (hover: hover) {
     &:hover {
       svg {
-        fill: var(--primary-color);
+        fill: #a2a8b2;
       }
     }
   }
@@ -100,6 +100,23 @@
       content: counter(list) ". ";
     }
   }
+
+  a {
+    color: var(--primary-color);
+    transition: color 0.2s;
+    text-decoration: underline;
+    text-decoration-color: var(--primary-color);
+    &:link,
+    &:visited {
+      color: var(--primary-color);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        color: var(--primary-color-hover);
+      }
+    }
+  }
 }
 
 .scrollWrapper {
@@ -134,9 +151,20 @@
   text-align: center;
   line-height: 100%;
   padding: 1.8rem 10rem;
-  background: #268ae5;
+  background: var(--primary-color);
+  transition: background-color 0.2s;
   border-radius: 5px;
   color: white;
   align-self: flex-end;
   margin-top: 2.4rem;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--primary-color-hover);
+    }
+  }
+
+  &:active {
+    background-color: var(--primary-color-active);
+  }
 }

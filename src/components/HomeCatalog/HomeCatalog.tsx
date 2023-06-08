@@ -13,6 +13,7 @@ export default function HomeCatalog({ items }: HomeCatalogProps) {
   return (
     <div className={styles.homeCatalog}>
       <div className="container">
+        <h2 className={styles.heading}>Каталог автотоваров</h2>
         <ul className={styles.list}>
           {items.map((item) => (
             <li className={styles.listItem} key={item.id}>

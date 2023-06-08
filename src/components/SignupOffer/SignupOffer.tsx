@@ -40,7 +40,7 @@ export default function SignupOffer({
         <span className={styles.validationError}>{errors[label]?.message}</span>
       )}
       <OfferModal
-        title="Регистрация"
+        title="Публичная оферта договора поставки товара"
         content={content}
         open={modalToggle}
         closeHandler={() => {

@@ -4,25 +4,25 @@ import EmbedSVG from "../utils/EmbedSVG/EmbedSVG";
 import styles from "./cartWidget.module.scss";
 import cartIcon from "@/assets/images/cart.svg";
 import trash from "@/assets/images/trash.svg";
-import useOnClickOutside from "@/hooks/useOutsideClick";
+
 import { AnimatePresence, motion } from "framer-motion";
-import { useCallback, useRef, useState } from "react";
+import Link from "next/link";
+import { useRef } from "react";
+import { useHoverDirty } from "react-use";
 
 export default function CartWidget() {
-  const [toggle, setToggle] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  const outsideClickHandler = useCallback(() => setToggle(false), []);
+  const toggle = useHoverDirty(ref);
 
-  useOnClickOutside(ref, outsideClickHandler);
   return (
-    <div className={styles.cartWidget} ref={ref}>
-      <button
-        className={styles.btn}
-        onClick={() => setToggle((toggle) => !toggle)}
-      >
+    <div
+      className={`${styles.cartWidget} ${toggle ? styles.hovered : ""}`}
+      ref={ref}
+    >
+      <Link href="/" className={styles.btn}>
         <EmbedSVG src={cartIcon.src} />1 289 867 ₽
-      </button>
+      </Link>
       <AnimatePresence>
         {toggle && (
           <motion.div

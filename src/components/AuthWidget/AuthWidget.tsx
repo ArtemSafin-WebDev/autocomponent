@@ -5,27 +5,35 @@ import EmbedSVG from "../utils/EmbedSVG/EmbedSVG";
 import styles from "./authWidget.module.scss";
 
 import person from "@/assets/images/person.svg";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import useOnClickOutside from "@/hooks/useOutsideClick";
 import Link from "next/link";
 import LoginModal from "../LoginModal/LoginModal";
+import { useHoverDirty } from "react-use";
+import RememberModal from "../RememberModal/RememberModal";
 
 export default function AuthWidget() {
   const [toggle, setToggle] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const hovered = useHoverDirty(ref);
 
-  const outsideClickHandler = useCallback(() => setToggle(false), []);
-
-  useOnClickOutside(ref, outsideClickHandler);
+  useEffect(() => {
+    if (hovered) {
+      setToggle(true);
+    } else {
+      setToggle(false);
+    }
+  }, [hovered]);
 
   const [registerToggle, setRegisterToggle] = useState(false);
+  const [rememberToggle, setRememberToggle] = useState(false);
 
   return (
-    <div className={styles.authWidget} ref={ref}>
-      <button
-        className={styles.btn}
-        onClick={() => setToggle((toggle) => !toggle)}
-      >
+    <div
+      className={`${styles.authWidget} ${toggle ? styles.hovered : ""}`}
+      ref={ref}
+    >
+      <button className={styles.btn}>
         <EmbedSVG src={person.src} />
       </button>
       <AnimatePresence>
@@ -63,7 +71,16 @@ export default function AuthWidget() {
         closeHandler={() => {
           setRegisterToggle(false);
         }}
-        onRememberClick={() => {}}
+        onRememberClick={() => {
+          setRegisterToggle(false);
+          setTimeout(() => {
+            setRememberToggle(true);
+          }, 400);
+        }}
+      />
+      <RememberModal
+        open={rememberToggle}
+        closeHandler={() => setRememberToggle(false)}
       />
     </div>
   );

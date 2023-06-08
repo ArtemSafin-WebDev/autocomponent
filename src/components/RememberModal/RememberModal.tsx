@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./loginModal.module.scss";
+import styles from "./rememberModal.module.scss";
 import useOnClickOutside from "@/hooks/useOutsideClick";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import EmbedSVG from "../utils/EmbedSVG/EmbedSVG";
@@ -12,17 +12,15 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createPortal } from "react-dom";
 
-interface LoginModalProps {
-  onRememberClick: () => void;
+interface RememberModalProps {
   closeHandler: () => void;
   open: boolean;
 }
 
-export default function LoginModal({
-  onRememberClick,
+export default function RememberModal({
   closeHandler,
   open,
-}: LoginModalProps) {
+}: RememberModalProps) {
   const sbw = useScrollbarWidth();
   const ref = useRef<HTMLDivElement>(null);
   const innerModalRef = useRef<HTMLDivElement>(null);
@@ -55,7 +53,6 @@ export default function LoginModal({
     };
   }, [open]);
 
-  const passwordFieldId = useId();
   const emailFieldId = useId();
 
   const Schema = z.object({
@@ -63,7 +60,6 @@ export default function LoginModal({
       .string()
       .min(1, { message: "Обязательное поле" })
       .email({ message: "Введите корректный E-mail" }),
-    password: z.string().min(1, { message: "Обязательное поле" }),
   });
 
   type FormData = z.infer<typeof Schema>;
@@ -102,7 +98,7 @@ export default function LoginModal({
                   >
                     <EmbedSVG src={cross.src} />
                   </button>
-                  <h3 className={styles.heading}>Авторизация</h3>
+                  <h3 className={styles.heading}>Восстановление пароля</h3>
                   <form
                     className={styles.form}
                     onSubmit={handleSubmit(onSubmit)}
@@ -126,36 +122,8 @@ export default function LoginModal({
                           </span>
                         )}
                       </div>
-                      <div className={styles.field}>
-                        <label
-                          className={styles.label}
-                          htmlFor={passwordFieldId}
-                        >
-                          Пароль
-                        </label>
-                        <input
-                          type="password"
-                          className={`${styles.input} ${
-                            errors.password ? styles.inputInvalid : ""
-                          }`}
-                          id={passwordFieldId}
-                          {...register("password", { required: true })}
-                        />
-                        {errors.password?.message && (
-                          <span className={styles.validationError}>
-                            {errors.password?.message}
-                          </span>
-                        )}
-                      </div>
                     </div>
-                    <button className={styles.submit}>Войти</button>
-                    <button
-                      type="button"
-                      className={styles.rememberLink}
-                      onClick={() => onRememberClick()}
-                    >
-                      Не помню пароль
-                    </button>
+                    <button className={styles.submit}>Отправить</button>
                   </form>
                 </div>
               </motion.div>

@@ -138,6 +138,10 @@
       background-color: var(--primary-color-hover);
     }
   }
+
+  &:active {
+    background-color: var(--primary-color-active);
+  }
 }
 
 .tableItems {

@@ -24,7 +24,10 @@ export default function HomeLinks({ links }: HomeLinksProps) {
                     {link.title}
                     <EmbedSVG src={moreArrow.src} />
                   </div>
-                  <div className={styles.desc}>{link.desc}</div>
+                  <div
+                    className={styles.desc}
+                    dangerouslySetInnerHTML={{ __html: link.desc }}
+                  ></div>
                 </Link>
               </li>
             ))}

@@ -5,7 +5,7 @@ import { useCallback, useRef, useState } from "react";
 import { FieldErrors, Path, UseFormRegister } from "react-hook-form";
 import { SignupFormData } from "../Signup/Signup";
 import EmbedSVG from "../utils/EmbedSVG/EmbedSVG";
-import arrowDown from "@/assets/images/arrow-down.svg";
+import arrowDown from "@/assets/images/arrow-down-fixed.svg";
 import useOnClickOutside from "@/hooks/useOutsideClick";
 import { AnimatePresence, motion } from "framer-motion";
 
