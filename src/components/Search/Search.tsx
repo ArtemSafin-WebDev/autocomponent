@@ -39,6 +39,12 @@ export default function Search() {
   useOnClickOutside(ref, outsideClickHandler);
 
   const [activeMode, setActiveMode] = useState<SearchMode>(modes.current[0]);
+
+  const placeholder = `Введите ${
+    activeMode.name.startsWith("VIN")
+      ? activeMode.name
+      : activeMode.name.toLowerCase()
+  } товара`;
   return (
     <div className={styles.searchWidget} ref={ref}>
       <div className={`${styles.selector} ${toggle ? styles.selectOpen : ""}`}>
@@ -81,7 +87,7 @@ export default function Search() {
         <input
           type="text"
           className={styles.input}
-          placeholder="Введите наименование товара"
+          placeholder={placeholder}
           onChange={(event) => setText(event.target.value)}
           value={text}
         />
