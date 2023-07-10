@@ -1,0 +1,153 @@
+.cartSuccess {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10rem;
+  padding-bottom: 12rem;
+  gap: 3.2rem;
+}
+
+.innerContent {
+  max-width: 105.2rem;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #f6f8fa;
+  padding: 4rem;
+  padding-top: 5rem;
+  border-radius: 1.2rem;
+}
+
+.heading {
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 5rem;
+  text-align: center;
+  &::before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 3.2rem;
+    height: 3.2rem;
+    background-image: url("/cart-success.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 1rem;
+    margin-top: -0.3rem;
+  }
+
+  em {
+    font-style: normal;
+    color: var(--primary-color);
+  }
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.4rem;
+}
+
+.infoItem {
+  padding: 1rem 1.2rem;
+  border-radius: 3.5rem;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.infoItemKey {
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.infoItemValue {
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  tr {
+    position: relative;
+    &::after {
+      content: "";
+      left: 0;
+      right: 0;
+      border-top: 1px dashed #8491a6;
+      position: absolute;
+    }
+  }
+  td,
+  th {
+    vertical-align: top;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    padding: 2rem 0;
+    padding-right: 2rem;
+    &:last-child {
+      text-align: right;
+      padding-right: 0;
+    }
+  }
+
+  .total {
+    th,
+    td {
+      padding-bottom: 0;
+    }
+
+    td,
+    th {
+      font-weight: 700;
+    }
+  }
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 8fr 1fr 1fr 1fr 1fr;
+  grid-gap: 3rem;
+  padding: 2rem 0;
+  border-top: 1px dashed #8491a6;
+}
+
+.link {
+  align-self: center;
+  padding: 1.6rem 3.8rem;
+  color: white;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  background: var(--primary-color);
+  transition: background-color 0.2s, color 0.2s;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  &:link,
+  &:visited {
+    color: white;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--primary-color-hover);
+    }
+  }
+
+  &:active {
+    background-color: var(--primary-color-active);
+  }
+}

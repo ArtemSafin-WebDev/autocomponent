@@ -5,8 +5,7 @@ import EmbedSVG from "../utils/EmbedSVG/EmbedSVG";
 import styles from "./authWidget.module.scss";
 
 import person from "@/assets/images/person.svg";
-import { useCallback, useEffect, useRef, useState } from "react";
-import useOnClickOutside from "@/hooks/useOutsideClick";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import LoginModal from "../LoginModal/LoginModal";
 import { useHoverDirty } from "react-use";

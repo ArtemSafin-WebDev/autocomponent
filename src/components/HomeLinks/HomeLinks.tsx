@@ -14,25 +14,23 @@ export default function HomeLinks({ links }: HomeLinksProps) {
   if (!(links && links.length)) return null;
   return (
     <div className={styles.homeLinks}>
-      <div className="container">
-        <div className={styles.inner}>
-          <ul className={styles.list}>
-            {links.map((link) => (
-              <li className={styles.listItem} key={link.id}>
-                <Link href={link.href} className={styles.card}>
-                  <div className={styles.link}>
-                    {link.title}
-                    <EmbedSVG src={moreArrow.src} />
-                  </div>
-                  <div
-                    className={styles.desc}
-                    dangerouslySetInnerHTML={{ __html: link.desc }}
-                  ></div>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div className={styles.inner}>
+        <ul className={styles.list}>
+          {links.map((link) => (
+            <li className={styles.listItem} key={link.id}>
+              <Link href={link.href} className={styles.card}>
+                <div className={styles.link}>
+                  {link.title}
+                  <EmbedSVG src={moreArrow.src} />
+                </div>
+                <div
+                  className={styles.desc}
+                  dangerouslySetInnerHTML={{ __html: link.desc }}
+                ></div>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

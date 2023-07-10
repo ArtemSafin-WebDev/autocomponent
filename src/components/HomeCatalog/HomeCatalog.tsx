@@ -12,23 +12,21 @@ export default function HomeCatalog({ items }: HomeCatalogProps) {
 
   return (
     <div className={styles.homeCatalog}>
-      <div className="container">
-        <h2 className={styles.heading}>Каталог автотоваров</h2>
-        <ul className={styles.list}>
-          {items.map((item) => (
-            <li className={styles.listItem} key={item.id}>
-              <Link href={item.href} className={styles.card}>
-                <div className={styles.iconWrapper}>
-                  <Image src={item.icon} alt="" className={styles.icon} fill />
-                </div>
-                <div className={styles.cardContent}>
-                  <h3 className={styles.title}>{item.title}</h3>
-                </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <h2 className={styles.heading}>Каталог автотоваров</h2>
+      <ul className={styles.list}>
+        {items.map((item) => (
+          <li className={styles.listItem} key={item.id}>
+            <Link href={item.href} className={styles.card}>
+              <div className={styles.iconWrapper}>
+                <Image src={item.icon} alt="" className={styles.icon} fill />
+              </div>
+              <div className={styles.cardContent}>
+                <h3 className={styles.title}>{item.title}</h3>
+              </div>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

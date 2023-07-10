@@ -37,10 +37,10 @@ export default async function Home() {
             </div>
           ) : null}
         </div>
+        <HomeCatalog items={data.homeCatalogItems} />
+        <HomeLinks links={data.homeLinks} />
+        <HomeInfo />
       </div>
-      <HomeCatalog items={data.homeCatalogItems} />
-      <HomeLinks links={data.homeLinks} />
-      <HomeInfo />
     </>
   );
 }
