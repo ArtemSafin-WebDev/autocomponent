@@ -29,7 +29,6 @@ export default function Header({ headerCatalogCategories }: HeaderProps) {
     const ctx = gsap.context((self) => {
       if (self.selector) {
         const elements = self.selector(".fixed-part") as HTMLElement[];
-        console.log("Logo", elements);
 
         elements.forEach((element) => {
           ScrollTrigger.create({
@@ -41,7 +40,6 @@ export default function Header({ headerCatalogCategories }: HeaderProps) {
           });
         });
       }
-      console.log("Self", self);
     }, header);
     return () => ctx.revert();
   }, []);

@@ -2,76 +2,23 @@
 
 import { useEffect, useState } from "react";
 import styles from "./nameSearch.module.scss";
-import ArrowDown from "../Icons/ArrowDown";
-import Info from "../Icons/Info";
-import Camera from "../Icons/Camera";
+import ArrowDown from "../../icons/ArrowDown";
+import InfoIcon from "../../icons/Info";
+
 import Counter from "../Counter/Counter";
 import EmbedSVG from "../utils/EmbedSVG/EmbedSVG";
 import cartIcon from "@/assets/images/cart.svg";
+import items from "./nameSearchItems";
+import checkboxes from "./checkboxes";
+import Info from "../Info/Info";
+import PhotoPreview from "../PhotoPreview/PhotoPreview";
+import Checkbox from "../Checkbox/Checkbox";
 
-const checkboxes: Array<{
+interface CheckboxItem {
   id: number;
   title: string;
   checked?: boolean;
-}> = [
-  {
-    id: 1,
-    title: "Автомобильное оборудование",
-  },
-  {
-    id: 2,
-    title: "Автомобильное оборудование",
-  },
-  {
-    id: 3,
-    title: "Автомобильное оборудование",
-  },
-  {
-    id: 4,
-    title: "Автомобильное оборудование",
-  },
-  {
-    id: 5,
-    title: "Фильтры",
-  },
-  {
-    id: 6,
-    title: "Фильтры",
-  },
-  {
-    id: 7,
-    title: "Фильтры",
-  },
-  {
-    id: 8,
-    title: "Фильтры",
-  },
-  {
-    id: 9,
-    title: "Автомобильное оборудование",
-    checked: true,
-  },
-  {
-    id: 10,
-    title: "Автомобильное оборудование",
-  },
-  {
-    id: 11,
-    title: "Автомобильное оборудование",
-  },
-  {
-    id: 12,
-    title: "Автомобильное оборудование",
-  },
-  {
-    id: 13,
-    title: "Фильтры",
-  },
-  {
-    id: 14,
-    title: "Фильтры",
-  },
-];
+}
 
 interface NameSearchItem {
   id: number;
@@ -89,87 +36,6 @@ interface NameSearchItem {
 interface NameSearchCardProps {
   item: NameSearchItem;
 }
-
-interface CheckboxProps {
-  title: string;
-  checkedByDefault?: boolean;
-}
-
-function Checkbox({ title, checkedByDefault }: CheckboxProps) {
-  const [checked, setChecked] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (checkedByDefault) {
-      setChecked(true);
-    }
-  }, [checkedByDefault]);
-  return (
-    <button
-      className={styles.checkbox}
-      onClick={() => setChecked((checked) => !checked)}
-    >
-      <span
-        className={`${styles.checkmark} ${checked ? styles.markChecked : ""}`}
-      ></span>
-      {title}
-    </button>
-  );
-}
-
-const items: NameSearchItem[] = [
-  {
-    id: 1,
-    title:
-      "Электродвигатель стеклоочистителя ВАЗ-2123, 1118, 2170-2190 передний н/о (разъе...",
-    articul: "3151951117010",
-    brand: "BIG FILTER",
-    amount: "Много",
-    warehouse: "Основной склад",
-    inStock: true,
-    price1: "245 521, 65",
-    price2: "258 521, 65",
-    quantity: 232,
-  },
-  {
-    id: 2,
-    title:
-      "Электродвигатель стеклоочистителя ВАЗ-2123, 1118, 2170-2190 передний н/о (разъе...",
-    articul: "3151951117010",
-    brand: "BIG FILTER",
-    amount: "Много",
-    warehouse: "Основной склад",
-    inStock: true,
-    price1: "245 521, 65",
-    price2: "258 521, 65",
-    quantity: 232,
-  },
-  {
-    id: 3,
-    title:
-      "Электродвигатель стеклоочистителя ВАЗ-2123, 1118, 2170-2190 передний н/о (разъе...",
-    articul: "3151951117010",
-    brand: "BIG FILTER",
-    amount: "Много",
-    warehouse: "Основной склад",
-    inStock: true,
-    price1: "245 521, 65",
-    price2: "258 521, 65",
-    quantity: 232,
-  },
-  {
-    id: 4,
-    title:
-      "Электродвигатель стеклоочистителя ВАЗ-2123, 1118, 2170-2190 передний н/о (разъе...",
-    articul: "3151951117010",
-    brand: "BIG FILTER",
-    amount: "Много",
-    warehouse: "Основной склад",
-    inStock: true,
-    price1: "245 521, 65",
-    price2: "258 521, 65",
-    quantity: 232,
-  },
-];
 
 function NameSearchCard({ item }: NameSearchCardProps) {
   const {
@@ -189,12 +55,8 @@ function NameSearchCard({ item }: NameSearchCardProps) {
     <div className={styles.tableRow}>
       <div className={styles.tableCell}>
         {title}
-        <button className={styles.photoBtn}>
-          <Camera />
-        </button>
-        <button className={styles.info}>
-          <Info />
-        </button>
+        <PhotoPreview src="/photo-preview.webp" alt="Превью фото" />
+        <Info />
       </div>
       <div className={styles.tableCell}>{articul}</div>
       <div className={styles.tableCell}>
@@ -268,7 +130,7 @@ export default function NameSearch() {
           <div className={styles.tableHeaderCell}>
             Срок поставки
             <span className={styles.info}>
-              <Info />
+              <InfoIcon />
             </span>
           </div>
           <div className={styles.tableHeaderCell}>Цена, ₽</div>
@@ -283,3 +145,5 @@ export default function NameSearch() {
     </div>
   );
 }
+
+export type { NameSearchItem, CheckboxItem };

@@ -42,7 +42,6 @@ export default function Checkout() {
   });
 
   const onSubmit: SubmitHandler<CheckoutFormData> = (data) => {
-    console.log(data);
     reset();
   };
 

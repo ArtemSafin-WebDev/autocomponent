@@ -65,14 +65,12 @@ export default function CityWidget() {
 
   useEffect(() => {
     if (toggle) {
-      console.log("Open");
       document.body.classList.add(styles.modalOpen);
       document.body.style.paddingRight = sbw + "px";
       if (ref.current) {
         ref.current.style.paddingRight = sbw + "px";
       }
     } else {
-      console.log("Closed");
       document.body.classList.remove(styles.modalOpen);
       document.body.style.paddingRight = "";
       if (ref.current) {

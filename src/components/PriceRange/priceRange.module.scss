@@ -1,0 +1,72 @@
+.priceRange {
+  display: flex;
+  flex-direction: column;
+}
+
+.SliderRoot {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.SliderTrack {
+  position: relative;
+  flex-grow: 1;
+  background-color: #f1f4f8;
+  border-radius: 1rem;
+
+  height: 0.2rem;
+}
+
+.SliderRange {
+  background-color: var(--primary-color);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.SliderThumb {
+  display: block;
+  width: 1.6rem;
+  height: 1.6rem;
+  background-color: var(--primary-color);
+  border: none;
+  outline: none;
+  border-radius: 50%;
+}
+
+.rangeInputs {
+  gap: 0.7rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  display: flex;
+}
+
+.divider {
+  width: 1.2rem;
+  flex-shrink: 0;
+  height: 1px;
+  background-color: #d6dce5;
+}
+
+.rangeInputWrapper {
+  width: 3rem;
+  flex-grow: 1;
+}
+
+.rangeInput {
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+  height: 4.6rem;
+  border-radius: 0.5rem;
+  border: 1px solid #d6dce5;
+
+  padding: 0 1.2rem;
+  transition: border-color 0.2s;
+
+  &:focus {
+    border-color: var(--primary-color);
+  }
+}

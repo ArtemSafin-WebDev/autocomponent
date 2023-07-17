@@ -4,7 +4,8 @@ import styles from "./searchByCode.module.scss";
 import cartIcon from "@/assets/images/cart.svg";
 import EmbedSVG from "../utils/EmbedSVG/EmbedSVG";
 import Counter from "../Counter/Counter";
-import Camera from "../Icons/Camera";
+import Camera from "../../icons/Camera";
+import PhotoPreview from "../PhotoPreview/PhotoPreview";
 
 interface SearchByCodeItem {
   id: number;
@@ -59,10 +60,7 @@ function SearchByCodeItem({ item }: SearchByCodeItemProps) {
       <div className={styles.cardItem}>{code}</div>
       <div className={styles.cardItem}>{articul}</div>
       <div className={styles.cardItem}>
-        {title}{" "}
-        <button className={styles.photoBtn}>
-          <Camera />
-        </button>
+        {title} <PhotoPreview src="/photo-preview.webp" />
       </div>
       <div className={styles.cardItem}>{brand}</div>
       <div className={styles.cardItem}>

@@ -4,8 +4,6 @@ import Link from "next/link";
 import moreArrow from "@/assets/images/more-arrow.svg";
 import EmbedSVG from "../utils/EmbedSVG/EmbedSVG";
 
-console.log(moreArrow);
-
 interface HomeLinksProps {
   links: HomeLink[];
 }

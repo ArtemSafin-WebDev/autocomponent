@@ -10,10 +10,12 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.0",
+    "@radix-ui/react-slider": "^1.1.2",
     "@types/node": "20.1.4",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
     "@xobotyi/scrollbar-width": "^1.9.5",
+    "ahooks": "^3.7.8",
     "framer-motion": "^10.12.12",
     "gsap": "^3.12.1",
     "next": "13.4.2",
@@ -28,10 +30,12 @@
     "sass": "^1.62.1",
     "swiper": "^9.3.2",
     "typescript": "5.0.4",
+    "uuid": "^9.0.0",
     "zod": "^3.21.4"
   },
   "devDependencies": {
     "@types/react-input-mask": "^3.0.2",
-    "@types/react-stickynode": "^4.0.0"
+    "@types/react-stickynode": "^4.0.0",
+    "@types/uuid": "^9.0.2"
   }
 }

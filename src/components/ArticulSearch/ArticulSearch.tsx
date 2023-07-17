@@ -1,105 +1,232 @@
+"use client";
+
 import Link from "next/link";
 import styles from "./articulSearch.module.scss";
-import ArticulSearchArrow from "../Icons/ArticulSearchArrow";
+import { otherBrands } from "./otherBrands";
+import { useState } from "react";
+import Checkbox from "../Checkbox/Checkbox";
+import SearchIcon from "@/icons/Search";
+import PriceRange from "../PriceRange/PriceRange";
+import tableBlocks from "./tableBlocks";
+import ArticulSearchTableBlock from "./ArticulSearchTableBlock";
 
-interface ArticulSearchTableRowItem {
+type OtherBrand = {
   id: number;
-  brand: string;
-  articul: string;
-  desc: string;
-}
+  title: string;
+  href: string;
+};
 
-interface ArticulSearchTableRowProps {
-  item: ArticulSearchTableRowItem;
-}
+type DeliveryDate = {
+  id: number;
+  title: string;
+  checked?: boolean;
+};
 
-const items: ArticulSearchTableRowItem[] = [
+type Brand = {
+  id: number;
+  title: string;
+  checked?: boolean;
+};
+
+const deliveryCheckboxes: DeliveryDate[] = [
   {
     id: 1,
-    brand: "DP GROUP",
-    articul: "bp43001",
-    desc: "Колодки тормозные дисковые Ford Focus II 04-, Focus III 11-, Kuga 08-, C-MAX 04-, Mazda 3 03-, Mazda",
+    title: "Сегодня",
+    checked: true,
   },
   {
     id: 2,
-    brand: "DP GROUP",
-    articul: "bp43001",
-    desc: "Колодки тормозные дисковые Ford Focus II 04-, Focus III 11-, Kuga 08-, C-MAX 04-, Mazda 3 03-, Mazda",
+    title: "2 дня",
+    checked: false,
   },
   {
     id: 3,
-    brand: "DP GROUP",
-    articul: "bp43001",
-    desc: "Колодки тормозные дисковые Ford Focus II 04-, Focus III 11-, Kuga 08-, C-MAX 04-, Mazda 3 03-, Mazda",
+    title: "3 дня",
+    checked: false,
   },
   {
     id: 4,
-    brand: "DP GROUP",
-    articul: "bp43001",
-    desc: "Колодки тормозные дисковые Ford Focus II 04-, Focus III 11-, Kuga 08-, C-MAX 04-, Mazda 3 03-, Mazda",
+    title: "4 дня",
+    checked: false,
   },
   {
     id: 5,
-    brand: "DP GROUP",
-    articul: "bp43001",
-    desc: "Колодки тормозные дисковые Ford Focus II 04-, Focus III 11-, Kuga 08-, C-MAX 04-, Mazda 3 03-, Mazda",
-  },
-  {
-    id: 6,
-    brand: "DP GROUP",
-    articul: "bp43001",
-    desc: "Колодки тормозные дисковые Ford Focus II 04-, Focus III 11-, Kuga 08-, C-MAX 04-, Mazda 3 03-, Mazda",
-  },
-  {
-    id: 7,
-    brand: "DP GROUP",
-    articul: "bp43001",
-    desc: "Колодки тормозные дисковые Ford Focus II 04-, Focus III 11-, Kuga 08-, C-MAX 04-, Mazda 3 03-, Mazda",
-  },
-  {
-    id: 8,
-    brand: "DP GROUP",
-    articul: "bp43001",
-    desc: "Колодки тормозные дисковые Ford Focus II 04-, Focus III 11-, Kuga 08-, C-MAX 04-, Mazda 3 03-, Mazda",
+    title: "5 дней",
+    checked: false,
   },
 ];
 
-function ArticulSearchTableRow({ item }: ArticulSearchTableRowProps) {
-  const { brand, articul, desc } = item;
+const brandsCheckboxes: Brand[] = [
+  {
+    id: 1,
+    title: "Бренд 1",
+    checked: false,
+  },
+  {
+    id: 2,
+    title: "Бренд 2",
+    checked: false,
+  },
+  {
+    id: 3,
+    title: "Бренд 3",
+    checked: false,
+  },
+  {
+    id: 4,
+    title: "Бренд 4",
+    checked: false,
+  },
+  {
+    id: 5,
+    title: "Бренд 5",
+    checked: false,
+  },
+];
+
+type ArticulSearchCard = {
+  id: number;
+  title: string;
+  quantity: string;
+  warehouse: string;
+  delivery: string;
+  amount: number;
+  price1: string;
+  price2: string;
+};
+
+type ArticulTableBlock = {
+  id: number;
+  heading: string;
+  items: ArticulTableItem[];
+};
+
+type ArticulTableItem = {
+  id: number;
+  articul: string;
+  items: ArticulSearchCard[];
+};
+
+export default function ArticulSearch() {
+  const [deliveryDates, setDeliveryDates] = useState<DeliveryDate[]>(
+    deliveryCheckboxes.filter((checkbox) => checkbox.checked)
+  );
+  const [brands, setBrands] = useState<Brand[]>(
+    brandsCheckboxes.filter((checkbox) => checkbox.checked)
+  );
+
+  const [range, setRange] = useState<[number, number]>();
+  const [brandSearch, setBrandSearch] = useState("");
   return (
-    <div className={styles.tableRow}>
-      <div className={styles.tableCell}>{brand}</div>
-      <div className={styles.tableCell}>{articul}</div>
-      <div className={styles.tableCell}>
-        <div className={styles.wrapper}>
-          {desc}
-          <Link href="/" className={styles.link}>
-            Цены и аналоги
-            <ArticulSearchArrow />
-          </Link>
+    <div className={styles.articulSearch}>
+      <h1 className={styles.heading}>Результаты поиска</h1>
+      <div className={styles.otherBrands}>
+        <h2 className={styles.otherBrandsHeading}>Другие бренды</h2>
+
+        <ul className={styles.otherBrandsList}>
+          {otherBrands.map((item) => (
+            <li className={styles.otherBrandsListItem} key={item.id}>
+              <Link href={item.href} className={styles.otherBrandsLink}>
+                {item.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className={styles.layout}>
+        <div className={styles.main}>
+          <div className={styles.tableBlocks}>
+            {tableBlocks.map((block) => (
+              <ArticulSearchTableBlock
+                heading={block.heading}
+                items={block.items}
+                key={block.id}
+              />
+            ))}
+          </div>
+        </div>
+        <div className={styles.sidebar}>
+          <div className={styles.filters}>
+            <div className={styles.filtersBlock}>
+              <h3 className={styles.filtersBlockHeading}>Цена, ₽</h3>
+              <PriceRange
+                maxValue={8000}
+                startValue={0}
+                endValue={4000}
+                onValueSettle={(value) => setRange(value)}
+              />
+            </div>
+            <div className={styles.filtersBlock}>
+              <h3 className={styles.filtersBlockHeading}>Бренды</h3>
+              <div className={styles.searchWrapper}>
+                <SearchIcon />
+                <input
+                  className={styles.searchInput}
+                  placeholder="Поиск бренда"
+                  value={brandSearch}
+                  onChange={(event) => setBrandSearch(event.target.value)}
+                />
+              </div>
+              <ul className={styles.checkboxesList}>
+                {brandsCheckboxes.map((checkbox) => (
+                  <li className={styles.checkboxesListItem} key={checkbox.id}>
+                    <Checkbox
+                      title={checkbox.title}
+                      checkedByDefault={checkbox.checked}
+                      onToggle={(value) => {
+                        console.log(
+                          `Checkbox ${checkbox.title} value: `,
+                          value
+                        );
+                        if (value) {
+                          setBrands((brands) => [...brands, checkbox]);
+                        } else {
+                          setBrands((brands) =>
+                            brands.filter((brand) => brand.id !== checkbox.id)
+                          );
+                        }
+                      }}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className={styles.filtersBlock}>
+              <h3 className={styles.filtersBlockHeading}>Срок доставки</h3>
+              <ul className={styles.checkboxesList}>
+                {deliveryCheckboxes.map((checkbox) => (
+                  <li className={styles.checkboxesListItem} key={checkbox.id}>
+                    <Checkbox
+                      title={checkbox.title}
+                      checkedByDefault={checkbox.checked}
+                      onToggle={(value) => {
+                        console.log(
+                          `Checkbox ${checkbox.title} value: `,
+                          value
+                        );
+                        if (value) {
+                          setDeliveryDates((dates) => [...dates, checkbox]);
+                        } else {
+                          setDeliveryDates((dates) =>
+                            dates.filter((date) => date.id !== checkbox.id)
+                          );
+                        }
+                      }}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
-export default function ArticulSearch() {
-  return (
-    <div className={styles.articulSearch}>
-      <h1 className={styles.heading}>Результаты поиска</h1>
-      <div className={styles.headingText}>Уточните бренд искомой запчасти</div>
-      <div className={styles.table}>
-        <div className={styles.tableHeader}>
-          <div className={styles.tableHeaderCell}>Бренд</div>
-          <div className={styles.tableHeaderCell}>Артикул</div>
-          <div className={styles.tableHeaderCell}>Описание</div>
-        </div>
-        <div className={styles.tableBody}>
-          {items.map((item) => (
-            <ArticulSearchTableRow item={item} key={item.id} />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
+export type {
+  OtherBrand,
+  ArticulSearchCard,
+  ArticulTableBlock,
+  ArticulTableItem,
+};

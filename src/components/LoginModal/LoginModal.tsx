@@ -5,7 +5,7 @@ import useOnClickOutside from "@/hooks/useOutsideClick";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import EmbedSVG from "../utils/EmbedSVG/EmbedSVG";
 import { AnimatePresence, motion } from "framer-motion";
-import { useScrollbarWidth } from "@/hooks/useScrollbarWidth";
+
 import cross from "@/assets/images/cross.svg";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
@@ -23,7 +23,6 @@ export default function LoginModal({
   closeHandler,
   open,
 }: LoginModalProps) {
-  const sbw = useScrollbarWidth();
   const ref = useRef<HTMLDivElement>(null);
   const innerModalRef = useRef<HTMLDivElement>(null);
   const outsideClickHandler = useCallback(() => closeHandler(), []);
@@ -38,20 +37,11 @@ export default function LoginModal({
   useEffect(() => {
     if (open) {
       document.body.classList.add(styles.modalOpen);
-      document.body.style.paddingRight = sbw + "px";
-      if (ref.current) {
-        ref.current.style.paddingRight = sbw + "px";
-      }
     } else {
       document.body.classList.remove(styles.modalOpen);
-      document.body.style.paddingRight = "";
-      if (ref.current) {
-        ref.current.style.paddingRight = "";
-      }
     }
     return () => {
       document.body.classList.remove(styles.modalOpen);
-      document.body.style.paddingRight = "";
     };
   }, [open]);
 
@@ -78,7 +68,6 @@ export default function LoginModal({
   });
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
-    console.log(data);
     reset();
   };
 

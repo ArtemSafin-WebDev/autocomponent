@@ -43,7 +43,6 @@ export default function Signup() {
   });
 
   const onSubmit: SubmitHandler<SignupFormData> = (data) => {
-    console.log(data);
     reset();
   };
   return (
