@@ -8,6 +8,7 @@ const tableBlocks: ArticulTableBlock[] = [
       {
         id: 1,
         articul: "DP GROUP bp43001",
+        otherArticuls: ["DP GROUP bp43001", "DP GROUP bp43001"],
         items: [
           {
             id: 1,
@@ -64,6 +65,7 @@ const tableBlocks: ArticulTableBlock[] = [
       {
         id: 1,
         articul: "DP GROUP bp43001",
+        otherArticuls: ["DP GROUP bp43001", "DP GROUP bp43001"],
         items: [
           {
             id: 1,
@@ -81,6 +83,7 @@ const tableBlocks: ArticulTableBlock[] = [
       {
         id: 2,
         articul: "DP GROUP bp43001",
+        otherArticuls: ["DP GROUP bp43001", "DP GROUP bp43001"],
         items: [
           {
             id: 1,
@@ -98,6 +101,7 @@ const tableBlocks: ArticulTableBlock[] = [
       {
         id: 3,
         articul: "DP GROUP bp43001",
+        otherArticuls: ["DP GROUP bp43001", "DP GROUP bp43001"],
         items: [
           {
             id: 1,
@@ -115,6 +119,7 @@ const tableBlocks: ArticulTableBlock[] = [
       {
         id: 4,
         articul: "DP GROUP bp43001",
+        otherArticuls: ["DP GROUP bp43001", "DP GROUP bp43001"],
         items: [
           {
             id: 1,
@@ -132,6 +137,7 @@ const tableBlocks: ArticulTableBlock[] = [
       {
         id: 5,
         articul: "DP GROUP bp43001",
+        otherArticuls: ["DP GROUP bp43001", "DP GROUP bp43001"],
         items: [
           {
             id: 1,
@@ -149,6 +155,7 @@ const tableBlocks: ArticulTableBlock[] = [
       {
         id: 6,
         articul: "DP GROUP bp43001",
+        otherArticuls: ["DP GROUP bp43001", "DP GROUP bp43001"],
         items: [
           {
             id: 1,

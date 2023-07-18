@@ -104,6 +104,7 @@ type ArticulTableBlock = {
 type ArticulTableItem = {
   id: number;
   articul: string;
+  otherArticuls: string[];
   items: ArticulSearchCard[];
 };
 

@@ -4,7 +4,8 @@ import styles from "./articulSearch.module.scss";
 import EmbedSVG from "../utils/EmbedSVG/EmbedSVG";
 import { useState } from "react";
 import arrowDown from "@/assets/images/arrow-down-fixed.svg";
-import InfoIcon from "@/icons/Info";
+
+import Tooltip from "../Tooltip/Tooltip";
 
 type ArticulSearchTableBlockProps = Omit<ArticulTableBlock, "id">;
 
@@ -88,9 +89,7 @@ export default function ArticulSearchTableBlock({
               Срок поставки
               <EmbedSVG src={arrowDown.src} />
             </button>
-            <div className={styles.infoItem}>
-              <InfoIcon />
-            </div>
+            <Tooltip text="Подсказка с каким-то текстом" />
           </div>
           <div className={styles.tableHeaderCell}>
             <button
@@ -110,9 +109,7 @@ export default function ArticulSearchTableBlock({
               Цена, ₽
               <EmbedSVG src={arrowDown.src} />
             </button>
-            <div className={styles.infoItem}>
-              <InfoIcon />
-            </div>
+            <Tooltip text="Подсказка с каким-то текстом" />
           </div>
         </div>
         {items.map((item) => (

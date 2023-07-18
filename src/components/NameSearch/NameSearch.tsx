@@ -13,6 +13,7 @@ import checkboxes from "./checkboxes";
 import Info from "../Info/Info";
 import PhotoPreview from "../PhotoPreview/PhotoPreview";
 import Checkbox from "../Checkbox/Checkbox";
+import Tooltip from "../Tooltip/Tooltip";
 
 interface CheckboxItem {
   id: number;
@@ -129,9 +130,7 @@ export default function NameSearch() {
           <div className={styles.tableHeaderCell}>Наличие</div>
           <div className={styles.tableHeaderCell}>
             Срок поставки
-            <span className={styles.info}>
-              <InfoIcon />
-            </span>
+            <Tooltip text="Какой-то текст подсказки" small={true} />
           </div>
           <div className={styles.tableHeaderCell}>Цена, ₽</div>
         </div>

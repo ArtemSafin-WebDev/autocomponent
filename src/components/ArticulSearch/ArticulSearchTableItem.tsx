@@ -4,6 +4,7 @@ import { ArticulTableItem } from "./ArticulSearch";
 import ArrowDown from "@/icons/ArrowDown";
 import { useState } from "react";
 import ArticulSearchCard from "./ArticulSearchCard";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface ArticulSearchTableItemProps {
   item: ArticulTableItem;
@@ -12,7 +13,7 @@ interface ArticulSearchTableItemProps {
 export default function ArticulSearchTableItem({
   item,
 }: ArticulSearchTableItemProps) {
-  const { articul, items } = item;
+  const { articul, items, otherArticuls } = item;
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -20,6 +21,17 @@ export default function ArticulSearchTableItem({
       <div className={styles.tableBody}>
         <div className={styles.tableItemSidebar}>
           <div className={styles.tableItemArticul}>{articul}</div>
+
+          {expanded ? (
+            <ul className={styles.otherArticulsList}>
+              {otherArticuls.map((item, itemIndex) => (
+                <li className={styles.otherArticulsListItem} key={itemIndex}>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+
           <button
             className={`${styles.tableItemExpand} ${
               expanded ? styles.tableItemExpanded : ""

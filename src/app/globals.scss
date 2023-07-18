@@ -33,6 +33,7 @@ body {
   min-height: 100vh;
   color: var(--text-color);
   scrollbar-gutter: stable;
+  overflow-anchor: none;
 }
 
 img,
