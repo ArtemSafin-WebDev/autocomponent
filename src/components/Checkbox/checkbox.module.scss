@@ -30,7 +30,6 @@
   border-radius: 0.2rem;
   transition: border-color 0.2s, background-color 0.2s;
   background-color: #fff;
-  margin-top: -0.2rem;
 
   &::after {
     content: "";
@@ -51,4 +50,8 @@
   &::after {
     opacity: 1;
   }
+}
+
+.text {
+  margin-top: 0.2rem;
 }

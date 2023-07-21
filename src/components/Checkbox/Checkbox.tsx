@@ -39,7 +39,7 @@ export default function Checkbox({
       <span
         className={`${styles.checkmark} ${checked ? styles.markChecked : ""}`}
       ></span>
-      {title}
+      <span className={styles.text}>{title}</span>
     </button>
   );
 }

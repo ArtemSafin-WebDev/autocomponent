@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import Counter from "../Counter/Counter";
 import Info from "../Info/Info";
 import PhotoPreview from "../PhotoPreview/PhotoPreview";

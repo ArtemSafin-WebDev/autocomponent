@@ -86,6 +86,7 @@
     width: 2rem;
     height: 2rem;
     fill: currentColor;
+    transition: transform 0.2s;
   }
   &:link,
   &:visited {
@@ -95,6 +96,10 @@
   @media (hover: hover) {
     &:hover {
       color: var(--primary-color-hover);
+
+      svg {
+        transform: translateX(0.2rem);
+      }
     }
   }
 

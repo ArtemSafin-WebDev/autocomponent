@@ -45,6 +45,14 @@
   padding: 2rem 0;
   display: grid;
   align-items: flex-start;
+
+  transition: background-color 0.2s;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: #fbfcfd;
+    }
+  }
 }
 
 .cardItem {

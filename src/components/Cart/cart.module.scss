@@ -160,6 +160,14 @@
   padding: 2rem 0;
   border-bottom: 1px dashed #8491a6;
   align-items: flex-start;
+
+  transition: background-color 0.2s;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: #fbfcfd;
+    }
+  }
 }
 
 .cartTableCardItem {

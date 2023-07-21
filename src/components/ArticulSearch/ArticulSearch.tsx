@@ -82,6 +82,41 @@ const brandsCheckboxes: Brand[] = [
     title: "Бренд 5",
     checked: false,
   },
+  {
+    id: 6,
+    title: "Бренд 6",
+    checked: false,
+  },
+  {
+    id: 7,
+    title: "Бренд 7",
+    checked: false,
+  },
+  {
+    id: 8,
+    title: "Бренд 8",
+    checked: false,
+  },
+  {
+    id: 9,
+    title: "Бренд 9",
+    checked: false,
+  },
+  {
+    id: 10,
+    title: "Бренд 10",
+    checked: false,
+  },
+  {
+    id: 11,
+    title: "Бренд 11",
+    checked: false,
+  },
+  {
+    id: 12,
+    title: "Бренд 12",
+    checked: false,
+  },
 ];
 
 type ArticulSearchCard = {
@@ -104,7 +139,7 @@ type ArticulTableBlock = {
 type ArticulTableItem = {
   id: number;
   articul: string;
-  otherArticuls: string[];
+
   items: ArticulSearchCard[];
 };
 
@@ -168,55 +203,59 @@ export default function ArticulSearch() {
                   onChange={(event) => setBrandSearch(event.target.value)}
                 />
               </div>
-              <ul className={styles.checkboxesList}>
-                {brandsCheckboxes.map((checkbox) => (
-                  <li className={styles.checkboxesListItem} key={checkbox.id}>
-                    <Checkbox
-                      title={checkbox.title}
-                      checkedByDefault={checkbox.checked}
-                      onToggle={(value) => {
-                        console.log(
-                          `Checkbox ${checkbox.title} value: `,
-                          value
-                        );
-                        if (value) {
-                          setBrands((brands) => [...brands, checkbox]);
-                        } else {
-                          setBrands((brands) =>
-                            brands.filter((brand) => brand.id !== checkbox.id)
+              <div className={styles.checkboxesScrollWrapper}>
+                <ul className={styles.checkboxesList}>
+                  {brandsCheckboxes.map((checkbox) => (
+                    <li className={styles.checkboxesListItem} key={checkbox.id}>
+                      <Checkbox
+                        title={checkbox.title}
+                        checkedByDefault={checkbox.checked}
+                        onToggle={(value) => {
+                          console.log(
+                            `Checkbox ${checkbox.title} value: `,
+                            value
                           );
-                        }
-                      }}
-                    />
-                  </li>
-                ))}
-              </ul>
+                          if (value) {
+                            setBrands((brands) => [...brands, checkbox]);
+                          } else {
+                            setBrands((brands) =>
+                              brands.filter((brand) => brand.id !== checkbox.id)
+                            );
+                          }
+                        }}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
             <div className={styles.filtersBlock}>
               <h3 className={styles.filtersBlockHeading}>Срок доставки</h3>
-              <ul className={styles.checkboxesList}>
-                {deliveryCheckboxes.map((checkbox) => (
-                  <li className={styles.checkboxesListItem} key={checkbox.id}>
-                    <Checkbox
-                      title={checkbox.title}
-                      checkedByDefault={checkbox.checked}
-                      onToggle={(value) => {
-                        console.log(
-                          `Checkbox ${checkbox.title} value: `,
-                          value
-                        );
-                        if (value) {
-                          setDeliveryDates((dates) => [...dates, checkbox]);
-                        } else {
-                          setDeliveryDates((dates) =>
-                            dates.filter((date) => date.id !== checkbox.id)
+              <div className={styles.checkboxesScrollWrapper}>
+                <ul className={styles.checkboxesList}>
+                  {deliveryCheckboxes.map((checkbox) => (
+                    <li className={styles.checkboxesListItem} key={checkbox.id}>
+                      <Checkbox
+                        title={checkbox.title}
+                        checkedByDefault={checkbox.checked}
+                        onToggle={(value) => {
+                          console.log(
+                            `Checkbox ${checkbox.title} value: `,
+                            value
                           );
-                        }
-                      }}
-                    />
-                  </li>
-                ))}
-              </ul>
+                          if (value) {
+                            setDeliveryDates((dates) => [...dates, checkbox]);
+                          } else {
+                            setDeliveryDates((dates) =>
+                              dates.filter((date) => date.id !== checkbox.id)
+                            );
+                          }
+                        }}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>

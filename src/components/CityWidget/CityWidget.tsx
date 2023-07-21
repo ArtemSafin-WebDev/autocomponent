@@ -54,7 +54,7 @@ export default function CityWidget() {
   ]);
   const [city, setCity] = useState<string>(cities.current[0]);
   const [toggle, setToggle] = useState(false);
-  const sbw = useScrollbarWidth();
+
   const ref = useRef<HTMLDivElement>(null);
 
   const innerModalRef = useRef<HTMLDivElement>(null);
@@ -66,21 +66,12 @@ export default function CityWidget() {
   useEffect(() => {
     if (toggle) {
       document.body.classList.add(styles.modalOpen);
-      document.body.style.paddingRight = sbw + "px";
-      if (ref.current) {
-        ref.current.style.paddingRight = sbw + "px";
-      }
     } else {
       document.body.classList.remove(styles.modalOpen);
-      document.body.style.paddingRight = "";
-      if (ref.current) {
-        ref.current.style.paddingRight = "";
-      }
     }
 
     return () => {
       document.body.classList.remove(styles.modalOpen);
-      document.body.style.paddingRight = "";
     };
   }, [toggle]);
 
