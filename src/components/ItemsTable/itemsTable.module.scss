@@ -1,0 +1,36 @@
+.item {
+  display: grid;
+  grid-template-columns: 1.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+  width: 100%;
+  align-items: flex-start;
+  padding: 2.6rem 0;
+  border-top: .1rem dashed #8491a6;
+  &:last-child {
+    border-bottom: .1rem dashed #8491a6;
+  }
+  &__block {
+    padding-right: 4rem;
+    &__status {
+      display: flex;
+      flex-direction: column;
+      row-gap: .8rem;
+      max-width: 12rem;
+      p {
+        text-align: left;
+        line-height: 150%;
+      }
+    }
+    &__cart {
+      display: flex;
+      align-items: center;
+      column-gap: .8rem;
+      padding-right: 0;
+    }
+    &:first-child {
+      padding: 0 1.1rem 0;
+    }
+  }
+  &__instock {
+    color: #4cd04a;
+  }
+}

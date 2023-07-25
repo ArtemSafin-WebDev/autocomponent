@@ -140,6 +140,13 @@ interface DashboardHistoryCardItem {
   delay?: string;
 }
 
+type TItemsTypes =
+  "tires" |
+  "disks" |
+  "accumulator" |
+  "auto_lamps" |
+  "brushes"
+
 export { NewsFeedCategory, DashboardHistoryCardItemStatus };
 
 export type {
@@ -159,4 +166,5 @@ export type {
   NewsFeedData,
   DashboardData,
   DashboardHistoryCardItem,
+  TItemsTypes
 };

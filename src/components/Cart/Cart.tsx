@@ -308,7 +308,7 @@ export default function Cart() {
         </div>
       </div>
       <div className={styles.summary}>
-        <span className={styles.summaryKey}>Итого:</span>{" "}
+        <span className={styles.summaryKey}>Итого:</span>
         <span className={styles.summaryValue}>245 521, 65 ₽</span>
       </div>
       <Link href="/checkout" className={styles.checkoutBtn}>

@@ -1,0 +1,19 @@
+.filter {
+
+  &__title {
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  &__container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2.4rem;
+    padding: 3.2rem 0 2.4rem;
+  }
+  &__block {
+    display: flex;
+    column-gap: .8rem;
+  }
+}
