@@ -1,0 +1,39 @@
+.headerTable {
+  background: #F1F4F8;
+  padding: 2.4rem 1.1rem 2rem;
+  &__container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 0.3fr 0.5fr 0.7fr 0.3fr 0.5fr 0.5fr;
+    width: 100%;
+    align-items: flex-start;
+  }
+  &__info{
+    display: flex;
+    align-items: center;
+    column-gap: .4rem;
+    padding-right: 3rem;
+    &:nth-child(7) {
+      grid-column: span 2;
+      padding: 0;
+    }
+    span {
+      span {
+        svg {
+          width: .8rem;
+          height: auto;
+        }
+      }
+    }
+  }
+  &__text {
+    display: flex;
+    align-items: center;
+  }
+  &__image {
+    cursor: pointer;
+    transition: .4s ease opacity;
+    &:hover {
+      opacity: .7;
+    }
+  }
+}

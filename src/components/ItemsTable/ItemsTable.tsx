@@ -11,7 +11,7 @@ export  const btnStyle: {[keyof: string]: string} = {
   "padding": ".7rem 1.5rem"
 }
 
-export default async function ItemsTable ({item}: IItemsTable) {
+export default function ItemsTable ({item}: IItemsTable) {
   const {
     balance,
     title,
