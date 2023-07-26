@@ -1,8 +1,8 @@
-
 import styles from "./page.module.scss"
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import {Metadata} from "next";
 import TableModule from "@/modules/TableModule/TableModule";
+import ModalModule from "@/modules/ModalModule/Modal";
 
 export const metadata: Metadata = {
   title: "Склад онлайн",
@@ -23,6 +23,9 @@ export default async function Storage() {
           <TableModule/>
         </section>
       </div>
+      <ModalModule isOpen={true}><div>
+        hi
+      </div></ModalModule>
     </>
   );
 };

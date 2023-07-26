@@ -1,12 +1,12 @@
-import styles from "./table.module.scss";
+"use client";
 
+import styles from "./table.module.scss";
 import StorageFilters from "@/components/StorageFilters/StorageFilters";
 import ItemsTable from "@/components/ItemsTable/ItemsTable";
 import HeaderTable from "@/components/HeaderTable/HeaderTable";
 import {items} from "@/modules/TableModule/data";
 
-
-export default async function TableModule() {
+export default function TableModule() {
   return (
     <section>
       <StorageFilters/>

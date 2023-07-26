@@ -1,6 +1,6 @@
 .item {
   display: grid;
-  grid-template-columns: 1.4fr .8fr 0.5fr 0.5fr 0.7fr 0.3fr 0.5fr 0.5fr;
+  grid-template-columns: 1.4fr .9fr 0.3fr 0.5fr 0.7fr 0.3fr 0.5fr 0.5fr;
   width: 100%;
   align-items: flex-start;
   padding: 2.6rem 0;
@@ -16,14 +16,15 @@
     }
     &:nth-child(3) {
       padding-right: 0;
-      padding-left: 5rem;
+      padding-left: 1rem;
     }
     &:nth-child(4) {
       padding-right: 0;
+      padding-left: .5rem;
     }
     &:nth-child(5) {
       padding-right: 0;
-      padding-left: 1.5rem;
+      padding-left: 2rem;
     }
     &:nth-child(6) {
       padding-right: 0;
