@@ -1,38 +1,43 @@
-"use client"
 import styles from "./Modal.module.scss"
-import {ReactNode, useState, useRef, useEffect} from "react";
+import {ReactNode, useState, useRef, useEffect, useLayoutEffect} from "react";
 import {createPortal} from "react-dom";
 import {motion, AnimatePresence} from "framer-motion";
+import {useModalStore} from "@/store/useModalStore";
 
 interface IModalModule {
   isOpen?: boolean;
-  children: ReactNode
+  children: ReactNode;
+  handlerClick: (payload: boolean) => void;
 }
 
-export default function ModalModule({isOpen = false, children}: IModalModule) {
-  const ref = useRef<HTMLDivElement>(null)
-  const [isActive, setIsActive] = useState<boolean>(isOpen)
+export default function ModalModule({isOpen, handlerClick, children}: IModalModule) {
+  const [mounted, setMounted] = useState<boolean>(false)
 
-  const handlerClick = () => setIsActive((prev: boolean) => !prev)
-  const keyHandler = (evt: KeyboardEvent) => evt.code === "Escape" && setIsActive(false)
+  const keyHandlerClose = (evt: KeyboardEvent): void => {
+    if(evt.key === "Escape") {
+      handlerClick(false)
+    }
+  }
+  useEffect(() => {
+    setMounted(true)
+  }, [mounted])
 
   useEffect(() => {
-    window.addEventListener("keydown", keyHandler)
-    return (() => window.removeEventListener("keydown", keyHandler))
-  }, [keyHandler])
+    window.addEventListener("keydown", keyHandlerClose)
+    return (() => window.removeEventListener("keydown", keyHandlerClose))
+  }, [keyHandlerClose])
 
   return (
     <>
-      {createPortal(
+      {mounted && createPortal(
         <AnimatePresence>
-          {isActive && (
+          {isOpen && (
             <motion.div
               className={styles.modal}
-              onClick={handlerClick}
+              onClick={() => handlerClick(false)}
               initial={{opacity: 0}}
               animate={{opacity: 1}}
               exit={{opacity: 0}}
-              ref={ref}
             >
               {children}
             </motion.div>
