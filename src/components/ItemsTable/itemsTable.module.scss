@@ -5,6 +5,10 @@
   align-items: flex-start;
   padding: 2.6rem 0;
   border-top: .1rem dashed #8491a6;
+  transition: .4s ease background;
+  &:hover{
+    background: rgba(241, 244, 248, .5);
+  }
   &:last-child {
     border-bottom: .1rem dashed #8491a6;
   }

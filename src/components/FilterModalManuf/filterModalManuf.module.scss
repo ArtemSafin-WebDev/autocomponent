@@ -1,0 +1,23 @@
+.manuf {
+  margin-top: 4rem;
+  &__title {
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 700;
+    margin-bottom: 1.6rem;
+  }
+  &__checkboxes {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &__checkboxesWrapper {
+    padding: 2rem;
+    overflow-y: scroll;
+    column-count: 2;
+    height: 20rem;
+    button {
+      margin-bottom: 1.4rem;
+    }
+  }
+}

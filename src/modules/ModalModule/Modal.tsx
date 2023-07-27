@@ -2,7 +2,6 @@ import styles from "./Modal.module.scss"
 import {ReactNode, useState, useRef, useEffect, useLayoutEffect} from "react";
 import {createPortal} from "react-dom";
 import {motion, AnimatePresence} from "framer-motion";
-import {useModalStore} from "@/store/useModalStore";
 
 interface IModalModule {
   isOpen?: boolean;
@@ -20,7 +19,7 @@ export default function ModalModule({isOpen, handlerClick, children}: IModalModu
   }
   useEffect(() => {
     setMounted(true)
-  }, [mounted])
+  })
 
   useEffect(() => {
     window.addEventListener("keydown", keyHandlerClose)

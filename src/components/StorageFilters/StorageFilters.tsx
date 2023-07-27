@@ -10,7 +10,11 @@ import filterIcon from "@/assets/images/filterIcon.svg";
 
 import {useModalStore} from "@/store/useModalStore";
 
-export default function StorageFilters() {
+interface IStorageFilters {
+  handlerClick: any
+}
+
+export default function StorageFilters({handlerClick}: IStorageFilters) {
   const [type, setType] = useState<string | null>("")
   const {changeFilterState} = useModalStore()
 
@@ -23,7 +27,7 @@ export default function StorageFilters() {
               icon={filterIcon}
               text={"Фильтры"}
               isActive={true}
-              handlerClick={() => changeFilterState(true)}
+              handlerClick={() => handlerClick(true)}
             />
           {filterBtns.map((btn: TFilterBtn) => (
             <Button
