@@ -1,0 +1,36 @@
+.price {
+  &__block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    &:last-child {
+      margin-top: 3rem;
+    }
+  }
+  &__containerInputs {
+    display: flex;
+    align-items: center;
+
+    justify-content: space-between;
+
+    input {
+      width: 17.6rem;
+      padding: 1.3rem 1.1rem;
+      font-size: 1.4rem;
+      font-weight: 400;
+      border: .1rem solid #D6DCE5;
+      text-align: center;
+      border-radius: .5rem;
+    }
+    span {
+      background: #D6DCE5;
+      width: 2rem;
+      height: .1rem;
+    }
+  }
+  &__title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+}

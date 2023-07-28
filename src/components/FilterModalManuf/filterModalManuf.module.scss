@@ -1,0 +1,24 @@
+.manuf {
+  margin-top: 3.5rem;
+  &__title {
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 700;
+    margin-bottom: 1.6rem;
+  }
+  &__checkboxes {
+    padding-top: 1rem;
+  }
+  &__checkboxesWrapper {
+    padding: 1rem 0;
+    overflow-y: scroll;
+    max-height: 17.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5rem;
+    grid-auto-rows: 3.5rem;
+    button {
+      height: 2rem;
+    }
+  }
+}

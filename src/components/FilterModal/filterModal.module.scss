@@ -1,0 +1,26 @@
+.modalContent {
+  height: 100vh;
+  width: 48.4rem;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 60;
+  background: white;
+  -ms-overflow-y: scroll;
+  overflow-y: scroll;
+  padding: 2.4rem 3.2rem;
+  &__container {
+    position: relative;
+  }
+  &__closeBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3.2rem;
+    height: auto;
+    &:hover {
+      opacity: .7;
+    }
+  }
+}
+

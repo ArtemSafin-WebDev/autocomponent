@@ -1,0 +1,24 @@
+.inputWrapper {
+  width: 100%;
+  position: relative;
+  &__input {
+    width: inherit;
+    border-radius: .5rem;
+    border: .1rem solid #D6DCE5;
+    padding: 1.2rem 4rem;
+    display: flex;
+    font-size: 1.4rem;
+    font-weight: 400;
+    &::placeholder {
+      color: #8491A6;
+    }
+  }
+  &__icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 1.5rem;
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+}

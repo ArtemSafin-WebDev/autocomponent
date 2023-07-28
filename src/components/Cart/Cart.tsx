@@ -139,7 +139,7 @@ function CartTableCard({ item, allSelected, deselected }: CartTableCardProps) {
     total,
   } = item;
   const [checked, setChecked] = useState(false);
-
+  console.log(checked)
   useEffect(() => {
     setChecked(allSelected);
   }, [allSelected]);
@@ -308,7 +308,7 @@ export default function Cart() {
         </div>
       </div>
       <div className={styles.summary}>
-        <span className={styles.summaryKey}>Итого:</span>{" "}
+        <span className={styles.summaryKey}>Итого:</span>
         <span className={styles.summaryValue}>245 521, 65 ₽</span>
       </div>
       <Link href="/checkout" className={styles.checkoutBtn}>
