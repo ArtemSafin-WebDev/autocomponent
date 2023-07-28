@@ -8,6 +8,7 @@ import cross from "@/assets/images/cross.svg"
 import Image from "next/image";
 import FilterModalPrice from "@/components/FilterModalPrice/FilterModalPrice";
 import FilterModalManuf from "@/components/FilterModalManuf/FilterModalManuf";
+import FilterModalCategory from "@/components/FilterModalCategory/FilterModalCategory";
 
 interface IFilterModal {
   isActive: boolean;
@@ -40,6 +41,7 @@ export default function FilterModal({isActive, handlerClick}: IFilterModal) {
                 setMarkupVal={setMarkupVal}
               />
               <FilterModalManuf/>
+              <FilterModalCategory/>
           </div>
         </motion.div>
       }

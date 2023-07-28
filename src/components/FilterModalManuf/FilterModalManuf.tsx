@@ -2,7 +2,6 @@
 
 import {useState} from "react";
 import styles from "./filterModalManuf.module.scss"
-import Image from "next/image";
 import {data, TData} from "./data"
 import Checkbox from "@/components/Checkbox/Checkbox";
 import useFindItem from "@/hooks/useFindItem";
@@ -16,12 +15,12 @@ export default function FilterModalManuf() {
   return (
     <div className={styles.manuf}>
       <h5 className={styles.manuf__title}>Производитель</h5>
-        <InputSearch
-          value={manufVal}
-          handlerChange={(evt: any) => setManufVal(evt.target.value)}
-          placeHolder={"Поиск производителя"}
-          icon={loop}
-        />
+      <InputSearch
+        value={manufVal}
+        handlerChange={(evt: any) => setManufVal(evt.target.value)}
+        placeHolder={"Поиск производителя"}
+        icon={loop}
+      />
       <div className={styles.manuf__checkboxes}>
         <div className={styles.manuf__checkboxesWrapper}>
           {finalArr?.map((checkbox: TData) => (

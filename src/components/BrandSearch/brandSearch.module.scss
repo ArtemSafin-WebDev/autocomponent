@@ -52,6 +52,10 @@
   padding: 1.2rem 0;
   display: grid;
   grid-template-columns: 0.5fr 0.3fr 2fr;
+  transition: .4s ease background;
+  &:hover {
+    background: rgba(241, 244, 248, 0.4)
+  }
 }
 
 .tableCell {
