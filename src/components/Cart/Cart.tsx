@@ -139,7 +139,7 @@ function CartTableCard({ item, allSelected, deselected }: CartTableCardProps) {
     total,
   } = item;
   const [checked, setChecked] = useState(false);
-
+  console.log(checked)
   useEffect(() => {
     setChecked(allSelected);
   }, [allSelected]);

@@ -8,15 +8,12 @@ import {TFilterBtn} from "@/components/StorageFilters/types";
 import {filterBtns} from "@/components/StorageFilters/data";
 import filterIcon from "@/assets/images/filterIcon.svg";
 
-import {useModalStore} from "@/store/useModalStore";
-
 interface IStorageFilters {
   handlerClick: any
 }
 
 export default function StorageFilters({handlerClick}: IStorageFilters) {
   const [type, setType] = useState<string | null>("")
-  const {changeFilterState} = useModalStore()
 
   return (
     <div className={styles.filter}>
