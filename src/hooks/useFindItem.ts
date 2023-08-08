@@ -11,7 +11,7 @@ export default function useFindItem({data, condition, field}: IUseFilter) {
 
   useEffect(() => {
     setFinalArr(data.filter((item: any) => {
-      return item[field].toLowerCase().trim().includes(condition.toLowerCase().trim())
+      return item.text.toLowerCase().trim().includes(condition.toLowerCase().trim())
     }))
   }, [data, field, condition])
 

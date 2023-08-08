@@ -1,19 +1,30 @@
 "use client"
 
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import styles from "./storageFilters.module.scss"
 import Button from "@/components/Button/Button";
 import Tag from "@/components/Tag/Tag";
 import {TFilterBtn} from "@/components/StorageFilters/types";
 import {filterBtns} from "@/components/StorageFilters/data";
 import filterIcon from "@/assets/images/filterIcon.svg";
-
+import {useFilterManuf} from "@/store/useFilterManuf";
+import {useFilterCategory} from "@/store/useFilterCategory";
+import {shallow} from "zustand/shallow";
 interface IStorageFilters {
   handlerClick: any
 }
 
 export default function StorageFilters({handlerClick}: IStorageFilters) {
+  const [tags, setTags] = useState<string[]>([])
   const [type, setType] = useState<string | null>("")
+  const {checked} = useFilterCategory((state) =>
+    ({checked: state.checked}), shallow)
+
+  const {manufVal} = useFilterManuf()
+
+  useEffect(() => {
+    setTags([...manufVal, ...checked])
+  }, [setTags, manufVal, checked])
 
   return (
     <div className={styles.filter}>
@@ -38,7 +49,10 @@ export default function StorageFilters({handlerClick}: IStorageFilters) {
           ))}
         </div>
         <div className={styles.filter__block}>
-          <Tag count={3} text="Цена"/>
+          <Tag count={tags.length} isCounter={true}/>
+          {tags?.map((value: string, idx: number) => (
+            <Tag count={tags.length} text={value} isCounter={false} key={idx}/>
+          ))}
         </div>
       </div>
     </div>

@@ -15,5 +15,7 @@
   &__block {
     display: flex;
     column-gap: .8rem;
+    row-gap: .8rem;
+    flex-wrap: wrap;
   }
 }

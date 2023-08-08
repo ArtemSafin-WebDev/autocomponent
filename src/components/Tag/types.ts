@@ -1,4 +1,5 @@
 export interface ITag {
-  count: number | string;
-  text: string
+  count?: number | string;
+  text?: string;
+  isCounter?: boolean;
 }

@@ -12,7 +12,10 @@
     line-height: normal;
   }
   button {
-
+    transition: .3s ease opacity;
+    &:hover {
+      opacity: .6;
+    }
   }
   &__image {
     width: 100%;
