@@ -35,6 +35,4 @@ for (let i = 0; i < BRANDS_COUNT; i++) {
   brandsItems.push(brandItem);
 }
 
-console.log("brands items", brandsItems);
-
 export default brandsItems;

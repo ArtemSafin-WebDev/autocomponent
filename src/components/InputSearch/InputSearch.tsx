@@ -8,7 +8,7 @@ interface IInputSearch {
   placeHolder?: string;
   type?: string;
   style?: {[keyof: string]: string};
-  icon: string;
+  icon?: string;
 }
 
 export default function InputSearch({

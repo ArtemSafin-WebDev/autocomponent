@@ -5,22 +5,24 @@ import Image from "next/image";
 import closeIcon from "@/assets/images/close.svg"
 import {ITag} from "@/components/Tag/types";
 
-export default function Tag({count, text}: ITag) {
+export default function Tag({count, text, isCounter}: ITag) {
   return (
     <>
-      {count &&
+      {(isCounter && count) ?
       <span className={styles.tag}>
-        <span>{count} категории</span>
+        {count !== 1 ? <span>{count} категории</span> : <span>1 категория</span>}
         <button>
           <Image src={closeIcon} alt="icon" className={styles.tag__image}/>
         </button>
-      </span>}
-      <span className={styles.tag}>
+      </span> : null}
+      {(count && !isCounter) ?
+        <span className={styles.tag}>
         <span>{text}</span>
         <button>
           <Image src={closeIcon} alt="icon" className={styles.tag__image}/>
         </button>
-      </span>
+      </span> : null
+      }
     </>
   );
 };

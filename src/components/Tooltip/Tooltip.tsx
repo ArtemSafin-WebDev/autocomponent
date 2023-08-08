@@ -4,12 +4,14 @@ import styles from "./tooltip.module.scss";
 export default function Tooltip({
   text,
   small,
+  style
 }: {
   text: string;
   small?: boolean;
+  style?: {[keyof: string]: string}
 }) {
   return (
-    <span className={`${styles.tooltip} ${small ? styles.small : ""}`}>
+    <span style={style} className={`${styles.tooltip} ${small ? styles.small : ""}`}>
       <InfoIcon />
       <span className={styles.dropdown}>
         <span className={styles.dropdownInner}>{text}</span>

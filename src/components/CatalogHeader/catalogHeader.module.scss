@@ -1,0 +1,31 @@
+.catalog {
+  padding: 3.2rem;
+  width: 67.4rem;
+  background-color: #F1F4F8;
+  border-radius: 1.2rem;
+  margin-top: 3.2rem;
+  &__title {
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 100%;
+  }
+  &__block {
+    margin: 2.4rem 0 1.6rem;
+    display: flex;
+    column-gap: .8rem;
+    align-items: center;
+  }
+  &__bottom {
+    display: flex;
+    align-items: center;
+    column-gap: 3.8rem;
+    p {
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%;
+      color: #8491A6;
+    }
+  }
+}

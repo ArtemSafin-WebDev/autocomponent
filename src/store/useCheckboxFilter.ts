@@ -12,6 +12,5 @@ export const useCheckboxFilter = create(immer(devtools(((set) =>  ({
   setManufCheckbox: (payload: any) => set((state: any) => {
         state.manufCheckbox = payload
       }
-    )
-
+    ),
 })))))
