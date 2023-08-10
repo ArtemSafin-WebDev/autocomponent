@@ -1,9 +1,9 @@
 .catalogTable {
-  margin-top: 5.6rem;
+  margin-top: 6rem;
   &__table {
     margin-top: 6rem;
     &:last-child {
-      margin-bottom: 6rem;
+      margin:6rem 0 6rem;
     }
   }
   &__titleTable {
@@ -15,8 +15,8 @@
   }
   &__container {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    column-gap: 11.2rem;
+    grid-template-columns: repeat(7, auto);
+    grid-auto-rows: 1fr;
     row-gap: 4rem;
     margin-top: 3.2rem;
   }

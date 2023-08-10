@@ -1,6 +1,6 @@
 "use client"
 
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import styles from "./storageFilters.module.scss"
 import Button from "@/components/Button/Button";
 import Tag from "@/components/Tag/Tag";
@@ -9,22 +9,29 @@ import {filterBtns} from "@/components/StorageFilters/data";
 import filterIcon from "@/assets/images/filterIcon.svg";
 import {useFilterManuf} from "@/store/useFilterManuf";
 import {useFilterCategory} from "@/store/useFilterCategory";
-import {shallow} from "zustand/shallow";
+import {useStoreTags} from "@/store/useTags";
+import Switch from "@/components/Switch/Switch";
+
 interface IStorageFilters {
   handlerClick: any
 }
 
 export default function StorageFilters({handlerClick}: IStorageFilters) {
-  const [tags, setTags] = useState<string[]>([])
+  const [crnVal, getCrnValue] = useState("")
   const [type, setType] = useState<string | null>("")
-  const {checked} = useFilterCategory((state) =>
-    ({checked: state.checked}), shallow)
-
-  const {manufVal} = useFilterManuf()
+  const {checked, setChecked} = useFilterCategory()
+  const {checkedManufValues, setCheckedManufValues} = useFilterManuf()
+  const {allTags, setAllTags} = useStoreTags()
+  const [isPageSwitchActive, setPageSwitchActive] = useState<boolean>(false)
 
   useEffect(() => {
-    setTags([...manufVal, ...checked])
-  }, [setTags, manufVal, checked])
+    setAllTags([...checkedManufValues, ...checked])
+  }, [setAllTags, checkedManufValues, checked])
+
+  const removeTagValue = useCallback((value: string) => {
+    setCheckedManufValues(checkedManufValues.filter((crnValue: string) => crnValue !== value))
+    setChecked(checked.filter((crnValue: string) => crnValue !== value))
+  }, [allTags])
 
   return (
     <div className={styles.filter}>
@@ -49,10 +56,18 @@ export default function StorageFilters({handlerClick}: IStorageFilters) {
           ))}
         </div>
         <div className={styles.filter__block}>
-          <Tag count={tags.length} isCounter={true}/>
-          {tags?.map((value: string, idx: number) => (
-            <Tag count={tags.length} text={value} isCounter={false} key={idx}/>
-          ))}
+          <div className={styles.filter__blockTags}>
+            <Tag count={allTags.length} isCounter={true}/>
+            {allTags?.map((value: string, idx: number) => (
+              <Tag count={allTags.length} text={value} isCounter={false} key={idx} handleClick={() => removeTagValue(value)}/>
+            ))}
+          </div>
+          <div className={styles.filter__blockPages}>
+            <div className={styles.filter__switchBlock}>
+              <p>Автоподгрузка страниц</p>
+              <Switch isActive={isPageSwitchActive} setIsActive={setPageSwitchActive}/>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -14,6 +14,26 @@
   }
   &__block {
     display: flex;
+    &:last-child {
+      justify-content: space-between;
+    }
+    column-gap: .8rem;
+    row-gap: .8rem;
+    flex-wrap: wrap;
+  }
+  &__switchBlock {
+    display: flex;
+    align-items: center;
+    column-gap: .8rem;
+    p {
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 150%;
+    }
+  }
+  &__blockTags {
+    display: flex;
     column-gap: .8rem;
     row-gap: .8rem;
     flex-wrap: wrap;

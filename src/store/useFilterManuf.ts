@@ -1,30 +1,14 @@
 import {immer} from "zustand/middleware/immer";
 import {create} from "zustand";
+import {devtools} from "zustand/middleware";
+
 
 interface TUseFilterManuf {
-  manuf: any[],
-  manufVal: any[],
-  crnArr: any[],
-  filterManuf: (payload: any) => void;
-  getManufValues: () => void
+  checkedManufValues: string[] | []
+  setCheckedManufValues: (payload: string[]) => void
 }
 
-export const useFilterManuf = create<TUseFilterManuf>()(immer((set) =>  ({
-  manuf: [],
-  manufVal: [],
-  crnArr: [],
-  getManufValues: () => {
-    set((state) => state.manuf.forEach((checkbox: any) => {
-      if(checkbox.checked) {
-        state.manuf = checkbox.text
-      }
-    }))
-  },
-  filterManuf: (payload) => {
-    set((state) => {
-      void (state.manuf = payload);
-      void (state.manufVal = state.manuf.filter((checkbox: any) => checkbox.checked).map((checkbox: any) => checkbox.text)
-      )
-    })
-  },
-})))
+export const useFilterManuf = create<TUseFilterManuf>()(immer(devtools((set) =>  ({
+  checkedManufValues: [],
+  setCheckedManufValues: (payload: string[]) => set((state) => void(state.checkedManufValues = payload))
+}))))

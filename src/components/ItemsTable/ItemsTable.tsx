@@ -5,6 +5,7 @@ import {IItemsTable, TItem} from "@/components/ItemsTable/types";
 import Counter from "@/components/Counter/Counter";
 import Button from "@/components/Button/Button";
 import CartIcon from "@/assets/images/cartWhite.svg"
+import PhotoPreview from "@/components/PhotoPreview/PhotoPreview";
 
 export  const btnStyle: {[keyof: string]: string} = {
   "height": "3.4rem",
@@ -29,7 +30,7 @@ export default function ItemsTable ({item}: IItemsTable) {
     <>
       <div className={styles.item}>
         <div className={styles.item__block}>
-          {title}
+          {title} <PhotoPreview src="/photo-preview.webp" />
         </div>
         <div className={styles.item__block}>{oem}</div>
         <div className={styles.item__block}>{code}</div>
