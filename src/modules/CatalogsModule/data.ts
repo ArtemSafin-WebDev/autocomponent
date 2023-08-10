@@ -90,6 +90,18 @@ export const data = [
   },
   {
     type: "foreign",
+    name: "IFbarth",
+  },
+  {
+    type: "foreign",
+    name: "IFbarth",
+  },
+  {
+    type: "foreign",
+    name: "IFbarth",
+  },
+  {
+    type: "foreign",
     name: "GFbarth",
   },
   {
@@ -119,22 +131,6 @@ export const data = [
   {
     type: "foreign",
     name: "IFbarth",
-  },
-  {
-    type: "foreign",
-    name: "IFbarth",
-  },
-  {
-    type: "foreign",
-    name: "IFbarth",
-  },
-  {
-    type: "foreign",
-    name: "IFbarth",
-  },
-  {
-    type: "foreign",
-    name: "JFbarth",
   },
   {
     type: "foreign",
@@ -357,6 +353,401 @@ export const data = [
     type: "foreign",
     name: "Abarth",
   },
+  {
+    type: "foreign",
+    name: "Lbarth",
+  },
+  {
+    type: "foreign",
+    name: "Lbarth",
+  },
+  {
+    type: "foreign",
+    name: "Lbarth",
+  },
+  {
+    type: "foreign",
+    name: "Lbarth",
+  },
+  {
+    type: "foreign",
+    name: "Mbarth",
+  },
+  {
+    type: "foreign",
+    name: "Mbarth",
+  },
+  {
+    type: "foreign",
+    name: "Mbarth",
+  },
+  {
+    type: "foreign",
+    name: "Mbarth",
+  },
+  {
+    type: "foreign",
+    name: "Nbarth",
+  },
+  {
+    type: "foreign",
+    name: "Nbarth",
+  },
+  {
+    type: "foreign",
+    name: "Nbarth",
+  },
+  {
+    type: "foreign",
+    name: "Obarth",
+  },
+  {
+    type: "foreign",
+    name: "Obarth",
+  },
+  {
+    type: "foreign",
+    name: "Obarth",
+  },
+  {
+    type: "foreign",
+    name: "Obarth",
+  },
+  {
+    type: "foreign",
+    name: "Pbarth",
+  },
+  {
+    type: "foreign",
+    name: "Pbarth",
+  },
+  {
+    type: "foreign",
+    name: "Pbarth",
+  },
+  {
+    type: "foreign",
+    name: "Pbarth",
+  },
+  {
+    type: "foreign",
+    name: "Qbarth",
+  },
+  {
+    type: "foreign",
+    name: "Qbarth",
+  },
+  {
+    type: "foreign",
+    name: "Qbarth",
+  },
+  {
+    type: "foreign",
+    name: "Qbarth",
+  },
+  {
+    type: "foreign",
+    name: "Rbarth",
+  },
+  {
+    type: "foreign",
+    name: "Rbarth",
+  },
+  {
+    type: "foreign",
+    name: "Rbarth",
+  },
+  {
+    type: "foreign",
+    name: "Rbarth",
+  },
+  {
+    type: "foreign",
+    name: "Sbarth",
+  },
+  {
+    type: "foreign",
+    name: "Sbarth",
+  },
+  {
+    type: "foreign",
+    name: "Sbarth",
+  },
+  {
+    type: "foreign",
+    name: "Sbarth",
+  },
+  {
+    type: "foreign",
+    name: "Tbarth",
+  },
+  {
+    type: "foreign",
+    name: "Tbarth",
+  },
+  {
+    type: "foreign",
+    name: "Tbarth",
+  },
+  {
+    type: "foreign",
+    name: "Tbarth",
+  },
+  {
+    type: "foreign",
+    name: "Ubarth",
+  },
+  {
+    type: "foreign",
+    name: "Ubarth",
+  },
+  {
+    type: "foreign",
+    name: "Ubarth",
+  },
+  {
+    type: "foreign",
+    name: "Ubarth",
+  },
+  {
+    type: "foreign",
+    name: "Vbarth",
+  },
+  {
+    type: "foreign",
+    name: "Vbarth",
+  },
+  {
+    type: "foreign",
+    name: "Vbarth",
+  },
+  {
+    type: "foreign",
+    name: "Vbarth",
+  },
+  {
+    type: "foreign",
+    name: "Wbarth",
+  },
+  {
+    type: "foreign",
+    name: "Wbarth",
+  },
+  {
+    type: "foreign",
+    name: "Wbarth",
+  },
+  {
+    type: "foreign",
+    name: "Wbarth",
+  },
+  {
+    type: "foreign",
+    name: "Xbarth",
+  },
+  {
+    type: "foreign",
+    name: "Xbarth",
+  },
+  {
+    type: "foreign",
+    name: "Xbarth",
+  },
+  {
+    type: "foreign",
+    name: "Xbarth",
+  },
+  {
+    type: "foreign",
+    name: "Zbarth",
+  },
+  {
+    type: "foreign",
+    name: "Zbarth",
+  },
+  {
+    type: "foreign",
+    name: "Zbarth",
+  },
+  {
+    type: "foreign",
+    name: "Zbarth",
+  },
+  {
+    type: "foreign",
+    name: "Ybarth",
+  },
+  {
+    type: "foreign",
+    name: "Ybarth",
+  },
+  {
+    type: "foreign",
+    name: "Ybarth",
+  },
+  {
+    type: "foreign",
+    name: "Ybarth",
+  },
+  /*domestic data*/
+  {
+    type: "domestic",
+    name: "Abarth",
+  },
+  {
+    type: "domestic",
+    name: "Abarth",
+  },
+  {
+    type: "domestic",
+    name: "Abarth",
+  },
+  {
+    type: "domestic",
+    name: "Abarth",
+  },
+  {
+    type: "domestic",
+    name: "Bbarth",
+  },
+  {
+    type: "domestic",
+    name: "Bbarth",
+  },
+  {
+    type: "domestic",
+    name: "Bbarth",
+  },
+  {
+    type: "domestic",
+    name: "Bbarth",
+  },
+  {
+    type: "domestic",
+    name: "Cbarth",
+  },
+  {
+    type: "domestic",
+    name: "Cbarth",
+  },
+  {
+    type: "domestic",
+    name: "Cbarth",
+  },
+  {
+    type: "domestic",
+    name: "Cbarth",
+  },
+  {
+    type: "domestic",
+    name: "Dbarth",
+  },
+  {
+    type: "domestic",
+    name: "Dbarth",
+  },
+  {
+    type: "domestic",
+    name: "Dbarth",
+  },
+  {
+    type: "domestic",
+    name: "Dbarth",
+  },
+  {
+    type: "domestic",
+    name: "Ebarth",
+  },
+  {
+    type: "domestic",
+    name: "Ebarth",
+  },
+  {
+    type: "domestic",
+    name: "Ebarth",
+  },
+  {
+    type: "domestic",
+    name: "Ebarth",
+  },
+  {
+    type: "domestic",
+    name: "Gbarth",
+  },
+  {
+    type: "domestic",
+    name: "Gbarth",
+  },
+  {
+    type: "domestic",
+    name: "Gbarth",
+  },
+  {
+    type: "domestic",
+    name: "Gbarth",
+  },
+  {
+    type: "domestic",
+    name: "Fbarth",
+  },
+  {
+    type: "domestic",
+    name: "Fbarth",
+  },
+  {
+    type: "domestic",
+    name: "Fbarth",
+  },
+  {
+    type: "engine",
+    name: "Abarth",
+  },
+  {
+    type: "engine",
+    name: "Abarth",
+  },
+  {
+    type: "engine",
+    name: "Bbarth",
+  },
+  {
+    type: "engine",
+    name: "Bbarth",
+  },
+  {
+    type: "engine",
+    name: "Cbarth",
+  },
+  {
+    type: "engine",
+    name: "Cbarth",
+  },
+  {
+    type: "engine",
+    name: "Dbarth",
+  },
+  {
+    type: "engine",
+    name: "Dbarth",
+  },
+  {
+    type: "engine",
+    name: "Ebarth",
+  },
+  {
+    type: "engine",
+    name: "Ebarth",
+  },
+  {
+    type: "engine",
+    name: "Fbarth",
+  },
+  {
+    type: "engine",
+    name: "Fbarth",
+  },
+
+
 ]
 
 

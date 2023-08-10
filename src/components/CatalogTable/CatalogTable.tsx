@@ -9,26 +9,22 @@ import loop from "@/assets/images/loop.svg"
 interface ICatalogTable {
   handleOnChange: Dispatch<SetStateAction<string>>;
   inputValue: string;
-  data: any
+  filteredData: any
 }
 
-export default function CatalogTable({inputValue, handleOnChange, data}: ICatalogTable) {
-  const [filterData, setFilterData] = useState([])
-  const [alphabet, setAlphabet] = useState<string[]>([	'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
-    'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'])
+export default function CatalogTable({inputValue, handleOnChange, filteredData}: ICatalogTable) {
+  const [searchData, setSearchData] = useState<any>([])
 
   useEffect(() => {
-    let finalData
     let map = new Map()
-    let crnData = data.sort((a: any, b: any) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
-    alphabet.forEach((letter: string) => {
-      finalData = map.set(letter, crnData.filter((item: any) =>
-        item.name[0].toLowerCase() === letter.toLowerCase()))
+    let finalFilteredData: any = []
+    filteredData.map((item: any) => {
+      Object.entries((item)).map((value: any) => {
+        finalFilteredData = map.set(value[0], value[1].filter((crnBlock: any) => crnBlock.name.toLowerCase().includes(inputValue.toLowerCase())))
+      })
     })
-    // @ts-ignore
-    setFilterData(Array.from(finalData, ([key, value]) => ({ [key]: value,})))
-  }, [setFilterData, data])
-
+    setSearchData(Array.from(finalFilteredData, ([key, value]) => ({ [key]: value,})))
+  }, [filteredData, setSearchData, inputValue])
 
   return (
     <div className={styles.catalogTable}>
@@ -41,9 +37,9 @@ export default function CatalogTable({inputValue, handleOnChange, data}: ICatalo
         />
       </div>
         <div className={styles.catalogTable__table}>
-          <CatalogLinks title={"Каталоги для иномарок"} data={filterData}/>
-          {/*<CatalogLinks title={"Каталоги для отечественных автомобилей"} data={data} type={"domestic"}/>*/}
-          {/*<CatalogLinks title={"Двигатели"} data={data} type={"engine"}/>*/}
+          <CatalogLinks title={"Каталоги для иномарок"} data={searchData} type={"foreign"}/>
+          <CatalogLinks title={"Каталоги для отечественных автомобилей"} data={searchData} type={"domestic"}/>
+          <CatalogLinks title={"Двигатели"} data={searchData} type={"engine"}/>
         </div>
     </div>
   )

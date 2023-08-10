@@ -5,7 +5,7 @@ import Image from "next/image";
 import closeIcon from "@/assets/images/close.svg"
 import {ITag} from "@/components/Tag/types";
 
-export default function Tag({count, text, isCounter}: ITag) {
+export default function Tag({count, text, isCounter, handleClick}: ITag) {
   return (
     <>
       {(isCounter && count) ?
@@ -18,7 +18,7 @@ export default function Tag({count, text, isCounter}: ITag) {
       {(count && !isCounter) ?
         <span className={styles.tag}>
         <span>{text}</span>
-        <button>
+        <button onClick={handleClick}>
           <Image src={closeIcon} alt="icon" className={styles.tag__image}/>
         </button>
       </span> : null

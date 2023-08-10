@@ -1,6 +1,6 @@
 "use client"
 
-import {useEffect, useState} from "react";
+import {Dispatch, SetStateAction, useEffect, useState} from "react";
 import styles from "./filterModal.module.scss"
 
 import {AnimatePresence, motion} from "framer-motion";
@@ -9,33 +9,16 @@ import Image from "next/image";
 import FilterModalPrice from "@/components/FilterModalPrice/FilterModalPrice";
 import FilterModalManuf from "@/components/FilterModalManuf/FilterModalManuf";
 import FilterModalCategory from "@/components/FilterModalCategory/FilterModalCategory";
-import {useCheckboxFilter} from "@/store/useCheckboxFilter";
-import {shallow} from "zustand/shallow";
-import useFindItem from "@/hooks/useFindItem";
-import {useFilterManuf} from "@/store/useFilterManuf";
-import {useFilterCategory} from "@/store/useFilterCategory";
 
 interface IFilterModal {
   isActive: boolean;
-  handlerClick: any;
+  closeModal: Dispatch<SetStateAction<boolean>>;
 }
-
-export default function FilterModal({isActive, handlerClick}: IFilterModal) {
+export default function FilterModal({isActive, closeModal}: IFilterModal) {
   const [priceVal, setPriceVal] = useState<number>(0)
   const [markupVal, setMarkupVal] = useState<number>(0)
 
-  const {manufCheckbox} = useCheckboxFilter((state: any) =>
-    ({manufCheckbox: state.manufCheckbox}), shallow)
-  const {inputValue} = useFilterCategory()
-  const {finalArr} = useFindItem({data: manufCheckbox, field: "text", condition: inputValue})
-  const {filterManuf} =useFilterManuf()
-  console.log(manufCheckbox)
-
-  useEffect(() => {
-    filterManuf(finalArr)
-  }, [finalArr, filterManuf])
   return (
-
     <AnimatePresence>
       {isActive &&
         <motion.div
@@ -47,7 +30,7 @@ export default function FilterModal({isActive, handlerClick}: IFilterModal) {
           exit={{x: -500}}
         >
           <div className={styles.modalContent__container}>
-            <button onClick={() => handlerClick(false)}>
+            <button onClick={() => closeModal(false)}>
               <Image src={cross} alt="closeIcon" className={styles.modalContent__closeBtn}/>
             </button>
               <FilterModalPrice

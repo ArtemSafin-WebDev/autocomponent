@@ -11,6 +11,7 @@ export type TItem = {
   pricePerUnit: string;
   quantity: number;
   total: string;
+  category?: string;
 }
 
 export interface IItemsTable {
