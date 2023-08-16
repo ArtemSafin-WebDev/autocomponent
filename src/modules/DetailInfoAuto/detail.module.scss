@@ -1,0 +1,24 @@
+.detailInfo {
+  &__title {
+    margin: 4.6rem 0 1.2rem;
+    font-size: 2.8rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  &__text {
+    margin-bottom: 3.2rem;
+    color: #8491A6;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%; /* 14px */
+  }
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 3rem;
+    margin-bottom: 8rem;
+  }
+
+}

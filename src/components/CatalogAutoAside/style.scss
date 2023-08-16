@@ -1,4 +1,4 @@
-.category {
+.aside-auto {
   .rct-checkbox {
     display: flex;
     flex-direction: column;
@@ -16,6 +16,13 @@
   .rct-checkbox:has(.rct-icon-check) {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
+  }
+  .rct-text {
+    label {
+      input {
+        display: none;
+      }
+    }
   }
   .rct-icon-uncheck {
     &::after {
@@ -105,11 +112,18 @@
   .rct-collapse, .rct-checkbox, .rct-node-icon {
     padding: 0 !important;
   }
+  .rct-checkbox {
+    display: none;
+  }
   .react-checkbox-tree ol ol {
     padding-left: 2.4rem !important;
   }
   .react-checkbox-tree label:hover {
     background-color: transparent !important;
   }
-
+  .rct-text {
+    display: flex !important;
+    align-items: center;
+  }
 }
+

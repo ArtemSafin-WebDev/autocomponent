@@ -2,7 +2,41 @@
   width: 100%;
   background-color: #F1F4F8;
   border-radius: 1.2rem;
+  margin-bottom: 5rem;
   &__container {
     padding: 3.2rem;
+  }
+  &__filters {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 3.2rem;
+    position: relative;
+    column-gap: 3rem;
+    justify-items: center;
+    li {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      row-gap: 1.2rem;
+      h2 {
+        font-size: 1.4rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 100%;
+      }
+    }
+  }
+  &__wrapper {
+    position: absolute;
+    right: 7.5%;
+    top: 50%;
+  }
+  &__input {
+    width: 28rem;
+    height: 4rem;
+    background-color: white;
+    border-radius: .4rem;
+    padding: 0 2rem;
+    border: .1px solid #D6DCE5;
   }
 }
