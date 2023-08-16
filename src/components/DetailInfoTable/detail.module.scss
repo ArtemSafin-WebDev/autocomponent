@@ -1,0 +1,37 @@
+.infoTable {
+  width: 100%;
+  &__upper {
+    display: grid;
+    grid-template-columns: .1fr .3fr 1fr .4fr;
+    background-color: #F1F4F8;
+    padding: 1.1rem 1.6rem;
+    h5 {
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 100%; /* 14px */
+    }
+  }
+  &__table {
+    li {
+      display: grid;
+      grid-template-columns: .1fr .3fr 1fr .4fr;
+      &:first-child {
+        border-top: .1rem dashed #8491A6;
+      }
+      font-size: 1.4rem;
+      width: 100%;
+      padding: 1.1rem 1.6rem;
+      border-bottom: .1rem dashed #8491A6;
+      &:hover {
+        background-color: rgba(241, 244, 248, 0.54);
+      }
+    }
+  }
+  &__link {
+    display: flex;
+    column-gap: .5rem;
+    color: #268AE5;
+    text-decoration: none;
+  }
+}

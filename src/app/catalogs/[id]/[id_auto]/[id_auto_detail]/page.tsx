@@ -1,14 +1,15 @@
-import React from 'react';
-import CatalogsDetailModule from "@/modules/CatalogsDetailModule/CatalogsDetailModule";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
+import DetailInfoAuto from "@/modules/DetailInfoAuto/DetailInfoAuto";
 
 type Props = {
   params: {
     id: string;
+    id_auto: string;
+    id_auto_detail: string;
   }
 }
 
-export default async function CatalogsDetail({params: {id}}: Props)  {
+export default async function CatalogDetailAuto({params: {id, id_auto, id_auto_detail}}: Props)  {
   return (
     <>
       <div className="container">
@@ -28,9 +29,21 @@ export default async function CatalogsDetail({params: {id}}: Props)  {
               title: `${id[0].charAt(0).toUpperCase() + id.slice(1)}`,
               active: true,
             },
+            {
+              id: 5,
+              href: `/catalogs/${id}`,
+              title: `${id_auto[0].charAt(0).toUpperCase() + id_auto.slice(1)}`,
+              active: true,
+            },
+            {
+              id: 6,
+              href: `/catalogs/${id_auto_detail}`,
+              title: `${id_auto_detail[0].charAt(0).toUpperCase() + id_auto_detail.slice(1)}`,
+              active: true,
+            },
           ]}
         />
-      <CatalogsDetailModule id={id}/>
+        <DetailInfoAuto id={id}/>
       </div>
     </>
   );

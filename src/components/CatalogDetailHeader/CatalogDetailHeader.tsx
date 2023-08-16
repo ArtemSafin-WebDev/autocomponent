@@ -15,7 +15,53 @@ export default function CatalogDetailHeader({detailData}: ICatalogDetailHeader) 
       <div className={styles.catalogHeader__container}>
         <ul className={styles.catalogHeader__filters}>
           <li>
-            <Widget widgetData={detailData} field={"country"} title={"Рынок"}/>
+            <h2>Рынок</h2>
+            <div className={styles.catalogHeader__wrapper}>
+              <Widget widgetData={detailData} field={"country"}/>
+            </div>
+            <input type="text" defaultValue={"США"} className={styles.catalogHeader__input}/>
+          </li>
+          <li>
+            <h2>Модель</h2>
+            <div className={styles.catalogHeader__wrapper}>
+              <Widget widgetData={detailData} field={"country"}/>
+            </div>
+            <input type="text" defaultValue={"США"} className={styles.catalogHeader__input}/>
+          </li>
+          <li>
+            <h2>Год выпуска</h2>
+            <div className={styles.catalogHeader__wrapper}>
+              <Widget widgetData={detailData} field={"country"}/>
+            </div>
+            <input type="text" defaultValue={"США"} className={styles.catalogHeader__input}/>
+          </li>
+          <li>
+            <h2>Рынок</h2>
+            <div className={styles.catalogHeader__wrapper}>
+              <Widget widgetData={detailData} field={"country"}/>
+            </div>
+            <input type="text" defaultValue={"США"} className={styles.catalogHeader__input}/>
+          </li>
+          <li>
+            <h2>Торговое обозначение</h2>
+            <div className={styles.catalogHeader__wrapper}>
+              <Widget widgetData={detailData} field={"country"}/>
+            </div>
+            <input type="text" defaultValue={"США"} className={styles.catalogHeader__input}/>
+          </li>
+          <li>
+            <h2>Двигатель</h2>
+            <div className={styles.catalogHeader__wrapper}>
+              <Widget widgetData={detailData} field={"country"}/>
+            </div>
+            <input type="text" defaultValue={"США"} className={styles.catalogHeader__input}/>
+          </li>
+          <li>
+            <h2>Трансмиссия</h2>
+            <div className={styles.catalogHeader__wrapper}>
+              <Widget widgetData={detailData} field={"country"}/>
+            </div>
+            <input type="text" defaultValue={"США"} className={styles.catalogHeader__input}/>
           </li>
         </ul>
       </div>

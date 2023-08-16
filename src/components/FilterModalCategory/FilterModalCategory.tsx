@@ -1,6 +1,6 @@
 "use client"
 
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import styles from "./filterModalCategory.module.scss"
 import "./style.scss"
 
@@ -43,7 +43,7 @@ export default function FilterModalCategory() {
           placeHolder={"Поиск производителя"}
           icon={loop}
         />
-        <div className={styles.category__checkboxes}>
+        <div className={`${styles.category__checkboxes} category`}>
           <CheckboxTree
             icons={{
               check: <span className="rct-icon rct-icon-check" />,

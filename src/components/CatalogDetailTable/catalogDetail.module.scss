@@ -1,0 +1,38 @@
+.table {
+  width: 100%;
+  h2 {
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  &__header {
+    margin-top: 1.6rem;
+    width: 100%;
+    padding: 1.1rem 2rem;
+    background-color: #F1F4F8;
+    display: grid;
+    grid-template-columns: 1fr .8fr .6fr .6fr .8fr 1fr .6fr;
+  }
+  &__title {
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+  }
+  &__items {
+    width: 100%;
+    display: grid;
+    padding: 0 2rem;
+    grid-template-columns: 1fr .8fr .6fr .6fr .8fr 1fr .6fr;
+    margin-bottom: 8rem;
+    li {
+      &:first-child {
+        border-bottom: none;
+      }
+      padding: 1.8rem 0 ;
+      border-top: .1px dashed #8491A6;
+      border-bottom: .1px dashed #8491A6;
+    }
+  }
+}
