@@ -1,0 +1,22 @@
+.tags {
+  width: 100%;
+  margin-bottom: 4.15rem;
+  &__container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .8rem;
+  }
+  &__btn {
+    padding: 1.4rem 1.6rem;
+    border-radius: .5rem;
+    background-color: #F1F4F8;
+    font-size: 1.4rem;
+    &_active {
+      padding: 1.4rem 1.6rem;
+      border-radius: .5rem;
+      background-color: #d5d5d5;
+      font-size: 1.4rem;
+    }
+  }
+}
