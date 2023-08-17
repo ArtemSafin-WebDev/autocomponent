@@ -11,6 +11,8 @@ import {useFilterManuf} from "@/store/useFilterManuf";
 import {useFilterCategory} from "@/store/useFilterCategory";
 import {useStoreTags} from "@/store/useTags";
 import Switch from "@/components/Switch/Switch";
+import Image from "next/image";
+import arrowDown from "@/assets/images/arrow-down.svg";
 
 interface IStorageFilters {
   handlerClick: any
@@ -23,6 +25,7 @@ export default function StorageFilters({handlerClick}: IStorageFilters) {
   const {checkedManufValues, setCheckedManufValues} = useFilterManuf()
   const {allTags, setAllTags} = useStoreTags()
   const [isPageSwitchActive, setPageSwitchActive] = useState<boolean>(false)
+  const [isPagesActive, setIsPagesActive] = useState<boolean>(false)
 
   useEffect(() => {
     setAllTags([...checkedManufValues, ...checked])
@@ -67,6 +70,10 @@ export default function StorageFilters({handlerClick}: IStorageFilters) {
               <p>Автоподгрузка страниц</p>
               <Switch isActive={isPageSwitchActive} setIsActive={setPageSwitchActive}/>
             </div>
+            <button className={styles.filter__pagesBtn} onClick={() => setIsPagesActive((prevVal: boolean) => !prevVal)}>
+              Показывать по 300
+              <Image src={arrowDown} alt={"icon"} className={isPagesActive ? styles.filter__pagesBtnIcon_active : styles.filter__pagesBtn}/>
+            </button>
           </div>
         </div>
       </div>

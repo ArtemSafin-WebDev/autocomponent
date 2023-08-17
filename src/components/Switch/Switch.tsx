@@ -6,7 +6,7 @@ import {Dispatch, SetStateAction} from "react";
 export default function Switch({isActive, setIsActive}: any) {
   return (
     <>
-      <button onClick={() => setIsActive((prevVal: boolean) => !prevVal)} className={styles.switch}>
+      <button onClick={() => setIsActive((prevVal: boolean) => !prevVal)} className={isActive ? styles.switch_active : styles.switch}>
         <span
           className={isActive ? styles.switch__circle_active : styles.switch__circle}
         ></span>

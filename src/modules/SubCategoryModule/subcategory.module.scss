@@ -1,0 +1,48 @@
+.subcategory {
+  &__title {
+    margin: 4.6rem 0 3.2rem;
+    font-size: 2.8rem;
+  }
+  &__container {
+
+  }
+  &__switches {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    column-gap: 2rem;
+    margin-bottom: 3.35rem;
+    li {
+      display: flex;
+      align-items: center;
+      column-gap: .5rem;
+      p {
+        font-size: 1.4rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%; /* 21px */
+      }
+    }
+  }
+  &__pagesBtn {
+    display: flex;
+    align-items: center;
+    column-gap: .5rem;
+    transition: .4s ease all;
+  }
+  &__pagesBtnIcon {
+    transform: rotate(0);
+
+    &_active {
+      transition: .4s ease all;
+      transform: rotate(180deg);
+    }
+  }
+  &__paginationWrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4rem 0 8rem;
+  }
+}

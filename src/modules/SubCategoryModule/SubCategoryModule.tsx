@@ -1,24 +1,27 @@
-"use client";
-
-import styles from "./table.module.scss";
-import StorageFilters from "@/components/StorageFilters/StorageFilters";
-import ItemsTable from "@/components/ItemsTable/ItemsTable";
-import HeaderTable from "@/components/HeaderTable/HeaderTable";
-import {items, data} from "@/modules/TableModule/data";
-import ModalModule from "@/modules/ModalModule/Modal";
-import FilterModal from "@/components/FilterModal/FilterModal";
+"use client"
+import styles from "./subcategory.module.scss"
 import {useEffect, useState} from "react";
 import {TItem} from "@/components/ItemsTable/types";
 import {useStoreTags} from "@/store/useTags";
+import {items} from "@/modules/TableModule/data";
+import ItemsTable from "@/components/ItemsTable/ItemsTable";
+import HeaderTable from "@/components/HeaderTable/HeaderTable";
+import SubCategoryTags from "@/components/SubCategoryTags/SubCategoryTags";
+import Switch from "@/components/Switch/Switch";
+import arrowDown from "@/assets/images/arrow-down.svg";
+import Image from "next/image";
 import Pagination from "@/components/Pagination/Pagination";
 
-export default function TableModule() {
-  const [filterActive, setFilterActive] = useState<boolean>(false)
+export default function SubCategoryModule() {
   const [sortedItems, setSortedItems] = useState<TItem[]>([])
 
   const [infoVal, setInfoVal] = useState<string>("")
   const [oemVal, setOemVal] = useState<string>("")
   const [codeVal, setCodeVal] = useState<string>("")
+  const [tagVal, setTagVal] = useState<string>("")
+
+  const [inStockActive, setInStockActive] = useState<boolean>(false)
+  const [autoLoading, setAutoLoading] = useState<boolean>(false)
 
   const [tableVal, setTableVal] = useState<{[keyof: string]: boolean}>({
     title: false,
@@ -26,6 +29,7 @@ export default function TableModule() {
     manuf: false,
     cost: false
   })
+  const [isPagesActive, setIsPagesActive] = useState<boolean>(false)
   const {allTags} = useStoreTags()
 
   useEffect(() => {
@@ -70,32 +74,44 @@ export default function TableModule() {
       setSortedItems([...items])
     }
   }, [setSortedItems, allTags])
-
   return (
-    <section>
-      <StorageFilters handlerClick={setFilterActive}/>
-      <HeaderTable
-        tableVal={tableVal}
-        setTableVal={setTableVal}
-        infoVal={infoVal}
-        setInfoVal={setInfoVal}
-        oemVal={oemVal}
-        setOemVal={setOemVal}
-        codeVal={codeVal}
-        setCodeVal={setCodeVal}
-      />
+    <div className={styles.subcategory}>
+      <h2 className={styles.subcategory__title}>Запчасти для отечественных</h2>
+      <div className={styles.subcategory__container}>
+        <SubCategoryTags handleClick={setTagVal} value={tagVal}/>
+        <ul className={styles.subcategory__switches}>
+          <li>
+            <p>В наличии</p>
+            <Switch isActive={inStockActive} setIsActive={setInStockActive}/>
+          </li>
+          <li>
+            <p>Автоподгрузка страниц</p>
+            <Switch isActive={autoLoading} setIsActive={setAutoLoading}/>
+          </li>
+          <li>
+            <button className={styles.subcategory__pagesBtn} onClick={() => setIsPagesActive((prevVal: boolean) => !prevVal)}>
+              Показывать по 300
+              <Image src={arrowDown} alt={"icon"} className={isPagesActive ? styles.subcategory__pagesBtnIcon_active : styles.subcategory__pagesBtn}/>
+            </button>
+          </li>
+        </ul>
+        <HeaderTable
+          tableVal={tableVal}
+          setTableVal={setTableVal}
+          infoVal={infoVal}
+          setInfoVal={setInfoVal}
+          oemVal={oemVal}
+          setOemVal={setOemVal}
+          codeVal={codeVal}
+          setCodeVal={setCodeVal}
+        />
+      </div>
       {sortedItems?.map((item: TItem) => (
         <ItemsTable item={item} key={item?.id}/>
       ))}
-      <div className={styles.table__wrapperPagination}>
+      <div className={styles.subcategory__paginationWrapper}>
         <Pagination/>
       </div>
-      <ModalModule isOpen={filterActive} handlerClick={setFilterActive}>
-        <FilterModal
-          isActive={filterActive}
-          closeModal={setFilterActive}
-        />
-      </ModalModule>
-    </section>
+    </div>
   )
 }

@@ -32,10 +32,29 @@
       line-height: 150%;
     }
   }
+  &__blockPages {
+    display: flex;
+    align-items: center;
+    column-gap: 2rem;
+  }
   &__blockTags {
     display: flex;
     column-gap: .8rem;
     row-gap: .8rem;
     flex-wrap: wrap;
+  }
+  &__pagesBtn {
+    display: flex;
+    align-items: center;
+    column-gap: .5rem;
+    transition: .4s ease all;
+  }
+  &__pagesBtnIcon {
+    transform: rotate(0);
+
+    &_active {
+      transition: .4s ease all;
+      transform: rotate(180deg);
+    }
   }
 }
