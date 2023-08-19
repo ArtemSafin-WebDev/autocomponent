@@ -1,3 +1,12 @@
+@mixin checkColor($isChecked) {
+@if $isChecked == true {
+  color: #268AE5;
+}
+ @else {
+    color: black;
+  }
+}
+
 .aside-auto {
   .rct-checkbox {
     display: flex;
@@ -124,6 +133,19 @@
   .rct-text {
     display: flex !important;
     align-items: center;
+  }
+  .rct-title {
+    cursor: pointer;
+    transition: .4s ease opacity;
+    &:hover {
+      opacity: .6;
+    }
+    //&:focus {
+    //  color: #1f7cd1;
+    //}
+  }
+  .rct-checkbox:has(.rct-icon-check) ~ .rct-title {
+    color: #1f7cd1;
   }
 }
 

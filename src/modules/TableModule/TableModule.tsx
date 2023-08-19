@@ -11,11 +11,17 @@ import {useEffect, useState} from "react";
 import {TItem} from "@/components/ItemsTable/types";
 import {useStoreTags} from "@/store/useTags";
 import Pagination from "@/components/Pagination/Pagination";
+import Image from "next/image";
+import cartSuccess from "@/assets/images/cart-success.svg"
+import {AnimatePresence, motion} from "framer-motion";
+import {clearInterval} from "timers";
 
 export default function TableModule() {
   const [filterActive, setFilterActive] = useState<boolean>(false)
   const [sortedItems, setSortedItems] = useState<TItem[]>([])
+  const [cartNoticeArray, setCardNoticeArray] = useState([])
 
+  console.log(cartNoticeArray)
   const [infoVal, setInfoVal] = useState<string>("")
   const [oemVal, setOemVal] = useState<string>("")
   const [codeVal, setCodeVal] = useState<string>("")
@@ -73,6 +79,28 @@ export default function TableModule() {
 
   return (
     <section>
+      <div className={styles.table__cartNotificationTable}>
+        <AnimatePresence>
+        {cartNoticeArray?.map((cartNotice, index) => (
+          <motion.div
+            initial={{y: "30%", opacity: 0}}
+            animate={{
+              y: "0",
+              transition: {
+                type: "spring",
+              },
+              opacity: 1
+            }}
+            exit={{ opacity: 0, y: "50%", transition: {
+                type: "spring",
+              }}}
+            className={styles.table__cartNotification} key={index}>
+            <Image src={cartSuccess} alt={"icon"} className={styles.table__cartNotificationImage}/>
+            <p>Товар добавлен в корзину</p>
+          </motion.div>
+        ))}
+        </AnimatePresence>
+      </div>
       <StorageFilters handlerClick={setFilterActive}/>
       <HeaderTable
         tableVal={tableVal}
@@ -85,7 +113,13 @@ export default function TableModule() {
         setCodeVal={setCodeVal}
       />
       {sortedItems?.map((item: TItem) => (
-        <ItemsTable item={item} key={item?.id}/>
+        <ItemsTable
+          lastId={sortedItems[sortedItems.length - 1]}
+          item={item}
+          id={item?.id}
+          key={item?.id}
+          setCardNoticeArray={setCardNoticeArray}
+        />
       ))}
       <div className={styles.table__wrapperPagination}>
         <Pagination/>

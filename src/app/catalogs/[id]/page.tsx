@@ -20,7 +20,7 @@ export default async function CatalogsDetail({params: {id}}: Props)  {
               id: 3,
               href: "/catalogs",
               title: "Оригинальные каталоги",
-              active: true,
+              active: false,
             },
             {
               id: 4,

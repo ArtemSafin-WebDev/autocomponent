@@ -1,59 +1,81 @@
 import car from "@/assets/images/car.svg";
 
+export type TCatalogLinks = {
+  id: number
+  img: string;
+  title: string;
+  links: {[keyof: string]: string}[];
+  linkSeeAll?: {
+    isOpened: boolean;
+  }
+}[]
 
-export const data = [
+export const catalogLinks: TCatalogLinks = [
   {
+    id: 1,
     img: car,
     title: "Шины, диски, колпаки",
     links: [
       {text: "Колеса в сборе", link: "Колеса в сборе"},
       {text: "Материалы для шиномонтажа", link: "Материалы для шиномонтажа"},
       {text: "Колесный крепеж, метизы", link: "Колесный крепеж, метизы"},
+      {text: "Камеры", link: "Камерые"},
+      {text: "Колпаки", link: "Колпаки"},
+      {text: "Материалы для шиномонтажа", link: "Материалы для шиномонтажа"},
+      {text: "Камеры", link: "Камеры"},
       {text: "Камеры", link: "Камерые"},
       {text: "Колпаки", link: "Колпаки"},
       {text: "Материалы для шиномонтажа", link: "Материалы для шиномонтажа"},
       {text: "Камеры", link: "Камеры"},
     ],
     linkSeeAll: {
-      text: "Показать все",
-      link: "/all-items"
-    }
+      isOpened: false
+    },
   },
   {
+    id: 2,
     img: car,
     title: "Шины, диски, колпаки",
     links: [
       {text: "Колеса в сборе", link: "Колеса в сборе"},
       {text: "Материалы для шиномонтажа", link: "Материалы для шиномонтажа"},
       {text: "Колесный крепеж, метизы", link: "Колесный крепеж, метизы"},
+      {text: "Камеры", link: "Камерые"},
+      {text: "Колпаки", link: "Колпаки"},
+      {text: "Материалы для шиномонтажа", link: "Материалы для шиномонтажа"},
+      {text: "Камеры", link: "Камеры"},
       {text: "Камеры", link: "Камерые"},
       {text: "Колпаки", link: "Колпаки"},
       {text: "Материалы для шиномонтажа", link: "Материалы для шиномонтажа"},
       {text: "Камеры", link: "Камеры"},
     ],
     linkSeeAll: {
-      text: "Показать все",
-      link: "/all-items"
-    }
+      isOpened: false
+    },
   },
   {
+    id: 3,
     img: car,
     title: "Шины, диски, колпаки",
     links: [
       {text: "Колеса в сборе", link: "Колеса в сборе"},
       {text: "Материалы для шиномонтажа", link: "Материалы для шиномонтажа"},
       {text: "Колесный крепеж, метизы", link: "Колесный крепеж, метизы"},
+      {text: "Камеры", link: "Камерые"},
+      {text: "Колпаки", link: "Колпаки"},
+      {text: "Материалы для шиномонтажа", link: "Материалы для шиномонтажа"},
+      {text: "Камеры", link: "Камеры"},
       {text: "Камеры", link: "Камерые"},
       {text: "Колпаки", link: "Колпаки"},
       {text: "Материалы для шиномонтажа", link: "Материалы для шиномонтажа"},
       {text: "Камеры", link: "Камеры"},
     ],
     linkSeeAll: {
-      text: "Показать все",
-      link: "/all-items"
-    }
+      isOpened: false
+    },
   },
   {
+    id: 4,
     img: car,
     title: "Шины, диски, колпаки",
     links: [
@@ -67,6 +89,7 @@ export const data = [
     ],
   },
   {
+    id: 5,
     img: car,
     title: "Шины, диски, колпаки",
     links: [
@@ -80,6 +103,7 @@ export const data = [
     ],
   },
   {
+    id: 6,
     img: car,
     title: "Шины, диски, колпаки",
     links: [
@@ -93,6 +117,7 @@ export const data = [
     ],
   },
   {
+    id: 7,
     img: car,
     title: "Шины, диски, колпаки",
     links: [
@@ -106,6 +131,7 @@ export const data = [
     ],
   },
   {
+    id: 8,
     img: car,
     title: "Шины, диски, колпаки",
     links: [
@@ -119,6 +145,7 @@ export const data = [
     ],
   },
   {
+    id: 9,
     img: car,
     title: "Шины, диски, колпаки",
     links: [

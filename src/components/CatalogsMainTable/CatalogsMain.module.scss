@@ -29,16 +29,32 @@
     align-items: flex-start;
     row-gap: 1.6rem;
   }
+  &__wrapperLink {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 1.6rem;
+    overflow: hidden;
+    height: 15rem;
+    &_active {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      row-gap: 1.6rem;
+      overflow: hidden;
+      height: fit-content;
+    }
+  }
   &__link {
     font-size: 1.4rem;
     font-style: normal;
     font-weight: 400;
     line-height: 100%;
-    transition: .4s ease opacity;
+    transition: .4s ease all;
     color: black;
     text-decoration: none;
     &:hover {
-      opacity: .8;
+      color: #186dbb;
     }
   }
   &__linkSeeAll {

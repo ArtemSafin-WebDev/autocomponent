@@ -11,12 +11,13 @@ import {useFilterManuf} from "@/store/useFilterManuf";
 import {useFilterCategory} from "@/store/useFilterCategory";
 import {useStoreTags} from "@/store/useTags";
 import Switch from "@/components/Switch/Switch";
-import Image from "next/image";
-import arrowDown from "@/assets/images/arrow-down.svg";
+import DropDown from "@/components/DropDown/DropDown";
 
 interface IStorageFilters {
   handlerClick: any
 }
+
+const dropDownValues: number[] = [30, 100, 300, 500]
 
 export default function StorageFilters({handlerClick}: IStorageFilters) {
   const [crnVal, getCrnValue] = useState("")
@@ -70,10 +71,11 @@ export default function StorageFilters({handlerClick}: IStorageFilters) {
               <p>Автоподгрузка страниц</p>
               <Switch isActive={isPageSwitchActive} setIsActive={setPageSwitchActive}/>
             </div>
-            <button className={styles.filter__pagesBtn} onClick={() => setIsPagesActive((prevVal: boolean) => !prevVal)}>
-              Показывать по 300
-              <Image src={arrowDown} alt={"icon"} className={isPagesActive ? styles.filter__pagesBtnIcon_active : styles.filter__pagesBtn}/>
-            </button>
+            <DropDown
+              dropDownValues={dropDownValues}
+              activeIndexValue={dropDownValues.length - 1}
+              buttonText={"Показывать по"}
+            />
           </div>
         </div>
       </div>

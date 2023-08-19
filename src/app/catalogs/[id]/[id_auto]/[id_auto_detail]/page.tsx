@@ -21,19 +21,16 @@ export default async function CatalogDetailAuto({params: {id, id_auto, id_auto_d
               id: 3,
               href: "/catalogs",
               title: "Оригинальные каталоги",
-              active: true,
             },
             {
               id: 4,
               href: `/catalogs/${id}`,
               title: `${id[0].charAt(0).toUpperCase() + id.slice(1)}`,
-              active: true,
             },
             {
               id: 5,
               href: `/catalogs/${id}`,
               title: `${id_auto[0].charAt(0).toUpperCase() + id_auto.slice(1)}`,
-              active: true,
             },
             {
               id: 6,

@@ -10,8 +10,8 @@ export default function DetailInfoImage() {
   const [crnSize, setCrnSize] = useState<number>(100)
 
   const setImageSize =  useMemo(() => {
-    if(crnSize > 110) {
-      return setCrnSize(110)
+    if(crnSize > 200) {
+      return setCrnSize(200)
     } else if(crnSize < 20) {
       return setCrnSize(20)
     } else {
@@ -29,7 +29,7 @@ export default function DetailInfoImage() {
           <Image src={plusCircle} alt={"icon"}/>
         </button>
       </div>
-      <Image className={detailInfo.image__crnImage} width={640 * (setImageSize! / 100)} alt={"image"} src={detailImg}/>
+      <Image className={detailInfo.image__crnImage} width={640 * (setImageSize! / 150)} alt={"image"} src={detailImg}/>
     </div>
   )
 }
