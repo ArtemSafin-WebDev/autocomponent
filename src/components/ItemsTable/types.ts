@@ -15,5 +15,8 @@ export type TItem = {
 }
 
 export interface IItemsTable {
+  id?: number;
   item: TItem;
+  setCardNoticeArray?: any;
+  lastId: any;
 }

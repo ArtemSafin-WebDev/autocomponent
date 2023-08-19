@@ -1,0 +1,41 @@
+.dropDown {
+  position: relative;
+  &__button {
+    display: flex;
+    align-items: center;
+    column-gap: .5rem;
+  }
+  &__buttonIcon {
+    transition: .4s ease transform;
+    transform: rotate(0deg);
+    &_active {
+      transition: .4s ease transform;
+      transform: rotate(180deg);
+    }
+  }
+
+  &__block {
+    position: absolute;
+    top: 2rem;
+    width: 12.1rem;
+    padding: 2.4rem 0 2.4rem 2.4rem;
+    border-radius: 1.2rem;
+    border: 1px solid #D6DCE5;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 2rem;
+    background-color: white;
+    z-index: 30;
+  }
+  &__buttonValue {
+    font-size: 1.4rem;
+    &:hover {
+      color: #268AE5;
+    }
+    &_active {
+      font-size: 1.4rem;
+      color: #268AE5;
+    }
+  }
+}

@@ -107,7 +107,7 @@ export default function SubCategoryModule() {
         />
       </div>
       {sortedItems?.map((item: TItem) => (
-        <ItemsTable item={item} key={item?.id}/>
+        <ItemsTable item={item} key={item?.id} lastId={sortedItems[sortedItems.length - 1]}/>
       ))}
       <div className={styles.subcategory__paginationWrapper}>
         <Pagination/>

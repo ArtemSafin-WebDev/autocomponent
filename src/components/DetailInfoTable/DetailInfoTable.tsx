@@ -34,7 +34,7 @@ export default function DetailInfoTable() {
       </div>
      <ul className={styles.infoTable__table}>
        {data?.map((item, idx) => (
-         <li>
+         <li key={idx}>
            <p>{idx}</p>
            <p>{item?.oem}</p>
            <span>{item?.name}<Tooltip text={item?.tooltipText}/></span>

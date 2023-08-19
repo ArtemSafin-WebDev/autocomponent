@@ -20,13 +20,13 @@ export default async function CatalogDetailAuto({params: {id, id_auto}}: Props) 
               id: 3,
               href: "/catalogs",
               title: "Оригинальные каталоги",
-              active: true,
+              active: false,
             },
             {
               id: 4,
               href: `/catalogs/${id}`,
               title: `${id[0].charAt(0).toUpperCase() + id.slice(1)}`,
-              active: true,
+              active: false,
             },
             {
               id: 5,

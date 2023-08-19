@@ -5,6 +5,7 @@
   border: .1rem solid #D6DCE5;
   position: relative;
   border-radius: 1.6rem;
+  overflow: hidden;
   &__btn {
     position: absolute;
     top: 2.4rem;
@@ -16,6 +17,7 @@
     width: 11.6rem;
     justify-content: space-between;
     padding: .4rem;
+    z-index: 20;
   }
   &__crnImage {
     position: absolute;
@@ -23,5 +25,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
     height: auto;
+    max-width: 200%;
   }
 }
