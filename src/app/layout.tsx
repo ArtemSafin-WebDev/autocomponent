@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import Footer from "@/components/Footer/Footer";
 import { fetchLayoutData } from "@/clientApi/fetchLayoutData";
 import { Metadata } from "next";
+import {Theme} from "@radix-ui/themes";
 
 const inter = Inter({
   subsets: ["latin", "latin-ext", "cyrillic", "cyrillic-ext"],
@@ -34,6 +35,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.variable}>
+        <Theme>
         <Header headerCatalogCategories={data.headerCatalogCategories} />
         <main>{children}</main>
         <Footer
@@ -41,7 +43,8 @@ export default async function RootLayout({
           advantages={data.advantages}
           footerMenuCategories={data.footerMenuCategories}
         />
-      </body>
+        </Theme>
+       </body>
     </html>
   );
 }

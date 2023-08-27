@@ -1,12 +1,9 @@
 "use client";
 
 import styles from "./table.module.scss";
-import StorageFilters from "@/components/StorageFilters/StorageFilters";
 import ItemsTable from "@/components/ItemsTable/ItemsTable";
 import HeaderTable from "@/components/HeaderTable/HeaderTable";
 import {items} from "@/modules/TableModule/data";
-import ModalModule from "@/modules/ModalModule/Modal";
-import FilterModal from "@/components/FilterModal/FilterModal";
 import {useEffect, useState} from "react";
 import {TItem} from "@/components/ItemsTable/types";
 import {useStoreTags} from "@/store/useTags";
@@ -14,12 +11,14 @@ import Pagination from "@/components/Pagination/Pagination";
 import Image from "next/image";
 import cartSuccess from "@/assets/images/cart-success.svg"
 import {AnimatePresence, motion} from "framer-motion";
+import Switch from "@/components/Switch/Switch";
+import DropDown from "@/components/DropDown/DropDown";
 
-export default function TableModule() {
-  const [filterActive, setFilterActive] = useState<boolean>(false)
+export default function TableDetailModule() {
+  const [inStock, setInStock] = useState(true)
+  const [isPageSwitchActive, setIsPageSwitchActive] = useState(false)
   const [sortedItems, setSortedItems] = useState<TItem[]>([])
   const [cartNoticeArray, setCardNoticeArray] = useState([])
-
 
   const [infoVal, setInfoVal] = useState<string>("")
   const [oemVal, setOemVal] = useState<string>("")
@@ -80,37 +79,53 @@ export default function TableModule() {
     <section>
       <div className={styles.table__cartNotificationTable}>
         <AnimatePresence>
-        {cartNoticeArray?.map((cartNotice, index) => (
-          <motion.div
-            initial={{y: "30%", opacity: 0}}
-            animate={{
-              y: "0",
-              transition: {
-                type: "spring",
-              },
-              opacity: 1
-            }}
-            exit={{ opacity: 0, y: "50%", transition: {
-                type: "spring",
-              }}}
-            className={styles.table__cartNotification} key={index}>
-            <Image src={cartSuccess} alt={"icon"} className={styles.table__cartNotificationImage}/>
-            <p>Товар добавлен в корзину</p>
-          </motion.div>
-        ))}
+          {cartNoticeArray?.map((cartNotice, index) => (
+            <motion.div
+              initial={{y: "30%", opacity: 0}}
+              animate={{
+                y: "0",
+                transition: {
+                  type: "spring",
+                },
+                opacity: 1
+              }}
+              exit={{ opacity: 0, y: "50%", transition: {
+                  type: "spring",
+                }}}
+              className={styles.table__cartNotification} key={index}>
+              <Image src={cartSuccess} alt={"icon"} className={styles.table__cartNotificationImage}/>
+              <p>Товар добавлен в корзину</p>
+            </motion.div>
+          ))}
         </AnimatePresence>
       </div>
-      <StorageFilters handlerClick={setFilterActive}/>
-      <HeaderTable
-        tableVal={tableVal}
-        setTableVal={setTableVal}
-        infoVal={infoVal}
-        setInfoVal={setInfoVal}
-        oemVal={oemVal}
-        setOemVal={setOemVal}
-        codeVal={codeVal}
-        setCodeVal={setCodeVal}
-      />
+      <div className={styles.table__blockPages}>
+        <div className={styles.table__switchBlock}>
+          <p>В наличии</p>
+          <Switch isActive={inStock} setIsActive={setInStock}/>
+        </div>
+        <div className={styles.table__switchBlock}>
+          <p>Автоподгрузка страниц</p>
+          <Switch isActive={isPageSwitchActive} setIsActive={setIsPageSwitchActive}/>
+        </div>
+        <DropDown
+          dropDownValues={[30, 100, 300, 500]}
+          activeIndexValue={1}
+          buttonText={"Показывать по"}
+        />
+      </div>
+      <div className={styles.table__header}>
+        <HeaderTable
+          tableVal={tableVal}
+          setTableVal={setTableVal}
+          infoVal={infoVal}
+          setInfoVal={setInfoVal}
+          oemVal={oemVal}
+          setOemVal={setOemVal}
+          codeVal={codeVal}
+          setCodeVal={setCodeVal}
+        />
+      </div>
       {sortedItems?.map((item: TItem) => (
         <ItemsTable
           lastId={sortedItems[sortedItems.length - 1]}
@@ -123,12 +138,6 @@ export default function TableModule() {
       <div className={styles.table__wrapperPagination}>
         <Pagination/>
       </div>
-      <ModalModule isOpen={filterActive} handlerClick={setFilterActive}>
-        <FilterModal
-          isActive={filterActive}
-          closeModal={setFilterActive}
-        />
-      </ModalModule>
     </section>
   )
 }
