@@ -1,0 +1,45 @@
+.parameters {
+  &__container {
+    margin-top: 3rem;
+  }
+  &__filters {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 5rem;
+    align-items: flex-start;
+  }
+  &__filter {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    row-gap: 1.2rem;
+  }
+  &__buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 3.2rem;
+  }
+  &__reset {
+    color: #268AE5;
+    border: .1rem solid #268AE5;
+    width: 13rem;
+    height: 4.5rem;
+    border-radius: .5rem;
+    font-size: 1.4rem;
+    margin-right: 1.2rem;
+  }
+  &__find {
+    font-size: 1.4rem;
+    background-color: #268AE5;
+    color: white;
+    width: 13rem;
+    height: 4.5rem;
+    border-radius: .5rem;
+    transition: .4s ease opacity;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+}

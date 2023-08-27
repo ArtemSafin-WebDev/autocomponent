@@ -3,7 +3,6 @@ import styles from "./detail.module.scss"
 import DetailInfoImage from "@/components/DetailInfoImage/DetailInfoImage";
 import DetailInfoTable from "@/components/DetailInfoTable/DetailInfoTable";
 
-
 interface ICatalogsDetailModule {
   id: string
 }
@@ -17,7 +16,6 @@ export default function DetailInfoAuto({id}: ICatalogsDetailModule) {
       <div className={styles.detailInfo__container}>
         <DetailInfoImage/>
         <DetailInfoTable/>
-        <div></div>
       </div>
     </section>
   )

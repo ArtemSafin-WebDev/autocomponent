@@ -67,7 +67,7 @@ export default function DropDown({dropDownValues, activeIndexValue, buttonText, 
         <Image src={arrowDown} alt={"icon"} className={isActive ? styles.dropDown__buttonIcon_active : styles.dropDown__buttonIcon}/>
       </button>
       <AnimatePresence>
-        <motion.ul
+        <motion.span
           style={dropDownStyle}
           transition={{
             duration: .2,
@@ -99,14 +99,15 @@ export default function DropDown({dropDownValues, activeIndexValue, buttonText, 
           }}
         >
           {dropDownValues?.map((buttonValue: string | number, index: number) => (
-            <li key={index}>
-              <button
+            <button key={index} className={styles.dropDown__list}
+                    onClick={() => setDropDownValue(buttonValue)}
+            >
+              <p
                 className={dropDownValue === buttonValue ? styles.dropDown__buttonValue_active : styles.dropDown__buttonValue}
-                onClick={() => setDropDownValue(buttonValue)}
-              >{buttonValue}</button>
-            </li>
+              >{buttonValue}</p>
+            </button>
           ))}
-        </motion.ul>
+        </motion.span>
       </AnimatePresence>
     </div>
   )
