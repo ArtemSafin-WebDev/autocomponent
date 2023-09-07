@@ -13,7 +13,7 @@
     "@radix-ui/react-slider": "^1.1.2",
     "@radix-ui/themes": "^1.1.2",
     "@types/node": "20.1.4",
-    "@types/react": "18.2.6",
+    "@types/react": "^18.2.21",
     "@types/react-dom": "18.2.4",
     "@xobotyi/scrollbar-width": "^1.9.5",
     "ahooks": "^3.7.8",
@@ -32,7 +32,7 @@
     "react-use": "^17.4.0",
     "sass": "^1.62.1",
     "swiper": "^9.3.2",
-    "typescript": "5.0.4",
+    "typescript": "^5.2.2",
     "uuid": "^9.0.0",
     "zod": "^3.21.4",
     "zustand": "^4.3.9"

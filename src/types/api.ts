@@ -140,16 +140,27 @@ interface DashboardHistoryCardItem {
   delay?: string;
 }
 
-type TItemsTypes =
-  "tires" |
-  "disks" |
-  "accumulator" |
-  "auto_lamps" |
-  "brushes"
+type CarCard = {
+  title: string;
+  image?: string;
+  year?: string;
+};
+
+interface CarsCatalogData {
+  title: string;
+  items: Array<
+    CarCard & {
+      id: number;
+    }
+  >;
+}
+
+type TItemsTypes = "tires" | "disks" | "accumulator" | "auto_lamps" | "brushes";
 
 export { NewsFeedCategory, DashboardHistoryCardItemStatus };
 
 export type {
+  CarsCatalogData,
   Advantage,
   Office,
   FooterMenuItem,
@@ -166,5 +177,5 @@ export type {
   NewsFeedData,
   DashboardData,
   DashboardHistoryCardItem,
-  TItemsTypes
+  TItemsTypes,
 };
