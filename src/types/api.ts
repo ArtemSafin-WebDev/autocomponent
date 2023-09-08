@@ -155,6 +155,57 @@ interface CarsCatalogData {
   >;
 }
 
+interface OtherBrand {
+  id: number;
+  title: string;
+  href: string;
+}
+
+type ArticulSearchCard = {
+  id: number;
+  title: string;
+  quantity: number;
+  warehouse: string;
+  delivery: number;
+  amount: number;
+  price1: number;
+  price2?: number;
+};
+
+type ArticulTableItem = {
+  id: number;
+  articul: string;
+
+  items: ArticulSearchCard[];
+};
+
+type ArticulTableBlock = {
+  id: number;
+  heading: string;
+  items: ArticulTableItem[];
+};
+
+interface ArticulSearchData {
+  otherBrands: OtherBrand[];
+  blocks: ArticulTableBlock[];
+}
+
+interface CartTableCardItem {
+  id: number;
+  title: string;
+  oem: number;
+  code: number;
+  manufacturer: string;
+  warehouse: string;
+  date: number;
+  pricePerUnit: number;
+  amount: number;
+}
+
+interface CartData {
+  items: CartTableCardItem[];
+}
+
 type TItemsTypes = "tires" | "disks" | "accumulator" | "auto_lamps" | "brushes";
 
 export { NewsFeedCategory, DashboardHistoryCardItemStatus };
@@ -178,4 +229,11 @@ export type {
   DashboardData,
   DashboardHistoryCardItem,
   TItemsTypes,
+  OtherBrand,
+  ArticulSearchData,
+  ArticulSearchCard,
+  ArticulTableItem,
+  ArticulTableBlock,
+  CartTableCardItem,
+  CartData,
 };

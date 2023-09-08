@@ -1,3 +1,4 @@
+import fetchArticulSearchData from "@/clientApi/fetchArticulSearchData";
 import ArticulSearch from "@/components/ArticulSearch/ArticulSearch";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 
@@ -6,7 +7,8 @@ export const metadata = {
   description: "",
 };
 
-export default async function BrandSearchPage() {
+export default async function ArticulSearchPage() {
+  const data = await fetchArticulSearchData();
   return (
     <>
       <div className="container">
@@ -21,7 +23,7 @@ export default async function BrandSearchPage() {
             },
           ]}
         />
-        <ArticulSearch />
+        <ArticulSearch data={data} />
       </div>
     </>
   );

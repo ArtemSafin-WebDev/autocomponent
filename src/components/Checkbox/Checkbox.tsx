@@ -34,7 +34,6 @@ export default function Checkbox({
         setChecked((checked) => {
           return !checked;
         });
-
       }}
     >
       <span

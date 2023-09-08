@@ -1,12 +1,12 @@
-import { motion } from "framer-motion";
+import numWords from "@/utils/numWord";
 import Counter from "../Counter/Counter";
 import Info from "../Info/Info";
 import PhotoPreview from "../PhotoPreview/PhotoPreview";
 import EmbedSVG from "../utils/EmbedSVG/EmbedSVG";
-import { ArticulSearchCard } from "./ArticulSearch";
+
 import styles from "./articulSearch.module.scss";
 import cartIcon from "@/assets/images/cart.svg";
-
+import { ArticulSearchCard } from "@/types/api";
 export default function ArticulSearchCard({
   title,
   price1,
@@ -16,6 +16,30 @@ export default function ArticulSearchCard({
   warehouse,
   delivery,
 }: ArticulSearchCard) {
+  const priceFormatter = new Intl.NumberFormat("ru-RU", {
+    style: "currency",
+    currency: "RUB",
+  });
+
+  let deliveryText = delivery.toString();
+  let quantityText = quantity.toString();
+
+  if (delivery === 0) {
+    deliveryText = "Сегодня";
+  } else {
+    deliveryText = `${delivery} ${numWords(delivery, ["день", "дня", "дней"])}`;
+  }
+
+  if (quantity > 100) {
+    quantityText = "Много";
+  } else {
+    quantityText = `${quantity} ${numWords(quantity, [
+      "единица",
+      "единицы",
+      "единиц",
+    ])}`;
+  }
+
   return (
     <div className={styles.card}>
       <div className={styles.cardCell}>
@@ -26,15 +50,23 @@ export default function ArticulSearchCard({
         </div>
       </div>
       <div className={styles.cardCell}>
-        <div className={styles.quantity}>{quantity}</div>
+        <div className={styles.quantity}>{quantityText}</div>
         <div className={styles.warehouse}>{warehouse}</div>
       </div>
-      <div className={styles.cardCell}>{delivery}</div>
+      <div className={styles.cardCell}>{deliveryText}</div>
       <div className={styles.cardCell}>
         <div className={styles.rightWrapper}>
           <div className={styles.priceWrapper}>
-            <div className={styles.price}>{price1}</div>
-            <div className={styles.price}>{price2}</div>
+            {price1 ? (
+              <div className={styles.price}>
+                {priceFormatter.format(price1)}
+              </div>
+            ) : null}
+            {price2 ? (
+              <div className={styles.price}>
+                {priceFormatter.format(price2)}
+              </div>
+            ) : null}
           </div>
           <div className={styles.btnsWrapper}>
             <Counter initialValue={amount} />

@@ -4,24 +4,11 @@ import styles from "./cart.module.scss";
 import EmbedSVG from "../utils/EmbedSVG/EmbedSVG";
 import trash from "@/assets/images/trash.svg";
 import arrowDown from "@/assets/images/arrow-down-fixed.svg";
-import checkmark from "@/assets/images/checkmark.svg";
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import Counter from "../Counter/Counter";
-
-interface CartTableCardItem {
-  id: number;
-  title: string;
-  oem: string;
-  code: string;
-  manufacturer: string;
-  warehouse: string;
-  inStock?: boolean;
-  date?: string;
-  pricePerUnit: string;
-  quantity: number;
-  total: string;
-}
+import { CartData, CartTableCardItem } from "@/types/api";
+import numWords from "@/utils/numWord";
 
 interface CartTableCardProps {
   item: CartTableCardItem;
@@ -29,117 +16,25 @@ interface CartTableCardProps {
   deselected: () => void;
 }
 
-const items: CartTableCardItem[] = [
-  {
-    id: 1,
-    title:
-      "Электродвигатель стеклоочистителя ВАЗ-2123, 1118, 2170-2190 передний н/о (разъ...",
-    oem: "13062820",
-    code: "337826",
-    manufacturer: "Астро",
-    inStock: true,
-    warehouse: "Основной склад",
-    pricePerUnit: "245 521, 65",
-    quantity: 232,
-    total: "245 521, 65",
-  },
-  {
-    id: 2,
-    title:
-      "Электродвигатель стеклоочистителя ВАЗ-2123, 1118, 2170-2190 передний н/о (разъ...",
-    oem: "13062820",
-    code: "337826",
-    manufacturer: "Астро",
-    inStock: true,
-    warehouse: "Основной склад",
-    pricePerUnit: "245 521, 65",
-    quantity: 232,
-    total: "245 521, 65",
-  },
-  {
-    id: 3,
-    title:
-      "Электродвигатель стеклоочистителя ВАЗ-2123, 1118, 2170-2190 передний н/о (разъ...",
-    oem: "13062820",
-    code: "337826",
-    manufacturer: "Астро",
-    inStock: true,
-    warehouse: "Основной склад",
-    pricePerUnit: "245 521, 65",
-    quantity: 232,
-    total: "245 521, 65",
-  },
-  {
-    id: 4,
-    title:
-      "Электродвигатель стеклоочистителя ВАЗ-2123, 1118, 2170-2190 передний н/о (разъ...",
-    oem: "13062820",
-    code: "337826",
-    manufacturer: "Астро",
-    inStock: false,
-    warehouse: "Основной склад",
-    pricePerUnit: "245 521, 65",
-    quantity: 232,
-    total: "245 521, 65",
-    date: "1 день",
-  },
-  {
-    id: 5,
-    title:
-      "Электродвигатель стеклоочистителя ВАЗ-2123, 1118, 2170-2190 передний н/о (разъ...",
-    oem: "13062820",
-    code: "337826",
-    manufacturer: "Астро",
-    inStock: true,
-    warehouse: "Основной склад",
-    pricePerUnit: "245 521, 65",
-    quantity: 232,
-    total: "245 521, 65",
-  },
-  {
-    id: 6,
-    title:
-      "Электродвигатель стеклоочистителя ВАЗ-2123, 1118, 2170-2190 передний н/о (разъ...",
-    oem: "13062820",
-    code: "337826",
-    manufacturer: "Астро",
-    inStock: true,
-    warehouse: "Основной склад",
-    pricePerUnit: "245 521, 65",
-    quantity: 232,
-    total: "245 521, 65",
-  },
-  {
-    id: 7,
-    title:
-      "Электродвигатель стеклоочистителя ВАЗ-2123, 1118, 2170-2190 передний н/о (разъ...",
-    oem: "13062820",
-    code: "337826",
-    manufacturer: "Астро",
-    inStock: false,
-    warehouse: "Основной склад",
-    pricePerUnit: "245 521, 65",
-    quantity: 232,
-    total: "245 521, 65",
-    date: "2 дня",
-  },
-];
-
 function CartTableCard({ item, allSelected, deselected }: CartTableCardProps) {
+  const priceFormatter = new Intl.NumberFormat("ru-RU", {
+    style: "currency",
+    currency: "RUB",
+  });
   const {
     title,
     oem,
     code,
     manufacturer,
     warehouse,
-    inStock,
     date,
     pricePerUnit,
-    quantity,
-    total,
+    amount,
   } = item;
 
   const [checked, setChecked] = useState(false);
+  const [orderedAmount, setOrderedAmount] = useState<number>(amount);
+
   useEffect(() => {
     setChecked(allSelected);
   }, [allSelected]);
@@ -149,6 +44,8 @@ function CartTableCard({ item, allSelected, deselected }: CartTableCardProps) {
       deselected();
     }
   }, [deselected, checked]);
+
+  const total = pricePerUnit * orderedAmount;
   return (
     <div className={styles.cartTableCard}>
       <div className={styles.cartTableCardItem}>
@@ -169,23 +66,30 @@ function CartTableCard({ item, allSelected, deselected }: CartTableCardProps) {
       <div className={styles.cartTableCardItem}>{manufacturer}</div>
       <div className={styles.cartTableCardItem}>
         <div className={styles.delivery}>
-          {inStock ? (
+          {date === 0 ? (
             <div className={styles.inStock}>В наличии</div>
           ) : (
-            <span className={styles.date}>{date}</span>
+            <span className={styles.date}>
+              {`${date} ${numWords(date, ["день", "дня", "дней"])}`}
+            </span>
           )}
           <div className={styles.warehouse}>{warehouse}</div>
         </div>
       </div>
       <div className={styles.cartTableCardItem}>
-        <div className={styles.price}>{pricePerUnit}</div>
+        <div className={styles.price}>
+          {priceFormatter.format(pricePerUnit)}
+        </div>
       </div>
       <div className={styles.cartTableCardItem}>
-        <Counter initialValue={quantity} />
+        <Counter
+          initialValue={amount}
+          onCounterChange={(value) => setOrderedAmount(value)}
+        />
       </div>
       <div className={styles.cartTableCardItem}>
         <div className={styles.deleteWrapper}>
-          <div className={styles.price}>{total}</div>
+          <div className={styles.price}>{priceFormatter.format(total)}</div>
 
           <button className={styles.cardDeleteBtn}>
             <EmbedSVG src={trash.src} />
@@ -195,25 +99,56 @@ function CartTableCard({ item, allSelected, deselected }: CartTableCardProps) {
     </div>
   );
 }
+type SortMode = "name" | "manufacturer" | "oem" | "";
 
-enum SortOrder {
-  ASC = "ASC",
-  DSC = "DSC",
-}
+export default function Cart({ data }: { data: CartData }) {
+  const { items } = data;
 
-export default function Cart() {
-  const [sortByNameOrder, setSortByNameOrder] = useState<SortOrder>(
-    SortOrder.DSC
-  );
-  const [sortByOem, setSortByOem] = useState<SortOrder>(SortOrder.DSC);
-  const [sortByManufacturer, setSortByManufacturer] = useState<SortOrder>(
-    SortOrder.DSC
-  );
+  const [sortBy, setSortBy] = useState<SortMode>("");
+
+  const toggleSort = (sortCriteria: SortMode) => {
+    return () => {
+      if (sortBy === sortCriteria) {
+        setSortBy("");
+      } else {
+        setSortBy(sortCriteria);
+      }
+    };
+  };
 
   const [allSelected, setAllSelected] = useState(false);
   const handleDeselected = useCallback(() => {
     setAllSelected(false);
   }, []);
+
+  let sortedItems = [...items];
+
+  if (sortBy === "name") {
+    sortedItems = [...sortedItems].sort((a, b) => {
+      if (a.title < b.title) {
+        return -1;
+      } else if (a.title > b.title) {
+        return 1;
+      }
+      return 0;
+    });
+  }
+  if (sortBy === "oem") {
+    sortedItems = [...sortedItems].sort((a, b) => {
+      return a.oem - b.oem;
+    });
+  }
+
+  if (sortBy === "manufacturer") {
+    sortedItems = [...sortedItems].sort((a, b) => {
+      if (a.manufacturer < b.manufacturer) {
+        return -1;
+      } else if (a.manufacturer > b.manufacturer) {
+        return 1;
+      }
+      return 0;
+    });
+  }
 
   return (
     <div className={styles.cart}>
@@ -237,17 +172,9 @@ export default function Cart() {
             </button>
             <button
               className={`${styles.sortBtn} ${
-                sortByNameOrder === SortOrder.ASC ? styles.sortReversed : ""
+                sortBy === "name" ? styles.sortReversed : ""
               }`}
-              onClick={() =>
-                setSortByNameOrder((prevOrder) => {
-                  if (prevOrder === SortOrder.DSC) {
-                    return SortOrder.ASC;
-                  } else {
-                    return SortOrder.DSC;
-                  }
-                })
-              }
+              onClick={toggleSort("name")}
             >
               Наименование
               <EmbedSVG src={arrowDown.src} />
@@ -256,17 +183,9 @@ export default function Cart() {
           <span className={styles.tableHeaderCell}>
             <button
               className={`${styles.sortBtn} ${
-                sortByOem === SortOrder.ASC ? styles.sortReversed : ""
+                sortBy === "oem" ? styles.sortReversed : ""
               }`}
-              onClick={() =>
-                setSortByOem((prevOrder) => {
-                  if (prevOrder === SortOrder.DSC) {
-                    return SortOrder.ASC;
-                  } else {
-                    return SortOrder.DSC;
-                  }
-                })
-              }
+              onClick={toggleSort("oem")}
             >
               OEM/Артикул
               <EmbedSVG src={arrowDown.src} />
@@ -276,17 +195,9 @@ export default function Cart() {
           <span className={styles.tableHeaderCell}>
             <button
               className={`${styles.sortBtn} ${
-                sortByManufacturer === SortOrder.ASC ? styles.sortReversed : ""
+                sortBy === "manufacturer" ? styles.sortReversed : ""
               }`}
-              onClick={() =>
-                setSortByManufacturer((prevOrder) => {
-                  if (prevOrder === SortOrder.DSC) {
-                    return SortOrder.ASC;
-                  } else {
-                    return SortOrder.DSC;
-                  }
-                })
-              }
+              onClick={toggleSort("manufacturer")}
             >
               Производитель
               <EmbedSVG src={arrowDown.src} />
@@ -298,11 +209,12 @@ export default function Cart() {
           <span className={styles.tableHeaderCell}>Сумма, ₽</span>
         </div>
         <div className={styles.cartTableBody}>
-          {items.map((item) => (
+          {sortedItems.map((item) => (
             <CartTableCard
               item={item}
               allSelected={allSelected}
               deselected={handleDeselected}
+              key={item.id}
             />
           ))}
         </div>

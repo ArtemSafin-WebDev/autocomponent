@@ -44,7 +44,7 @@
 }
 .cartTableHeader {
   display: grid;
-  grid-template-columns: 1.5fr 0.5fr 0.3fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+  grid-template-columns: 1.3fr 0.5fr 0.3fr 0.6fr 0.5fr 0.5fr 0.4fr 0.6fr;
   background-color: #f6f8fa;
   border-bottom: 1px dashed #8491a6;
   padding: 1.6rem 0;
@@ -77,6 +77,10 @@
   font-weight: 500;
   line-height: 100%;
 
+  span {
+    flex-shrink: 0;
+  }
+
   svg {
     width: 0.7rem;
     height: 0.7rem;
@@ -84,6 +88,7 @@
     fill: currentColor;
     transition: transform 0.2s;
     margin-top: 0.2rem;
+    flex-shrink: 0;
   }
 
   &.sortReversed {
@@ -155,7 +160,7 @@
 }
 
 .cartTableCard {
-  grid-template-columns: 1.5fr 0.5fr 0.3fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+  grid-template-columns: 1.3fr 0.5fr 0.3fr 0.6fr 0.5fr 0.5fr 0.4fr 0.6fr;
   display: grid;
   padding: 2rem 0;
   border-bottom: 1px dashed #8491a6;

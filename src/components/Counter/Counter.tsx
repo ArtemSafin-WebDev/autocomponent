@@ -7,9 +7,13 @@ import arrowDown from "@/assets/images/arrow-down-fixed.svg";
 
 interface CounterProps {
   initialValue?: number;
+  onCounterChange?: (value: number) => void;
 }
 
-export default function Counter({ initialValue }: CounterProps) {
+export default function Counter({
+  initialValue,
+  onCounterChange,
+}: CounterProps) {
   const [count, setCount] = useState<number>(1);
 
   useEffect(() => {
@@ -17,6 +21,13 @@ export default function Counter({ initialValue }: CounterProps) {
       setCount(initialValue);
     }
   }, [initialValue]);
+
+  useEffect(() => {
+    if (typeof onCounterChange === "function") {
+      onCounterChange(count);
+    }
+  }, [count]);
+
   return (
     <div className={styles.counter}>
       <input className={styles.counterInput} value={count} readOnly />

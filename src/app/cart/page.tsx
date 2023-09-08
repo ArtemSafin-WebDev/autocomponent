@@ -1,3 +1,4 @@
+import fetchCartData from "@/clientApi/fetchCartData";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import Cart from "@/components/Cart/Cart";
 
@@ -7,6 +8,7 @@ export const metadata = {
 };
 
 export default async function CartPage() {
+  const data = await fetchCartData();
   return (
     <>
       <div className="container">
@@ -16,7 +18,7 @@ export default async function CartPage() {
             { id: 2, href: "/cart", title: "Корзина", active: true },
           ]}
         />
-        <Cart />
+        <Cart data={data} />
       </div>
     </>
   );
