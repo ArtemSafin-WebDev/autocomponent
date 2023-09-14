@@ -1,38 +1,70 @@
 .pagination {
+  display: block;
+}
+
+.list {
   display: flex;
   align-items: center;
-  column-gap: .5rem;
-  &__btn {
-    font-size: 1.4rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 150%; /* 21px */
-    background-color: #F1F4F8;
-    border-radius: .5rem;
-    width: 3.6rem;
-    height: 3.6rem;
-    &_active {
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.listItem {
+  flex-shrink: 0;
+}
+
+.link {
+  height: 3.6rem;
+  min-width: 3.6rem;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  border-radius: 0.5rem;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  transition: color 0.2s, background-color 0.2s;
+  background-color: #f5f7fa;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--primary-color);
       color: white;
-      font-size: 1.4rem;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 150%;
-      background-color: #268AE5;
-      border-radius: .5rem;
-      width: 3.6rem;
-      height: 3.6rem;
     }
   }
-  &__image {
-    transform: rotate(180deg);
+}
+
+.active {
+  background-color: var(--primary-color);
+  color: white;
+  cursor: default;
+  &:link,
+  &:visited {
+    color: white;
   }
-  &__imageBtn {
-    width: 3.6rem;
-    height: 3.6rem;
-    background-color: #F1F4F8;
-    border-radius: .5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+}
+
+.button {
+  height: 3.6rem;
+  width: 3.6rem;
+  border-radius: 0.5rem;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  transition: color 0.2s, background-color 0.2s;
+  background-color: #f5f7fa;
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+    fill: currentColor;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
   }
 }

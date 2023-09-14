@@ -1,9 +1,9 @@
-"use client"
-import styles from "./subcategory.module.scss"
-import {useEffect, useState} from "react";
-import {TItem} from "@/components/ItemsTable/types";
-import {useStoreTags} from "@/store/useTags";
-import {items} from "@/modules/TableModule/data";
+"use client";
+import styles from "./subcategory.module.scss";
+import { useEffect, useState } from "react";
+import { TItem } from "@/components/ItemsTable/types";
+import { useStoreTags } from "@/store/useTags";
+import { items } from "@/modules/TableModule/data";
 import ItemsTable from "@/components/ItemsTable/ItemsTable";
 import HeaderTable from "@/components/HeaderTable/HeaderTable";
 import SubCategoryTags from "@/components/SubCategoryTags/SubCategoryTags";
@@ -13,85 +13,112 @@ import Image from "next/image";
 import Pagination from "@/components/Pagination/Pagination";
 
 export default function SubCategoryModule() {
-  const [sortedItems, setSortedItems] = useState<TItem[]>([])
+  const [sortedItems, setSortedItems] = useState<TItem[]>([]);
 
-  const [infoVal, setInfoVal] = useState<string>("")
-  const [oemVal, setOemVal] = useState<string>("")
-  const [codeVal, setCodeVal] = useState<string>("")
-  const [tagVal, setTagVal] = useState<string>("")
+  const [infoVal, setInfoVal] = useState<string>("");
+  const [oemVal, setOemVal] = useState<string>("");
+  const [codeVal, setCodeVal] = useState<string>("");
+  const [tagVal, setTagVal] = useState<string>("");
 
-  const [inStockActive, setInStockActive] = useState<boolean>(false)
-  const [autoLoading, setAutoLoading] = useState<boolean>(false)
+  const [inStockActive, setInStockActive] = useState<boolean>(false);
+  const [autoLoading, setAutoLoading] = useState<boolean>(false);
 
-  const [tableVal, setTableVal] = useState<{[keyof: string]: boolean}>({
+  const [tableVal, setTableVal] = useState<{ [keyof: string]: boolean }>({
     title: false,
     oem: false,
     manuf: false,
-    cost: false
-  })
-  const [isPagesActive, setIsPagesActive] = useState<boolean>(false)
-  const {allTags} = useStoreTags()
+    cost: false,
+  });
+  const [isPagesActive, setIsPagesActive] = useState<boolean>(false);
+  const { allTags } = useStoreTags();
 
   useEffect(() => {
-    setSortedItems(items)
-  }, [])
+    setSortedItems(items);
+  }, []);
 
   useEffect(() => {
-    const ruCollator = new Intl.Collator('ru-RU');
-    const enCollator = new Intl.Collator('en-US');
-    if(tableVal?.title || tableVal?.oem || tableVal?.manuf || tableVal?.cost) {
-      setSortedItems((prevVal) => [...prevVal].sort((a: TItem, b: TItem): any => {
-        if(tableVal?.title) {
-          return ruCollator.compare(a!.title, b!.title)
-        } else if(tableVal?.oem) {
-          return Number(a!.oem) - Number(b!.oem)
-        } else if(tableVal?.manuf) {
-          return enCollator.compare(a!.title.toLowerCase(), b!.title.toLowerCase())
-        } else if(tableVal?.cost) {
-          return Number(a!.pricePerUnit) - Number(b!.pricePerUnit)
-        }
-      }))
+    const ruCollator = new Intl.Collator("ru-RU");
+    const enCollator = new Intl.Collator("en-US");
+    if (tableVal?.title || tableVal?.oem || tableVal?.manuf || tableVal?.cost) {
+      setSortedItems((prevVal) =>
+        [...prevVal].sort((a: TItem, b: TItem): any => {
+          if (tableVal?.title) {
+            return ruCollator.compare(a!.title, b!.title);
+          } else if (tableVal?.oem) {
+            return Number(a!.oem) - Number(b!.oem);
+          } else if (tableVal?.manuf) {
+            return enCollator.compare(
+              a!.title.toLowerCase(),
+              b!.title.toLowerCase()
+            );
+          } else if (tableVal?.cost) {
+            return Number(a!.pricePerUnit) - Number(b!.pricePerUnit);
+          }
+        })
+      );
     } else {
-      setSortedItems(items)
+      setSortedItems(items);
     }
-  }, [items, setSortedItems, tableVal])
+  }, [items, setSortedItems, tableVal]);
 
   useEffect(() => {
     setSortedItems(
       [...items]
-        .filter((item: TItem) => item.title.toLowerCase().trim().includes(infoVal.toLowerCase().trim()))
-        .filter((item: TItem) => item.oem.toLowerCase().trim().includes(oemVal.toLowerCase().trim()))
-        .filter((item: TItem) => item.code.toLowerCase().trim().includes(codeVal.toLowerCase().trim()))
-    )
-  }, [infoVal, oemVal, codeVal])
+        .filter((item: TItem) =>
+          item.title.toLowerCase().trim().includes(infoVal.toLowerCase().trim())
+        )
+        .filter((item: TItem) =>
+          item.oem.toLowerCase().trim().includes(oemVal.toLowerCase().trim())
+        )
+        .filter((item: TItem) =>
+          item.code.toLowerCase().trim().includes(codeVal.toLowerCase().trim())
+        )
+    );
+  }, [infoVal, oemVal, codeVal]);
 
   useEffect(() => {
-    if(allTags.length !== 0) {
+    if (allTags.length !== 0) {
       setSortedItems(
-        [...items].filter( (item: any) => allTags.some( (tag) => item.category.includes(tag) || item.manufacturer.includes(tag)) )
-      )
+        [...items].filter((item: any) =>
+          allTags.some(
+            (tag) =>
+              item.category.includes(tag) || item.manufacturer.includes(tag)
+          )
+        )
+      );
     } else {
-      setSortedItems([...items])
+      setSortedItems([...items]);
     }
-  }, [setSortedItems, allTags])
+  }, [setSortedItems, allTags]);
   return (
     <div className={styles.subcategory}>
       <h2 className={styles.subcategory__title}>Запчасти для отечественных</h2>
       <div className={styles.subcategory__container}>
-        <SubCategoryTags handleClick={setTagVal} value={tagVal}/>
+        <SubCategoryTags handleClick={setTagVal} value={tagVal} />
         <ul className={styles.subcategory__switches}>
           <li>
             <p>В наличии</p>
-            <Switch isActive={inStockActive} setIsActive={setInStockActive}/>
+            <Switch isActive={inStockActive} setIsActive={setInStockActive} />
           </li>
           <li>
             <p>Автоподгрузка страниц</p>
-            <Switch isActive={autoLoading} setIsActive={setAutoLoading}/>
+            <Switch isActive={autoLoading} setIsActive={setAutoLoading} />
           </li>
           <li>
-            <button className={styles.subcategory__pagesBtn} onClick={() => setIsPagesActive((prevVal: boolean) => !prevVal)}>
+            <button
+              className={styles.subcategory__pagesBtn}
+              onClick={() => setIsPagesActive((prevVal: boolean) => !prevVal)}
+            >
               Показывать по 300
-              <Image src={arrowDown} alt={"icon"} className={isPagesActive ? styles.subcategory__pagesBtnIcon_active : styles.subcategory__pagesBtn}/>
+              <Image
+                src={arrowDown}
+                alt={"icon"}
+                className={
+                  isPagesActive
+                    ? styles.subcategory__pagesBtnIcon_active
+                    : styles.subcategory__pagesBtn
+                }
+              />
             </button>
           </li>
         </ul>
@@ -107,11 +134,15 @@ export default function SubCategoryModule() {
         />
       </div>
       {sortedItems?.map((item: TItem) => (
-        <ItemsTable item={item} key={item?.id} lastId={sortedItems[sortedItems.length - 1]}/>
+        <ItemsTable
+          item={item}
+          key={item?.id}
+          lastId={sortedItems[sortedItems.length - 1]}
+        />
       ))}
       <div className={styles.subcategory__paginationWrapper}>
-        <Pagination/>
+        <Pagination pagesCount={6} />
       </div>
     </div>
-  )
+  );
 }

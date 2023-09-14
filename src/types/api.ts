@@ -210,6 +210,42 @@ type TItemsTypes = "tires" | "disks" | "accumulator" | "auto_lamps" | "brushes";
 
 export { NewsFeedCategory, DashboardHistoryCardItemStatus };
 
+interface PromoCard {
+  id: number;
+  href: string;
+  src: string;
+}
+
+interface PromoData {
+  cards: PromoCard[];
+}
+
+interface NewsCard {
+  id: number;
+  title: string;
+  date: string;
+  text: string;
+  src: string;
+  href: string;
+}
+
+interface NewsData {
+  items: NewsCard[];
+}
+
+interface RecentCard {
+  id: number;
+  title: string;
+  date: string;
+  btnText: string;
+  iconUrl: string;
+  href: string;
+}
+
+interface RecentData {
+  items: RecentCard[];
+}
+
 export type {
   CarsCatalogData,
   Advantage,
@@ -236,4 +272,10 @@ export type {
   ArticulTableBlock,
   CartTableCardItem,
   CartData,
+  PromoData,
+  PromoCard,
+  NewsCard,
+  NewsData,
+  RecentCard,
+  RecentData,
 };

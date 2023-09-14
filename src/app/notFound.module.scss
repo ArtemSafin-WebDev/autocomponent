@@ -1,0 +1,54 @@
+.notFound {
+  display: flex;
+  flex-direction: column;
+  padding: 6rem 0;
+  padding-bottom: 8rem;
+  align-items: center;
+}
+
+.image {
+  width: 45.7rem;
+  margin-bottom: 2rem;
+}
+
+.heading {
+  font-size: 2.8rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-align: center;
+  margin-bottom: 1.6rem;
+}
+
+.text {
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 200%;
+  max-width: 50rem;
+  margin-bottom: 3.2rem;
+  text-align: center;
+}
+
+.link {
+  color: white;
+  padding: 1.8rem 3.2rem;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  border-radius: 0.5rem;
+  background: var(--primary-color);
+  transition: color 0.2s, background-color 0.2s;
+
+  &:link,
+  &:visited {
+    color: white;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--primary-color-hover);
+    }
+  }
+}
