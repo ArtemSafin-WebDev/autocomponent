@@ -86,6 +86,58 @@ export default function CartWidget() {
                       </button>
                     </div>
                   </li>
+                  <li className={styles.listItem}>
+                    <div className={styles.card}>
+                      <div className={styles.title}>
+                        Электродвигатель стеклоочистителя ВАЗ-2123, 1118,
+                        2170-2190 передний н/о
+                      </div>
+                      <div className={styles.amount}>1 шт</div>
+                      <div className={styles.price}>234 941 ₽</div>
+                      <button className={styles.delete}>
+                        <EmbedSVG src={trash.src} />
+                      </button>
+                    </div>
+                  </li>
+                  <li className={styles.listItem}>
+                    <div className={styles.card}>
+                      <div className={styles.title}>
+                        Электродвигатель стеклоочистителя ВАЗ-2123, 1118,
+                        2170-2190 передний н/о
+                      </div>
+                      <div className={styles.amount}>1 шт</div>
+                      <div className={styles.price}>234 941 ₽</div>
+                      <button className={styles.delete}>
+                        <EmbedSVG src={trash.src} />
+                      </button>
+                    </div>
+                  </li>
+                  <li className={styles.listItem}>
+                    <div className={styles.card}>
+                      <div className={styles.title}>
+                        Электродвигатель стеклоочистителя ВАЗ-2123, 1118,
+                        2170-2190 передний н/о
+                      </div>
+                      <div className={styles.amount}>1 шт</div>
+                      <div className={styles.price}>234 941 ₽</div>
+                      <button className={styles.delete}>
+                        <EmbedSVG src={trash.src} />
+                      </button>
+                    </div>
+                  </li>
+                  <li className={styles.listItem}>
+                    <div className={styles.card}>
+                      <div className={styles.title}>
+                        Электродвигатель стеклоочистителя ВАЗ-2123, 1118,
+                        2170-2190 передний н/о
+                      </div>
+                      <div className={styles.amount}>1 шт</div>
+                      <div className={styles.price}>234 941 ₽</div>
+                      <button className={styles.delete}>
+                        <EmbedSVG src={trash.src} />
+                      </button>
+                    </div>
+                  </li>
                 </ul>
               </div>
               <div className={styles.bottomRow}>

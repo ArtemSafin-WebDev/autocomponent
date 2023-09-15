@@ -1,4 +1,4 @@
-import { NameSearchItem } from "./NameSearch";
+import { NameSearchItem } from "./NameSearchCard";
 
 const items: NameSearchItem[] = [
   {

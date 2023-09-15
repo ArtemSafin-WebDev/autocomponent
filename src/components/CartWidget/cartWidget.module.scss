@@ -54,14 +54,20 @@
 .scrollWrapper {
   scrollbar-color: #d6dce6 white;
   scrollbar-width: thin;
+  max-height: 33.2rem;
+  overflow-x: hidden;
+  padding-right: 1rem;
+  margin-right: -1rem;
   &::-webkit-scrollbar {
     background-color: white;
-    width: 0.2rem;
+    width: 0.4rem;
   }
 
   &::-webkit-scrollbar-thumb {
     background-color: #d6dce6;
-    border-radius: 0.8rem;
+
+    border-top: 1.2rem solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
   }
 
   &::-webkit-scrollbar-button {
@@ -160,10 +166,12 @@
 }
 
 .bottomRow {
-  margin-top: 2rem;
+  padding-top: 2rem;
   display: flex;
   align-items: center;
   gap: 2rem;
+  border-top: 1px solid #d6dce6;
+  margin-top: -1px;
 }
 
 .total {

@@ -1,93 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./nameSearch.module.scss";
 import ArrowDown from "../../icons/ArrowDown";
-import InfoIcon from "../../icons/Info";
 
-import Counter from "../Counter/Counter";
-import EmbedSVG from "../utils/EmbedSVG/EmbedSVG";
-import cartIcon from "@/assets/images/cart.svg";
 import items from "./nameSearchItems";
 import checkboxes from "./checkboxes";
-import Info from "../Info/Info";
-import PhotoPreview from "../PhotoPreview/PhotoPreview";
+
 import Checkbox from "../Checkbox/Checkbox";
 import Tooltip from "../Tooltip/Tooltip";
+import NameSearchCard from "./NameSearchCard";
 
 interface CheckboxItem {
   id: number;
   title: string;
   checked?: boolean;
-}
-
-interface NameSearchItem {
-  id: number;
-  title: string;
-  articul: string;
-  brand: string;
-  inStock: boolean;
-  quantity: number;
-  price1: string;
-  price2: string;
-  warehouse: string;
-  amount: string;
-}
-
-interface NameSearchCardProps {
-  item: NameSearchItem;
-}
-
-function NameSearchCard({ item }: NameSearchCardProps) {
-  const {
-    id,
-    title,
-    articul,
-    brand,
-    inStock,
-    quantity,
-    price1,
-    price2,
-    warehouse,
-    amount,
-  } = item;
-
-  return (
-    <div className={styles.tableRow}>
-      <div className={styles.tableCell}>
-        {title}
-        <PhotoPreview src="/photo-preview.webp" alt="Превью фото" />
-        <Info />
-      </div>
-      <div className={styles.tableCell}>{articul}</div>
-      <div className={styles.tableCell}>
-        <div className={styles.brand}>{brand}</div>
-      </div>
-      <div className={styles.tableCell}>
-        <div className={styles.amountWrapper}>
-          <div className={styles.amount}>{amount}</div>
-          <div className={styles.warehouse}>{warehouse}</div>
-        </div>
-      </div>
-      <div className={styles.tableCell}>
-        {inStock ? <div className={styles.inStock}>В наличии</div> : null}
-      </div>
-      <div className={styles.tableCell}>
-        <div className={styles.rightWrapper}>
-          <div className={styles.priceWrapper}>
-            <div className={styles.price}>{price1}</div>
-            <div className={styles.price}>{price2}</div>
-          </div>
-          <div className={styles.btnsWrapper}>
-            <Counter initialValue={quantity} />
-            <button className={styles.addToCartBtn}>
-              <EmbedSVG src={cartIcon.src} />
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
 }
 
 export default function NameSearch() {
@@ -145,4 +72,4 @@ export default function NameSearch() {
   );
 }
 
-export type { NameSearchItem, CheckboxItem };
+export type { CheckboxItem };

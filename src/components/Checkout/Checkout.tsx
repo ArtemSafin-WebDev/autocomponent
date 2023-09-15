@@ -7,17 +7,28 @@ import backArrow from "@/assets/images/back-arrow.svg";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-
 import CheckoutSelect from "../CheckoutSelect/CheckoutSelect";
 import { useState } from "react";
 
-const Schema = z.object({
-  company: z.string().min(1, { message: "Обязательное поле" }),
-  paymentMethod: z.string().min(1, { message: "Обязательное поле" }),
-  comment: z.string(),
-  delivery: z.string().min(1, { message: "Обязательное поле" }),
-  address: z.string().min(1, { message: "Обязательное поле" }),
-});
+const Schema = z
+  .object({
+    company: z.string().min(1, { message: "Обязательное поле" }),
+    paymentMethod: z.string().min(1, { message: "Обязательное поле" }),
+    comment: z.string(),
+    delivery: z.string().min(1, { message: "Обязательное поле" }),
+    address: z.string().optional(),
+  })
+  .refine(
+    (input) => {
+      if (input.delivery === "Доставка" && input?.address?.trim() === "")
+        return false;
+      return true;
+    },
+    {
+      message: "Необходимо указать адрес",
+      path: ["address"],
+    }
+  );
 
 type CheckoutFormData = z.infer<typeof Schema>;
 
@@ -175,23 +186,26 @@ export default function Checkout() {
                 type="hidden"
                 {...register("delivery", { required: true })}
               />
-              <CheckoutSelect
-                items={[
-                  {
-                    title: "Адрес 1",
-                    value: "address1",
-                  },
-                  {
-                    title: "Адрес 2",
-                    value: "address2",
-                  },
-                ]}
-                label="address"
-                register={register}
-                errors={errors}
-                placeholder="Выберите адрес доставки"
-                setValue={setValue}
-              />
+
+              {deliveryMethod === DeliveryMethod.Company ? (
+                <CheckoutSelect
+                  items={[
+                    {
+                      title: "Адрес 1",
+                      value: "address1",
+                    },
+                    {
+                      title: "Адрес 2",
+                      value: "address2",
+                    },
+                  ]}
+                  label="address"
+                  register={register}
+                  errors={errors}
+                  placeholder="Выберите адрес доставки"
+                  setValue={setValue}
+                />
+              ) : null}
             </div>
             <div className={styles.field}>
               <div className={styles.label}>Комментарий к заказу</div>

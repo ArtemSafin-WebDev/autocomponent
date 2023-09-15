@@ -3,7 +3,7 @@
 import styles from "./cart.module.scss";
 import EmbedSVG from "../utils/EmbedSVG/EmbedSVG";
 import trash from "@/assets/images/trash.svg";
-import arrowDown from "@/assets/images/arrow-down-fixed.svg";
+
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import Counter from "../Counter/Counter";
@@ -14,9 +14,15 @@ interface CartTableCardProps {
   item: CartTableCardItem;
   allSelected: boolean;
   deselected: () => void;
+  onAmountChange?: (amount: number) => void;
 }
 
-function CartTableCard({ item, allSelected, deselected }: CartTableCardProps) {
+function CartTableCard({
+  item,
+  allSelected,
+  deselected,
+  onAmountChange,
+}: CartTableCardProps) {
   const priceFormatter = new Intl.NumberFormat("ru-RU", {
     style: "currency",
     currency: "RUB",
@@ -44,6 +50,18 @@ function CartTableCard({ item, allSelected, deselected }: CartTableCardProps) {
       deselected();
     }
   }, [deselected, checked]);
+
+  useEffect(() => {
+    if (typeof onAmountChange === "function") {
+      onAmountChange(orderedAmount * pricePerUnit);
+    }
+
+    return () => {
+      if (typeof onAmountChange === "function") {
+        onAmountChange(-1 * orderedAmount * pricePerUnit);
+      }
+    };
+  }, [orderedAmount, pricePerUnit]);
 
   const total = pricePerUnit * orderedAmount;
   return (
@@ -99,56 +117,20 @@ function CartTableCard({ item, allSelected, deselected }: CartTableCardProps) {
     </div>
   );
 }
-type SortMode = "name" | "manufacturer" | "oem" | "";
 
 export default function Cart({ data }: { data: CartData }) {
+  const priceFormatter = new Intl.NumberFormat("ru-RU", {
+    style: "currency",
+    currency: "RUB",
+  });
   const { items } = data;
-
-  const [sortBy, setSortBy] = useState<SortMode>("");
-
-  const toggleSort = (sortCriteria: SortMode) => {
-    return () => {
-      if (sortBy === sortCriteria) {
-        setSortBy("");
-      } else {
-        setSortBy(sortCriteria);
-      }
-    };
-  };
 
   const [allSelected, setAllSelected] = useState(false);
   const handleDeselected = useCallback(() => {
     setAllSelected(false);
   }, []);
 
-  let sortedItems = [...items];
-
-  if (sortBy === "name") {
-    sortedItems = [...sortedItems].sort((a, b) => {
-      if (a.title < b.title) {
-        return -1;
-      } else if (a.title > b.title) {
-        return 1;
-      }
-      return 0;
-    });
-  }
-  if (sortBy === "oem") {
-    sortedItems = [...sortedItems].sort((a, b) => {
-      return a.oem - b.oem;
-    });
-  }
-
-  if (sortBy === "manufacturer") {
-    sortedItems = [...sortedItems].sort((a, b) => {
-      if (a.manufacturer < b.manufacturer) {
-        return -1;
-      } else if (a.manufacturer > b.manufacturer) {
-        return 1;
-      }
-      return 0;
-    });
-  }
+  const [summary, setSummary] = useState<number>(0);
 
   return (
     <div className={styles.cart}>
@@ -170,58 +152,35 @@ export default function Cart({ data }: { data: CartData }) {
                 }`}
               ></span>
             </button>
-            <button
-              className={`${styles.sortBtn} ${
-                sortBy === "name" ? styles.sortReversed : ""
-              }`}
-              onClick={toggleSort("name")}
-            >
-              Наименование
-              <EmbedSVG src={arrowDown.src} />
-            </button>
+            Наименование
           </span>
-          <span className={styles.tableHeaderCell}>
-            <button
-              className={`${styles.sortBtn} ${
-                sortBy === "oem" ? styles.sortReversed : ""
-              }`}
-              onClick={toggleSort("oem")}
-            >
-              OEM/Артикул
-              <EmbedSVG src={arrowDown.src} />
-            </button>
-          </span>
+          <span className={styles.tableHeaderCell}>OEM/Артикул</span>
           <span className={styles.tableHeaderCell}>Код</span>
-          <span className={styles.tableHeaderCell}>
-            <button
-              className={`${styles.sortBtn} ${
-                sortBy === "manufacturer" ? styles.sortReversed : ""
-              }`}
-              onClick={toggleSort("manufacturer")}
-            >
-              Производитель
-              <EmbedSVG src={arrowDown.src} />
-            </button>
-          </span>
+          <span className={styles.tableHeaderCell}>Производитель</span>
           <span className={styles.tableHeaderCell}>Срок поставки</span>
           <span className={styles.tableHeaderCell}>Цена за 1 шт, ₽</span>
           <span className={styles.tableHeaderCell}>Количество</span>
           <span className={styles.tableHeaderCell}>Сумма, ₽</span>
         </div>
         <div className={styles.cartTableBody}>
-          {sortedItems.map((item) => (
+          {items.map((item) => (
             <CartTableCard
               item={item}
               allSelected={allSelected}
               deselected={handleDeselected}
               key={item.id}
+              onAmountChange={(amount) => {
+                setSummary((prev) => prev + amount);
+              }}
             />
           ))}
         </div>
       </div>
       <div className={styles.summary}>
         <span className={styles.summaryKey}>Итого:</span>
-        <span className={styles.summaryValue}>245 521, 65 ₽</span>
+        <span className={styles.summaryValue}>
+          {priceFormatter.format(summary)}
+        </span>
       </div>
       <Link href="/checkout" className={styles.checkoutBtn}>
         Перейти к оформлению
