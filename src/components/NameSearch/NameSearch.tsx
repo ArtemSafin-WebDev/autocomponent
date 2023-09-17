@@ -4,12 +4,9 @@ import { useState } from "react";
 import styles from "./nameSearch.module.scss";
 import ArrowDown from "../../icons/ArrowDown";
 
-import items from "./nameSearchItems";
-import checkboxes from "./checkboxes";
-
 import Checkbox from "../Checkbox/Checkbox";
 import Tooltip from "../Tooltip/Tooltip";
-import NameSearchCard from "./NameSearchCard";
+import NameSearchCard, { NameSearchItem } from "./NameSearchCard";
 
 interface CheckboxItem {
   id: number;
@@ -17,8 +14,33 @@ interface CheckboxItem {
   checked?: boolean;
 }
 
-export default function NameSearch() {
+interface NameSearchProps {
+  items: NameSearchItem[];
+}
+
+export default function NameSearch({ items }: NameSearchProps) {
   const [showAll, setShowAll] = useState(false);
+
+  const checkboxes: CheckboxItem[] = Array.from(
+    new Set(items.map((item) => item.category).flat())
+  ).map((item, itemIndex) => {
+    return {
+      id: itemIndex,
+      title: item,
+      checked: false,
+    };
+  });
+
+  const [categories, setCategories] = useState<string[]>([]);
+
+  let filteredItems: NameSearchItem[] = items;
+
+  if (categories.length) {
+    filteredItems = filteredItems.filter((item) =>
+      categories.includes(item.category)
+    );
+  }
+
   return (
     <div className={styles.nameSearch}>
       <h1 className={styles.heading}>Результаты поиска</h1>
@@ -36,6 +58,17 @@ export default function NameSearch() {
                 <Checkbox
                   title={checkbox.title}
                   checkedByDefault={checkbox.checked}
+                  onToggle={(value) => {
+                    if (value) {
+                      setCategories((prev) => {
+                        return [...prev, checkbox.title];
+                      });
+                    } else {
+                      setCategories((prev) => {
+                        return prev.filter((item) => item !== checkbox.title);
+                      });
+                    }
+                  }}
                 />
               </li>
             ))}
@@ -62,7 +95,7 @@ export default function NameSearch() {
           <div className={styles.tableHeaderCell}>Цена, ₽</div>
         </div>
         <div className={styles.tableBody}>
-          {items.map((item) => (
+          {filteredItems.map((item) => (
             <NameSearchCard item={item} key={item.id} />
           ))}
         </div>

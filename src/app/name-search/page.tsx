@@ -1,3 +1,4 @@
+import { fetchNameSearchData } from "@/clientApi/fetchNameSearchData";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import NameSearch from "@/components/NameSearch/NameSearch";
 
@@ -7,6 +8,7 @@ export const metadata = {
 };
 
 export default async function NameSearchPage() {
+  const data = await fetchNameSearchData();
   return (
     <>
       <div className="container">
@@ -21,7 +23,7 @@ export default async function NameSearchPage() {
             },
           ]}
         />
-        <NameSearch />
+        <NameSearch items={data.items} />
       </div>
     </>
   );

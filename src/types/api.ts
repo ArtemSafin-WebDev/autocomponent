@@ -246,6 +246,24 @@ interface RecentData {
   items: RecentCard[];
 }
 
+interface NameSearchItem {
+  id: number;
+  title: string;
+  articul: string;
+  brand: string;
+  inStock: boolean;
+  quantity: number;
+  price1: string;
+  price2: string;
+  warehouse: string;
+  amount: string;
+  category: string;
+}
+
+interface NameSearchData {
+  items: NameSearchItem[];
+}
+
 export type {
   CarsCatalogData,
   Advantage,
@@ -278,4 +296,6 @@ export type {
   NewsData,
   RecentCard,
   RecentData,
+  NameSearchItem,
+  NameSearchData,
 };

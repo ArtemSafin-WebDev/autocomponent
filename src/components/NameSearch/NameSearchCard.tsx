@@ -4,19 +4,7 @@ import cartIcon from "@/assets/images/cart.svg";
 import Info from "../Info/Info";
 import PhotoPreview from "../PhotoPreview/PhotoPreview";
 import styles from "./nameSearch.module.scss";
-
-interface NameSearchItem {
-  id: number;
-  title: string;
-  articul: string;
-  brand: string;
-  inStock: boolean;
-  quantity: number;
-  price1: string;
-  price2: string;
-  warehouse: string;
-  amount: string;
-}
+import { NameSearchItem } from "@/types/api";
 
 interface NameSearchCardProps {
   item: NameSearchItem;
