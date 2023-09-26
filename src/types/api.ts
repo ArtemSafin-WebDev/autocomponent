@@ -264,6 +264,20 @@ interface NameSearchData {
   items: NameSearchItem[];
 }
 
+interface CompanySidebarBlock {
+  id: number | string;
+  title?: string;
+  links: Array<{
+    id: number | string;
+    title: string;
+    href: string;
+  }>;
+}
+
+interface CompanySidebarData {
+  items: CompanySidebarBlock[];
+}
+
 export type {
   CarsCatalogData,
   Advantage,
@@ -298,4 +312,6 @@ export type {
   RecentData,
   NameSearchItem,
   NameSearchData,
+  CompanySidebarBlock,
+  CompanySidebarData,
 };

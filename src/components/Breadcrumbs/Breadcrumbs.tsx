@@ -1,13 +1,15 @@
 import Link from "next/link";
 import styles from "./breadcrumbs.module.scss";
 
+interface BreadcrumbsLink {
+  id: number;
+  href: string;
+  title: string;
+  active?: boolean;
+}
+
 interface BreadcrumbsProps {
-  links: Array<{
-    id: number;
-    href: string;
-    title: string;
-    active?: boolean;
-  }>;
+  links: BreadcrumbsLink[];
 }
 
 export default function Breadcrumbs({ links }: BreadcrumbsProps) {
@@ -25,3 +27,5 @@ export default function Breadcrumbs({ links }: BreadcrumbsProps) {
     </div>
   );
 }
+
+export type { BreadcrumbsLink };

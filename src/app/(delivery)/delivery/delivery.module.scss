@@ -1,0 +1,101 @@
+.deliveryPage {
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  font-size: 3.2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 2.4rem;
+}
+
+.textContent {
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+  margin-bottom: 8rem;
+  p {
+    margin-top: 2rem;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.illustration {
+  width: 100%;
+  height: auto;
+  margin-bottom: 8rem;
+}
+
+.rules {
+  display: flex;
+  flex-direction: column;
+}
+
+.rulesTitle {
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 3.2rem;
+}
+
+.tableWrapper {
+  border-radius: 1.2rem;
+
+  background: #f5f7fa;
+  padding: 3.2rem;
+
+  table {
+    width: 100%;
+    thead {
+      th {
+        font-size: 1.4rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 160%;
+        padding-bottom: 2rem;
+        text-align: left;
+        white-space: nowrap;
+        padding-right: 4rem;
+        vertical-align: top;
+        border-bottom: 1px dashed #b2bccb;
+      }
+    }
+
+    tbody {
+      td {
+        font-size: 1.4rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+        padding: 2.4rem 0;
+        padding-right: 4rem;
+        vertical-align: top;
+        text-align: left;
+        border-bottom: 1px dashed #b2bccb;
+      }
+      tr {
+        &:last-child {
+          td {
+            border: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.remark {
+  color: #738198;
+
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+  margin-top: 1.6rem;
+}

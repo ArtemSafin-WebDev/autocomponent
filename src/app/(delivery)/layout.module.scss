@@ -1,0 +1,26 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 12rem;
+}
+
+.row {
+  display: grid;
+  grid-gap: 7.7rem;
+  grid-template-columns: 30rem 1fr;
+  align-items: flex-start;
+  margin-top: 4.6rem;
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.leftCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.rightCol {
+  display: flex;
+  flex-direction: column;
+}

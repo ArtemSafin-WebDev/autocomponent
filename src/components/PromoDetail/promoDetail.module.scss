@@ -1,0 +1,91 @@
+.promoDetail {
+  display: flex;
+  flex-direction: column;
+  padding-top: 4.6rem;
+  padding-bottom: 8rem;
+}
+
+.heading {
+  font-size: 3.2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 1.6rem;
+}
+
+.info {
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  text-align: center;
+  padding: 0.6rem 1.2rem;
+  border-radius: 3rem;
+  background: #f1f4f8;
+  align-self: flex-start;
+  margin-bottom: 3.2rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 40rem 1fr;
+  grid-gap: 4rem;
+  align-items: flex-start;
+}
+
+.leftCol {
+  display: block;
+}
+
+.rightCol {
+  display: block;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 1.2rem;
+}
+
+.textContent {
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  margin-bottom: 2.4rem;
+  p {
+    margin-top: 2rem;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 160%;
+  color: var(--primary-color);
+  transition: color 0.2s;
+  &:link,
+  &:visited {
+    color: var(--primary-color);
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--primary-color-hover);
+    }
+  }
+  svg {
+    width: 2rem;
+    height: 2rem;
+    flex-shrink: 0;
+    fill: currentColor;
+  }
+}
