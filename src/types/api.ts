@@ -278,6 +278,16 @@ interface CompanySidebarData {
   items: CompanySidebarBlock[];
 }
 
+interface Certificate {
+  id: number;
+  src: string;
+  wide?: boolean;
+}
+
+interface CertificatesData {
+  items: Certificate[];
+}
+
 export type {
   CarsCatalogData,
   Advantage,
@@ -314,4 +324,6 @@ export type {
   NameSearchData,
   CompanySidebarBlock,
   CompanySidebarData,
+  Certificate,
+  CertificatesData,
 };

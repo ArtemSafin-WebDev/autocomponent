@@ -24,6 +24,18 @@ const paths: Array<{
     pathname: "/rules",
     title: "Правила регистрации",
   },
+  {
+    pathname: "/certificates",
+    title: "Сертификаты",
+  },
+  {
+    pathname: "/career",
+    title: "Вакансии",
+  },
+  {
+    pathname: "/return",
+    title: "Возврат",
+  },
 ];
 
 export default function CompanyBreadcrumbs() {

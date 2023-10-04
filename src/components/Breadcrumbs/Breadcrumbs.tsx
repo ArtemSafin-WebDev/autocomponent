@@ -20,6 +20,7 @@ export default function Breadcrumbs({ links }: BreadcrumbsProps) {
         <Link
           href={link.href}
           className={`${styles.link} ${link.active ? styles.linkActive : ""}`}
+          key={link.id}
         >
           {link.title}
         </Link>

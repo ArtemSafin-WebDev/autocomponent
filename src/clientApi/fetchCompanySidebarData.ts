@@ -10,7 +10,7 @@ export default async function fetchCompanySidebarData(): Promise<CompanySidebarD
   return {
     items: [
       {
-        id: 1,
+        id: 123432,
         title: "Клиентам",
         links: [
           {
@@ -41,7 +41,7 @@ export default async function fetchCompanySidebarData(): Promise<CompanySidebarD
         ],
       },
       {
-        id: 2,
+        id: 232432,
         title: "О компании",
         links: [
           {

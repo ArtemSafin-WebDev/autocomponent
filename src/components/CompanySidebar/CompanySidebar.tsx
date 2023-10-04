@@ -11,10 +11,12 @@ interface CompanySidebarProps {
 
 export default function CompanySidebar({ items }: CompanySidebarProps) {
   const pathname = usePathname();
+
+  console.log("Items", items);
   return (
     <div className={styles.sidebar}>
       {items.map((item) => (
-        <div className={styles.block}>
+        <div className={styles.block} key={item.id}>
           {item.title ? (
             <h3 className={styles.blockTitle}>{item.title}</h3>
           ) : null}
@@ -25,6 +27,7 @@ export default function CompanySidebar({ items }: CompanySidebarProps) {
                 className={`${styles.link} ${
                   pathname === link.href ? styles.active : ""
                 }`}
+                key={item.id}
               >
                 {link.title}
               </Link>
