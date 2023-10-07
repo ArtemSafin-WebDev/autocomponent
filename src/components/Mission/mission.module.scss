@@ -1,0 +1,59 @@
+.mission {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12rem;
+}
+
+.missionHeading {
+  font-size: 3.2rem;
+  text-align: center;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 5.6rem;
+}
+
+.missionHeadingText {
+  font-size: 1.6rem;
+  text-align: left;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+  margin-bottom: 3.2rem;
+}
+
+.missionList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-gap: 3rem;
+}
+
+.missionListItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.missionCard {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 3.2rem;
+  border-radius: 1.2rem;
+  background-color: #f5f7fa;
+  padding: 3.2rem;
+}
+
+.missionCardIcon {
+  display: flex;
+  flex-direction: column;
+  width: 4.6rem;
+  height: 4.6rem;
+  object-fit: contain;
+}
+
+.missionCardTitle {
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 137.023%;
+}

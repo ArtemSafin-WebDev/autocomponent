@@ -36,6 +36,10 @@ const paths: Array<{
     pathname: "/return",
     title: "Возврат",
   },
+  {
+    pathname: "/about",
+    title: "О нас",
+  },
 ];
 
 export default function CompanyBreadcrumbs() {

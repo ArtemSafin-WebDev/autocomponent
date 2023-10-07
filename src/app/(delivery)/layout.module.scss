@@ -7,7 +7,7 @@
 .row {
   display: grid;
   grid-gap: 7.7rem;
-  grid-template-columns: 30rem 1fr;
+  grid-template-columns: 30rem minmax(0, 1fr);
   align-items: flex-start;
   margin-top: 4.6rem;
   &:first-child {
