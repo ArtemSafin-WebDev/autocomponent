@@ -10,7 +10,7 @@ interface PaginationProps {
   pagesCount: number;
 }
 
-export default function Pagination({ pagesCount }: PaginationProps) {
+export default function Pagination({ pagesCount = 1}: PaginationProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 

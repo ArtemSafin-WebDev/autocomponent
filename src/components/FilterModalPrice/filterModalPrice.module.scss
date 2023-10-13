@@ -21,6 +21,10 @@
       border: .1rem solid #D6DCE5;
       text-align: center;
       border-radius: .5rem;
+
+      &:focus {
+        border: .1rem solid var(--primary-color);
+      }
     }
     span {
       background: #D6DCE5;

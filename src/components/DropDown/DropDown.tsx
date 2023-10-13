@@ -2,8 +2,11 @@
 import styles from "./dropDown.module.scss"
 import Image from "next/image";
 import arrowDown from "@/assets/images/arrow-down.svg";
-import {useEffect, useState, useRef, ChangeEvent} from "react";
+import {useEffect, useState, useRef} from "react";
 import {AnimatePresence, motion} from "framer-motion";
+import { Dispatch, SetStateAction } from "react";
+import {usePagesStorage} from "@/store/usePagesStorage";
+import {useRouter} from "next/navigation"
 
 interface IDropDown {
   dropDownValues: string[] | number[];
@@ -11,6 +14,9 @@ interface IDropDown {
   buttonText?: string;
   buttonStyle?: {[keyof: string]: string};
   dropDownStyle?: {[keyof: string]: string};
+  getDropDownValue?: Dispatch<SetStateAction<string | number>>
+
+  navigation?: string
 }
 
 const dropDownAnimation = {
@@ -31,19 +37,28 @@ const dropDownAnimation = {
       display: "none"
     }
   },
+
 }
 
-export default function DropDown({dropDownValues, activeIndexValue, buttonText, buttonStyle, dropDownStyle, }: IDropDown) {
+export default function DropDown({dropDownValues, activeIndexValue, buttonText, buttonStyle, dropDownStyle, getDropDownValue, navigation}: IDropDown) {
   const [isActive, setIsActive] = useState<boolean>(false)
   const [dropDownValue, setDropDownValue] = useState<string | number>("")
   const dropDownBlockRef = useRef<HTMLDivElement>(null)
+
+  const {setCountPages} = usePagesStorage()
+
+  const router = useRouter()
 
   useEffect(() => {
     dropDownValues?.map((dropDownValue: string | number, index: number) => {
       if(activeIndexValue === index) {
         setDropDownValue(dropDownValue)
+        setCountPages!(dropDownValue)
+        getDropDownValue && getDropDownValue!(dropDownValue)
       } else {
         setDropDownValue(dropDownValues[0])
+        setCountPages!(dropDownValues[0])
+        getDropDownValue && getDropDownValue!(dropDownValue)
       }
     })
   }, [])
@@ -100,8 +115,14 @@ export default function DropDown({dropDownValues, activeIndexValue, buttonText, 
         >
           {dropDownValues?.map((buttonValue: string | number, index: number) => (
             <button key={index} className={styles.dropDown__list}
-                    onClick={() => setDropDownValue(buttonValue)}
-            >
+              onClick={() => {
+                setDropDownValue(buttonValue)
+                setCountPages!(buttonValue)
+                setIsActive(false)
+
+                getDropDownValue&& getDropDownValue!(dropDownValue)
+                navigation && router.push(navigation)
+              }}>
               <p
                 className={dropDownValue === buttonValue ? styles.dropDown__buttonValue_active : styles.dropDown__buttonValue}
               >{buttonValue}</p>

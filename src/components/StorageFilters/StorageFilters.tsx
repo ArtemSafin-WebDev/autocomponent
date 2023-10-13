@@ -1,6 +1,6 @@
 "use client"
 
-import {useCallback, useEffect, useState} from "react";
+import {Dispatch, SetStateAction, useCallback, useEffect, useState} from "react";
 import styles from "./storageFilters.module.scss"
 import Button from "@/components/Button/Button";
 import Tag from "@/components/Tag/Tag";
@@ -12,25 +12,34 @@ import {useFilterCategory} from "@/store/useFilterCategory";
 import {useStoreTags} from "@/store/useTags";
 import Switch from "@/components/Switch/Switch";
 import DropDown from "@/components/DropDown/DropDown";
+import {useLocation} from "react-use";
 
 interface IStorageFilters {
-  handlerClick: any
+  handlerClick: any;
+  setAutoloading: Dispatch<SetStateAction<boolean>>
 }
 
-const dropDownValues: number[] = [30, 100, 300, 500]
+const dropDownValues: number[] = [5, 10, 30, 100, 200, 500]
 
-export default function StorageFilters({handlerClick}: IStorageFilters) {
+
+export default function StorageFilters({handlerClick, setAutoloading}: IStorageFilters) {
   const [crnVal, getCrnValue] = useState("")
   const [type, setType] = useState<string | null>("")
   const {checked, setChecked} = useFilterCategory()
+
   const {checkedManufValues, setCheckedManufValues} = useFilterManuf()
   const {allTags, setAllTags} = useStoreTags()
   const [isPageSwitchActive, setPageSwitchActive] = useState<boolean>(false)
-  const [isPagesActive, setIsPagesActive] = useState<boolean>(false)
+
+  const location = useLocation()
 
   useEffect(() => {
     setAllTags([...checkedManufValues, ...checked])
   }, [setAllTags, checkedManufValues, checked])
+
+  useEffect(() => {
+    setAutoloading(isPageSwitchActive)
+  }, [isPageSwitchActive]);
 
   const removeTagValue = useCallback((value: string) => {
     setCheckedManufValues(checkedManufValues.filter((crnValue: string) => crnValue !== value))
@@ -73,8 +82,10 @@ export default function StorageFilters({handlerClick}: IStorageFilters) {
             </div>
             <DropDown
               dropDownValues={dropDownValues}
-              activeIndexValue={dropDownValues.length - 1}
+              activeIndexValue={0}
               buttonText={"Показывать по"}
+
+              navigation={location.pathname}
             />
           </div>
         </div>

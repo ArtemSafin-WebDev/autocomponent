@@ -4,7 +4,6 @@ import styles from "./table.module.scss";
 import StorageFilters from "@/components/StorageFilters/StorageFilters";
 import ItemsTable from "@/components/ItemsTable/ItemsTable";
 import HeaderTable from "@/components/HeaderTable/HeaderTable";
-import { items } from "@/modules/TableModule/data";
 import ModalModule from "@/modules/ModalModule/Modal";
 import FilterModal from "@/components/FilterModal/FilterModal";
 import { useEffect, useState } from "react";
@@ -14,6 +13,9 @@ import Pagination from "@/components/Pagination/Pagination";
 import Image from "next/image";
 import cartSuccess from "@/assets/images/cart-success.svg";
 import { AnimatePresence, motion } from "framer-motion";
+import {fetchStorageData} from "@/clientApi/fetchStorageData";
+import {useSearchParams} from "next/navigation";
+import {usePagesStorage} from "@/store/usePagesStorage";
 
 export default function TableModule() {
   const [filterActive, setFilterActive] = useState<boolean>(false);
@@ -24,6 +26,13 @@ export default function TableModule() {
   const [oemVal, setOemVal] = useState<string>("");
   const [codeVal, setCodeVal] = useState<string>("");
 
+  const [items, setItems] = useState<any>([])
+  const [paginationCount, setPaginationCount] = useState<number>(1)
+
+  const [autoloading, setAutoloading] = useState<boolean>(false)
+  const [fetchingScroll, setFetchingScroll] = useState<boolean>(false)
+  const [autoLoadingCountPages, setAutoLoadingCountPages] = useState(1)
+
   const [tableVal, setTableVal] = useState<{ [keyof: string]: boolean }>({
     title: false,
     oem: false,
@@ -32,9 +41,37 @@ export default function TableModule() {
   });
   const { allTags } = useStoreTags();
 
+  const searchParams = useSearchParams()
+  const {countPages} = usePagesStorage()
+
+
   useEffect(() => {
-    setSortedItems(items);
-  }, []);
+    if(!autoloading) {
+      setAutoLoadingCountPages(1)
+      fetchStorageData(Number(searchParams.get("page")), Number(countPages))
+        .then(res => {
+          setItems(res?.currentItems)
+          if(res?.countPagination !== Infinity) {
+            setPaginationCount(res?.countPagination!)
+          }
+        })
+    }
+  }, [setItems, searchParams, fetchStorageData, countPages, autoloading, fetchingScroll] );
+
+  useEffect(() => {
+    console.log(autoloading, fetchingScroll)
+    if(autoloading && fetchingScroll) {
+      fetchStorageData(Number(autoLoadingCountPages), Number(countPages))
+        .then(res => {
+          setItems([...items, ...res?.currentItems])
+        })
+    }
+  }, [setItems, setAutoLoadingCountPages, fetchingScroll, autoloading, countPages]);
+
+
+  useEffect(() => {
+    setSortedItems(items)
+  }, [setSortedItems]);
 
   useEffect(() => {
     const ruCollator = new Intl.Collator("ru-RU");
@@ -91,6 +128,24 @@ export default function TableModule() {
     }
   }, [setSortedItems, allTags]);
 
+  useEffect(() => {
+    document.addEventListener("scroll", scrollHandler)
+
+    return () => document.removeEventListener("scroll", scrollHandler)
+  }, []);
+
+  const scrollHandler = (event: any) => {
+    if( event.target.documentElement.scrollHeight - (event.target.documentElement.scrollTop + window.innerHeight) < 750) {
+      if(!autoloading) {
+        setFetchingScroll(true)
+        setAutoLoadingCountPages(prevState => prevState + 1)
+      } else {
+        setFetchingScroll(false)
+      }
+    }
+  }
+
+
   return (
     <section>
       <div className={styles.table__cartNotificationTable}>
@@ -125,7 +180,7 @@ export default function TableModule() {
           ))}
         </AnimatePresence>
       </div>
-      <StorageFilters handlerClick={setFilterActive} />
+      <StorageFilters handlerClick={setFilterActive} setAutoloading={setAutoloading}/>
       <HeaderTable
         tableVal={tableVal}
         setTableVal={setTableVal}
@@ -136,17 +191,17 @@ export default function TableModule() {
         codeVal={codeVal}
         setCodeVal={setCodeVal}
       />
-      {sortedItems?.map((item: TItem) => (
+      {sortedItems?.map((item: TItem, index) => (
         <ItemsTable
           lastId={sortedItems[sortedItems.length - 1]}
           item={item}
-          id={item?.id}
-          key={item?.id}
+          id={index}
+          key={index}
           setCardNoticeArray={setCardNoticeArray}
         />
       ))}
       <div className={styles.table__wrapperPagination}>
-        <Pagination pagesCount={6} />
+        {!autoloading && <Pagination pagesCount={paginationCount}/>}
       </div>
       <ModalModule isOpen={filterActive} handlerClick={setFilterActive}>
         <FilterModal isActive={filterActive} closeModal={setFilterActive} />

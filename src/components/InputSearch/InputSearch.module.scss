@@ -11,6 +11,9 @@
     &::placeholder {
       color: #8491A6;
     }
+    &:focus {
+      border: .1rem solid var(--primary-color);
+    }
   }
   &__icon {
     position: absolute;

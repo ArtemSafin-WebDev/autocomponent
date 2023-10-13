@@ -2,13 +2,16 @@ import styles from "./page.module.scss"
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import {Metadata} from "next";
 import TableModule from "@/modules/TableModule/TableModule";
+import { fetchStorageData } from "@/clientApi/fetchStorageData";
 
 export const metadata: Metadata = {
   title: "Склад онлайн",
   description: ""
 }
 
+
 export default async function Storage() {
+
   return (
     <>
       <div className="container">

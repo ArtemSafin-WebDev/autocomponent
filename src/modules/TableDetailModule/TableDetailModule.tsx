@@ -3,7 +3,6 @@
 import styles from "./table.module.scss";
 import ItemsTable from "@/components/ItemsTable/ItemsTable";
 import HeaderTable from "@/components/HeaderTable/HeaderTable";
-import { items } from "@/modules/TableModule/data";
 import { useEffect, useState } from "react";
 import { TItem } from "@/components/ItemsTable/types";
 import { useStoreTags } from "@/store/useTags";
@@ -13,6 +12,7 @@ import cartSuccess from "@/assets/images/cart-success.svg";
 import { AnimatePresence, motion } from "framer-motion";
 import Switch from "@/components/Switch/Switch";
 import DropDown from "@/components/DropDown/DropDown";
+import {fetchStorageData} from "@/clientApi/fetchStorageData";
 
 export default function TableDetailModule() {
   const [inStock, setInStock] = useState(true);
@@ -24,6 +24,8 @@ export default function TableDetailModule() {
   const [oemVal, setOemVal] = useState<string>("");
   const [codeVal, setCodeVal] = useState<string>("");
 
+  const [items, setItems] = useState([])
+
   const [tableVal, setTableVal] = useState<{ [keyof: string]: boolean }>({
     title: false,
     oem: false,
@@ -33,8 +35,12 @@ export default function TableDetailModule() {
   const { allTags } = useStoreTags();
 
   useEffect(() => {
-    setSortedItems(items);
-  }, []);
+    fetchStorageData(1, 100)
+      .then(res => {
+        setSortedItems(res?.currentItems)
+        setItems(res?.currentItems)
+      })
+  }, [setSortedItems]);
 
   useEffect(() => {
     const ruCollator = new Intl.Collator("ru-RU");
