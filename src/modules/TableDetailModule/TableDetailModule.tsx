@@ -36,7 +36,7 @@ export default function TableDetailModule() {
 
   useEffect(() => {
     fetchStorageData(1, 100)
-      .then(res => {
+      .then((res: any) => {
         setSortedItems(res?.currentItems)
         setItems(res?.currentItems)
       })

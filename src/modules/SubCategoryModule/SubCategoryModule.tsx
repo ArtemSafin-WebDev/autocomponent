@@ -3,7 +3,6 @@ import styles from "./subcategory.module.scss";
 import { useEffect, useState } from "react";
 import { TItem } from "@/components/ItemsTable/types";
 import { useStoreTags } from "@/store/useTags";
-import { items } from "@/modules/TableModule/data";
 import ItemsTable from "@/components/ItemsTable/ItemsTable";
 import HeaderTable from "@/components/HeaderTable/HeaderTable";
 import SubCategoryTags from "@/components/SubCategoryTags/SubCategoryTags";
@@ -11,6 +10,7 @@ import Switch from "@/components/Switch/Switch";
 import arrowDown from "@/assets/images/arrow-down.svg";
 import Image from "next/image";
 import Pagination from "@/components/Pagination/Pagination";
+import {fetchStorageData} from "@/clientApi/fetchStorageData";
 
 export default function SubCategoryModule() {
   const [sortedItems, setSortedItems] = useState<TItem[]>([]);
@@ -22,6 +22,7 @@ export default function SubCategoryModule() {
 
   const [inStockActive, setInStockActive] = useState<boolean>(false);
   const [autoLoading, setAutoLoading] = useState<boolean>(false);
+  const [items, setItems] = useState([])
 
   const [tableVal, setTableVal] = useState<{ [keyof: string]: boolean }>({
     title: false,
@@ -33,8 +34,14 @@ export default function SubCategoryModule() {
   const { allTags } = useStoreTags();
 
   useEffect(() => {
-    setSortedItems(items);
-  }, []);
+    fetchStorageData()
+      .then((res: any) => setItems(res))
+
+  }, [setItems]);
+
+  useEffect(() => {
+    setSortedItems(items)
+  }, [setSortedItems]);
 
   useEffect(() => {
     const ruCollator = new Intl.Collator("ru-RU");
