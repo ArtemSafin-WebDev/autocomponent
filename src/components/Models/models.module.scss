@@ -1,0 +1,58 @@
+.models {
+  display: flex;
+  flex-direction: column;
+  padding-top: 4.6rem;
+  margin-bottom: 8rem;
+}
+
+.heading {
+  font-size: 2.8rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 3.2rem;
+}
+
+.modelsTable {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th {
+    vertical-align: top;
+    text-align: left;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+    padding: 1.6rem 1.1rem;
+    background-color: #f6f8fa;
+    border-bottom: 1px dashed #8491a6;
+  }
+
+  td {
+    vertical-align: top;
+  }
+
+  tbody tr {
+    transition: background-color 0.2s;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: #fbfcfd;
+      }
+    }
+  }
+}
+
+.link {
+  text-align: left;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  padding: 1.6rem 1.1rem;
+  border-bottom: 1px dashed #8491a6;
+  display: block;
+}

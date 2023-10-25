@@ -288,6 +288,15 @@ interface CertificatesData {
   items: Certificate[];
 }
 
+interface CatalogPartsData {
+  categories: Array<{
+    id: string | number;
+    title: string;
+    src: string;
+    href: string;
+  }>;
+}
+
 export type {
   CarsCatalogData,
   Advantage,
@@ -326,4 +335,5 @@ export type {
   CompanySidebarData,
   Certificate,
   CertificatesData,
+  CatalogPartsData,
 };

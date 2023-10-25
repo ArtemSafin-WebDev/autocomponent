@@ -1,0 +1,46 @@
+.partsCatalog {
+  display: flex;
+  flex-direction: column;
+  padding-top: 4.6rem;
+  margin-bottom: 8rem;
+}
+
+.heading {
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 3.2rem;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 34.5rem) 1fr;
+  grid-gap: 5rem;
+  grid-template-areas: "left right";
+}
+
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  grid-area: left;
+}
+
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  grid-area: right;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-gap: 2rem;
+}
+
+.listItem {
+  display: flex;
+  flex-direction: column;
+}
