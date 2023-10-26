@@ -18,6 +18,7 @@ export default async function CarsCatalog({ data }: CarsCatalogProps) {
             title={item.title}
             image={item.image}
             year={item.year}
+            href={item.href}
           />
         ))}
       </ul>

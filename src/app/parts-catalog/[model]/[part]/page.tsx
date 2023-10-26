@@ -2,8 +2,8 @@ import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import styles from "./styles.module.scss";
 import ModelInfo from "@/components/ModelInfo/ModelInfo";
 import CategoriesSidebar from "@/components/CategoriesSidebar/CategoriesSidebar";
-import PartCatalog from "@/components/PartCatalog/PartCatalog";
-import fetchPartsCatalogData from "@/clientApi/fetchPartsCatalogData";
+import PartsInCategory from "@/components/PartsInCategory/PartsInCategory";
+import fetchPartsInCategory from "@/clientApi/fetchPartsInCategory";
 
 export const dynamic = "force-dynamic";
 
@@ -12,8 +12,8 @@ export const metadata = {
   description: "",
 };
 
-export default async function PartsCatalogPage() {
-  const { categories } = await fetchPartsCatalogData();
+export default async function PartsCatalogDetailPage() {
+  const { items } = await fetchPartsInCategory();
   return (
     <div className="container">
       <Breadcrumbs
@@ -48,7 +48,7 @@ export default async function PartsCatalogPage() {
             <CategoriesSidebar />
           </div>
           <div className={styles.rightCol}>
-            <PartCatalog items={categories} />
+            <PartsInCategory items={items} />
           </div>
         </div>
       </div>

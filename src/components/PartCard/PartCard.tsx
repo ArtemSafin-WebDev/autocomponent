@@ -18,7 +18,15 @@ export default function PartCard({
   return (
     <Link href={href} className={styles.card}>
       <h3 className={styles.title}>{title}</h3>
-      {src ? <Image className={styles.image} src={src} alt={alt} /> : null}
+      {src ? (
+        <Image
+          className={styles.image}
+          src={src}
+          alt={alt}
+          width={133}
+          height={172}
+        />
+      ) : null}
     </Link>
   );
 }

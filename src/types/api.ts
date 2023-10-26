@@ -144,6 +144,7 @@ type CarCard = {
   title: string;
   image?: string;
   year?: string;
+  href?: string;
 };
 
 interface CarsCatalogData {
@@ -297,6 +298,29 @@ interface CatalogPartsData {
   }>;
 }
 
+interface CatalogPartsCategory {
+  id: string | number;
+  title: string;
+  items?: CatalogPartsCategory[];
+}
+
+interface CatalogPartsCategoriesData {
+  items: CatalogPartsCategory[];
+}
+
+interface PartInCategory {
+  id: string | number;
+  title: string;
+  href: "/";
+  brand: string;
+  articul: string;
+  original?: boolean;
+}
+
+interface PartsInCategoryData {
+  items: PartInCategory[];
+}
+
 export type {
   CarsCatalogData,
   Advantage,
@@ -336,4 +360,8 @@ export type {
   Certificate,
   CertificatesData,
   CatalogPartsData,
+  CatalogPartsCategoriesData,
+  CatalogPartsCategory,
+  PartsInCategoryData,
+  PartInCategory,
 };

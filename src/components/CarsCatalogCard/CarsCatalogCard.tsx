@@ -6,15 +6,17 @@ interface CarsCatalogCardProps {
   title: string;
   image?: string;
   year?: string;
+  href?: string;
 }
 
 export default function CarsCatalogCard({
   title,
   image,
   year,
+  href = "/",
 }: CarsCatalogCardProps) {
   return (
-    <Link href="/" className={styles.card}>
+    <Link href={href} className={styles.card}>
       {image && (
         <div className={styles.imageContainer}>
           <Image src={image} fill alt="" />
