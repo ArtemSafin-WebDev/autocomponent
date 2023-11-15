@@ -1,0 +1,104 @@
+.filterResults {
+  display: flex;
+  flex-direction: column;
+}
+
+.filterResultsHeader {
+  background-color: #f5f7fa;
+  display: grid;
+  grid-template-columns: 2fr 1.2fr 0.5fr 0.7fr 0.8fr 0.5fr 1.5fr;
+  grid-gap: 2rem;
+  border-bottom: 1px dashed #8491a6;
+}
+
+.filterResultsHeaderItem {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  padding-top: 2.4rem;
+  padding-bottom: 2rem;
+  &:first-child {
+    padding-left: 1.1rem;
+  }
+}
+
+.filterResultsHeaderTitle {
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  display: flex;
+  align-items: center;
+
+  &.active {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.inputWrapper {
+  display: block;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid #d6dce5;
+  background: #fff;
+  transition: border-color 0.2s;
+  height: 3.2rem;
+  padding: 0 1.2rem;
+  &:focus {
+    border-color: var(--primary-color);
+  }
+}
+
+.sortBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  svg {
+    width: 0.8rem;
+    height: 0.6rem;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+    fill: currentColor;
+    margin-top: 0.1rem;
+  }
+
+  &.active {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.withTooltip {
+  margin-top: -0.2rem;
+}
+
+.priceWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: -0.2rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.listItem {
+  display: block;
+}

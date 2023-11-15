@@ -52,10 +52,10 @@
 }
 
 .scrollWrapper {
-  scrollbar-color: #d6dce6 white;
-  scrollbar-width: thin;
   max-height: 33.2rem;
   overflow-x: hidden;
+  scrollbar-color: #d6dce6 white;
+  scrollbar-width: thin;
   padding-right: 1rem;
   margin-right: -1rem;
   &::-webkit-scrollbar {

@@ -1,0 +1,153 @@
+.goodsFilters {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3.2rem;
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2.4rem;
+  gap: 2.4rem;
+}
+
+.filtersBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 3.2rem;
+  border-radius: 0.5rem;
+  background: var(--primary-color);
+  transition: background-color 0.2s, color 0.2s;
+
+  color: white;
+  flex-shrink: 0;
+  gap: 0.4rem;
+
+  svg {
+    flex-shrink: 0;
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: currentColor;
+  }
+  &:link,
+  &:visited {
+    color: white;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--primary-color-hover);
+    }
+  }
+
+  &:active {
+    background-color: var(--primary-color-active);
+  }
+}
+
+.categories {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.categoryBtn {
+  display: flex;
+  align-items: center;
+  padding: 1.2rem 2rem;
+  gap: 0.6rem;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  background: #f1f4f8;
+  transition: background-color 0.2s;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: #e6e9ee;
+    }
+  }
+
+  &.active {
+    background-color: #e6e9ee;
+  }
+}
+
+.categoryIcon {
+  flex-shrink: 0;
+  width: 2.4rem;
+  height: 2.4rem;
+  object-fit: contain;
+}
+
+.bottomRow {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  justify-content: space-between;
+}
+
+.removeBtns {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.removeBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  border-radius: 2.4rem;
+  border: 1px solid #d6dce5;
+  transition: border-color 0.2s, background-color 0.2s, color 0.2s;
+  padding: 0.8rem 1rem;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+  @media (hover: hover) {
+    &:hover {
+      .removeBtnIcon {
+        background-color: #e6e9ed;
+      }
+    }
+  }
+}
+
+.removeBtnIcon {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  background-color: #f3f4f6;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+
+  svg {
+    flex-shrink: 0;
+    width: 1.2rem;
+    height: 1.2rem;
+    fill: #8491a6;
+    transition: fill 0.2s;
+  }
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 3.2rem;
+}
+
+.paginationWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4rem;
+}

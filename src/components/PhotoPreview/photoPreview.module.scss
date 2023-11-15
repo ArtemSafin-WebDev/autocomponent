@@ -22,7 +22,6 @@
       visibility: inherit;
       transition: opacity 0.4s, visibility 0.4s;
     }
-
   }
 }
 
@@ -46,8 +45,8 @@
   transform: translateX(-50%);
   top: 100%;
   z-index: 40;
-  padding-top: 3rem;
-  width: 32.8rem;
+  padding-top: 1rem;
+  width: 26rem;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.4s, visibility 0s linear 0.4s;
@@ -66,7 +65,7 @@
 }
 
 .dropdownInner {
-  padding: 2.4rem;
+  padding: 1.6rem;
   border-radius: 1.2rem;
   border: 1px solid #d6dce5;
   background: var(--ffffff, #fff);

@@ -1,16 +1,15 @@
 "use client";
 import { usePathname, useSearchParams } from "next/navigation";
-import styles from "./pagiation.module.scss";
+import styles from "./pagination.module.scss";
 import Link from "next/link";
 import { useCallback } from "react";
 import PaginationArrow from "@/icons/PaginationArrow";
-import { AnimatePresence, motion } from "framer-motion";
 
 interface PaginationProps {
   pagesCount: number;
 }
 
-export default function Pagination({ pagesCount = 1}: PaginationProps) {
+export default function Pagination({ pagesCount = 1 }: PaginationProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -30,57 +29,43 @@ export default function Pagination({ pagesCount = 1}: PaginationProps) {
 
   if (pagesCount === 0) return null;
 
+  console.log("Pages count", pagesCount);
+
   return (
     <div className={styles.pagination}>
       <ul className={styles.list}>
-        <AnimatePresence initial={false} mode="popLayout">
-          {[...Array(pagesCount)].map((e, i) => {
-            return (
-              <motion.li
-                key={i}
-                className={styles.listItem}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                layout
-              >
-                <Link
-                  className={`${styles.link} ${
-                    currentPage === i + 1 ? styles.active : ""
-                  }`}
-                  href={`${pathname}?${createQueryString(
-                    "page",
-                    (i + 1).toString()
-                  )}`}
-                  scroll={false}
-                >
-                  {i + 1}
-                </Link>
-              </motion.li>
-            );
-          })}
-          {currentPage < pagesCount ? (
-            <motion.li
-              className={styles.listItem}
-              key="next"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              layout
-            >
+        {[...Array(pagesCount)].map((e, i) => {
+          return (
+            <li key={i} className={styles.listItem}>
               <Link
-                className={styles.button}
+                className={`${styles.link} ${
+                  currentPage === i + 1 ? styles.active : ""
+                }`}
                 href={`${pathname}?${createQueryString(
                   "page",
-                  (currentPage + 1).toString()
+                  (i + 1).toString()
                 )}`}
                 scroll={false}
               >
-                <PaginationArrow />
+                {i + 1}
               </Link>
-            </motion.li>
-          ) : null}
-        </AnimatePresence>
+            </li>
+          );
+        })}
+        {currentPage < pagesCount ? (
+          <li className={styles.listItem} key="next">
+            <Link
+              className={styles.button}
+              href={`${pathname}?${createQueryString(
+                "page",
+                (currentPage + 1).toString()
+              )}`}
+              scroll={false}
+            >
+              <PaginationArrow />
+            </Link>
+          </li>
+        ) : null}
       </ul>
     </div>
   );

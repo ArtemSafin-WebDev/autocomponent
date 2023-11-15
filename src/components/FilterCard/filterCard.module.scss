@@ -1,0 +1,83 @@
+.card {
+  background-color: white;
+  display: grid;
+  grid-template-columns: 2fr 1.2fr 0.5fr 0.7fr 0.8fr 0.5fr 1.5fr;
+  grid-gap: 2rem;
+  border-bottom: 1px dashed #8491a6;
+  padding: 2.7rem 0;
+}
+
+.cell {
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.title {
+  padding-left: 1.1rem;
+}
+
+.inStock {
+  color: #4cd04a;
+
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+}
+
+.rightWrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  justify-content: space-between;
+  padding-right: 1.3rem;
+}
+
+.btnsWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.priceWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.price {
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+}
+
+.addToCartBtn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.4rem;
+  width: 5rem;
+  background-color: var(--primary-color);
+  border-radius: 0.5rem;
+  transition: background-color 0.2s;
+  svg {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    fill: white;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--primary-color-hover);
+    }
+  }
+
+  &:active {
+    background-color: var(--primary-color-active);
+  }
+}

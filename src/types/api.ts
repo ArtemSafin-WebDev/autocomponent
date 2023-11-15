@@ -1,3 +1,5 @@
+import { FiltersCategory } from "@/components/GoodsFilters/GoodsFilters";
+
 interface Advantage {
   src: string;
   title: string;
@@ -321,6 +323,50 @@ interface PartsInCategoryData {
   items: PartInCategory[];
 }
 
+interface GoodsData {
+  items: GoodsItem[];
+}
+
+interface GoodsItem {
+  id: number | string;
+  title: string;
+  oem: string;
+  code: number | string;
+  manufacturer: string;
+}
+
+interface FiltersCardItem {
+  id: string | number;
+  title: string;
+  oem?: string;
+  code?: string;
+  brand?: string;
+  date?: string;
+  inStock?: boolean;
+  amount: string;
+  price: number;
+  margin: number;
+  quantity?: number;
+  categories?: FiltersCategory[];
+}
+
+interface FetchGoodsData {
+  items: FiltersCardItem[];
+  total: number;
+}
+
+interface FetchGoodsParams {
+  priceFrom?: number;
+  priceTo?: number;
+  marginFrom?: number;
+  marginTo?: number;
+  categories?: FiltersCategory[];
+  brands?: string[];
+  page?: number;
+  showPerPage?: number;
+  sort?: "name" | "oem" | "brand" | "price" | "";
+}
+
 export type {
   CarsCatalogData,
   Advantage,
@@ -364,4 +410,7 @@ export type {
   CatalogPartsCategory,
   PartsInCategoryData,
   PartInCategory,
+  FiltersCardItem,
+  FetchGoodsData,
+  FetchGoodsParams,
 };
