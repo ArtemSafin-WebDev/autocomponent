@@ -1,0 +1,197 @@
+.contactsTabs {
+  display: flex;
+  flex-direction: column;
+}
+
+.contactsTabsNav {
+  display: flex;
+  padding: 0.4rem;
+  background: #f1f4f8;
+  gap: 0.4rem;
+  margin-bottom: 5.6rem;
+  align-self: flex-start;
+}
+
+.contactsTabsNavBtn {
+  padding: 1.3rem 4rem;
+  text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+  border-radius: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.contactsTabsNavBtnBg {
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 0.8rem;
+}
+
+.contactsTabsItems {
+  position: relative;
+}
+
+.contactsTabsItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.central {
+  display: flex;
+  flex-direction: column;
+}
+
+.shops {
+  display: flex;
+  flex-direction: column;
+}
+
+.centralRow {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  grid-gap: 3rem;
+  margin-bottom: 6rem;
+}
+
+.centralLeftCol {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.centralRightCol {
+  grid-column: span 5;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.shopsRow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-gap: 3rem;
+  margin-bottom: 6rem;
+}
+
+.shopsCol {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.contactsItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.contactsItemTitle {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+  margin-bottom: 0.8rem;
+}
+
+.contactsItemText {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 150%;
+  margin-bottom: 0.8rem;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.contactsItemLink {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 150%;
+  display: block;
+  align-self: flex-start;
+  color: var(--primary-color);
+  &:link,
+  &:visited {
+    color: var(--primary-color);
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--primary-color-hover);
+    }
+  }
+
+  &:active {
+    color: var(--primary-color-active);
+  }
+}
+
+.downloadBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+  color: var(--primary-color);
+  transition: color 0.2s;
+  margin-top: 3.2rem;
+
+  &:link,
+  &:visited {
+    color: var(--primary-color);
+  }
+  svg {
+    width: 2.4rem;
+    height: 2.4rem;
+    flex-shrink: 0;
+    fill: currentColor;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--primary-color-hover);
+    }
+  }
+
+  &:active {
+    color: var(--primary-color-active);
+  }
+}
+
+.innerHeadingBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 2.4rem;
+}
+
+.innerHeading {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 2.4rem;
+}
+
+.innerLabel {
+  padding: 0.4rem 0.8rem;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 100%;
+  border-radius: 1.4rem;
+  color: #e8713f;
+  background-color: #fbeae2;
+  align-self: flex-start;
+}
